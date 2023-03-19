@@ -1,4 +1,4 @@
-Package: VisColoc
+Package: escheR
 Title: Colocalization Visiualization for Spatial Transcriptomics Data
 Version: 0.0.0.9000
 Authors@R: 
@@ -17,9 +17,13 @@ Depends:
     ggplot2   
 Imports: 
     SpatialExperiment (>= 1.6.1),
-    spatialLIBD (>= 1.8.11)
-BugReports: https://github.com/boyiguo1/VisColoc/issues
-URL: https://github.com/boyiguo1/VisColoc
-Remotes:  
+    spatialLIBD
+BugReports: https://github.com/boyiguo1/escheR/issues
+URL: https://github.com/boyiguo1/escheR
+Remotes: 
     LieberInstitute/spatialLIBD,
     drighelli/SpatialExperiment
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
