@@ -1,0 +1,235 @@
+---
+title: "test"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{test}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(escheR)
+library(spatialLIBD)
+library(ggplot2)
+# if (!exists("spe")) 
+#   spe <- fetch_data("spatialDLPFC_Visium", destdir = "data")
+# 
+# subspe <- spe[, spe$sample_id == "Br8667_mid"]
+
+spe <- readRDS("data/spe_eg.rds")
+```
+
+
+```{r gene_expression}
+
+p_layer <- spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "spDomain",
+  spatial = FALSE,
+  colors = libd_layer_colors
+  # ... = " LIBD Layers",
+  # point_size = 10
+) +
+  labs(title = "") 
+
+ggsave("spd_plot_legend.pdf",
+       plot = p_layer,
+       height = 7,
+       width = 7)
+
+
+p_layer_esher <- (makeCOCOON(spe) |> 
+  add_shade.SpatialExperiment(
+    var = "spDomain")) +
+  scale_color_manual(
+    name = "",
+    values = libd_layer_colors |>
+      setNames(c(paste0("L", 1:6), "WM", "NA", "WM2"))
+  )  +
+  labs(title = "") +
+  theme(legend.position = "none")
+
+ggsave("spd_escheR.pdf",
+       plot = p_layer_esher,
+       height = 7,
+       width = 7)
+  
+
+
+
+p_coloc <- spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "coloc",
+  spatial = FALSE,
+  # ... = " LIBD Layers",
+  # point_size = 10
+) +
+  scale_fill_manual(
+    name = "",
+    limits = c("EFNA5&EPHA5",
+               "EFNA5",
+               "EPHA5",
+               "Neither"),
+    values = c("EFNA5&EPHA5" = "#483838",
+               "EFNA5" = "#96E5D1",
+               "EPHA5" = "#89CFFD",
+               "Neither" = "#CCCCCC40"
+    )
+  ) +
+  labs(title = "") +
+  theme(legend.position = "none")
+
+ggsave("coloc_legend.pdf",
+       plot = p_coloc,
+       height = 7,
+       width = 7)
+
+
+p_coloc_esher <- (p_coloc |> 
+    add_shade.SpatialExperiment(var = "spDomain")) +
+  scale_color_manual(
+    name = "",
+    values = libd_layer_colors |>
+      setNames(c(paste0("L", 1:6), "WM", "NA", "WM2"))
+  )  +
+  labs(title = "") +
+  theme(legend.position = "none")
+
+ggsave("coloc_escher.pdf",
+       plot = p_coloc_esher,
+       height = 7,
+       width = 7)
+
+ggarrange(
+  p_layer, p_coloc, p_layer_esher, p_coloc_esher,
+  ncol = 2,
+  nrow = 2,
+  labels = "AUTO",
+  common.legend = FALSE
+)
+
+
+
+
+
+spatialLIBD::vis_gene(
+  spe = spe,
+  viridis = FALSE,
+  spatial = FALSE,
+  geneid = "expr_chrM_ratio"
+) |>
+  add_symbol.SpatialExperiment(var = "spDomain", size = 0.5) 
+
+
+
+|> 
+  ggsave(filename = "ge.pdf",
+         plot = _,
+         height = 8,
+         width = 9)
+
+spatialLIBD::vis_gene(
+  spe = spe,
+  viridis = FALSE,
+  spatial = FALSE,
+  geneid = ""
+) |> 
+  add_shade.SpatialExperiment(var = "spDomain")
+
+
+spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "BayesSpace_harmony_09",
+  spatial = FALSE,
+  # ... = " LIBD Layers",
+  # point_size = 10
+) |> 
+  add_shade.SpatialExperiment(var = "spDomain") |>  
+  add_symbol.SpatialExperiment(var = "in_tissue", size = 0.02) 
+
+
+spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "BayesSpace_harmony_09",
+  spatial = FALSE,
+  # ... = " LIBD Layers",
+  # point_size = 10
+) |> 
+  add_symbol.SpatialExperiment(var = "in_tissue", size = 0.5)
+
+
+|> 
+  add_shade_vis_gene() |> 
+  ggsave(filename = "ge_COCOON.pdf",
+         plot = _,
+         height = 8,
+         width = 9)
+```
+
+```{r spatialDomain}
+
+p <- spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "BayesSpace_harmony_09",
+  spatial = FALSE,
+  # ... = " LIBD Layers",
+  # point_size = 10
+) 
+
+p_base <- p
+p_base$layers <- NULL
+
+p_base +
+  geom_point(aes(color = BayesSpace_harmony_09),
+             # aes(color = "clustervar")
+             shape = 21,
+             fill = "transparent",
+             size = 2,
+             stroke = 0.5,
+             alpha = 1
+  )
+
+spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "BayesSpace_harmony_09",
+  spatial = FALSE,
+  # ... = " LIBD Layers",
+  # point_size = 10
+) |> 
+  ggsave(filename = "spd.pdf",
+         plot = _,
+         height = 8,
+         width = 9)
+
+spatialLIBD::vis_clus(
+  spe = spe,
+  clustervar = "BayesSpace_harmony_09",
+  spatial = FALSE#,
+  # ... = " LIBD Layers"
+) |> 
+  add_shade_vis_clus(
+    clustervar = "BayesSpace_harmony_09",
+    cont_colors = c("#b2df8a", "#e41a1c", "#377eb8", "#4daf4a", "#ff7f00", "gold", "#a65628",
+                             "#999999", "black", "grey", "white", "purple")) |> 
+                               ggsave(filename = "spd_COCOON.pdf",
+                                      plot = _,
+                                      height = 8,
+                                      width = 9)
+
+
+
+
+```
+
+
+
+
+
+
