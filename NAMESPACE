@@ -2,6 +2,6 @@
 
 S3method(make_escheR,SpatialExperiment)
 export(add_ground.SpatialExperiment)
-export(add_shade_vis_gene)
 export(add_symbol.SpatialExperiment)
 export(make_escheR)
+importFrom(spatialLIBD,vis_gene)

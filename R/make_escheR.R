@@ -37,6 +37,7 @@ make_escheR <- function(object, ...){
 #'
 #' @rdname make_escheR
 #'
+#' @importFrom spatialLIBD vis_gene
 #' @export
 #'
 make_escheR.SpatialExperiment <- function(
