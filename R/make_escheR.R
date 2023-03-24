@@ -7,13 +7,14 @@
 #'
 #' @param object a data object that contains the spatial transcriptomics data.
 #'  Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects.
-#' @param spe a \code{SpatialExperiment} object that contains the spatial transcriptomics data
 #' @param spot_size A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.
 #' @param ... Reserved for future arguments.
 #'
 #' @return an ggplot object that contains the spatial transcriptomics data.
 #'
 #' @rdname make_escheR
+#'
+#' @import SpatialExperiment
 #'
 #' @export
 #'
@@ -29,7 +30,7 @@
 #'
 #'make_escheR(spe)
 #'}
-make_escheR <- function(object, ...){
+make_escheR <- function(object, spot_size = 2, ...){
   UseMethod("make_escheR", object)
 }
 
@@ -37,20 +38,20 @@ make_escheR <- function(object, ...){
 
 #'
 #' @rdname make_escheR
-#'
+#' @import ggplot2
 #' @importFrom spatialLIBD vis_gene
 #' @export
 #'
 make_escheR.SpatialExperiment <- function(
-    spe,
+    object,
     spot_size = 2,
     ...){
 
-  if(length(unique(spe$sample_id))!= 1)
+  if(length(unique(object$sample_id))!= 1)
     stop("The function only works for spe object with one sample.")
 
   p <- spatialLIBD::vis_gene(
-    spe = spe,
+    spe = object,
     spatial = FALSE,
     point_size = spot_size
   ) +
@@ -58,6 +59,6 @@ make_escheR.SpatialExperiment <- function(
 
   p$layers <- NULL
 
-  p$spe <- spe
+  p$spe <- object
   return(p)
 }

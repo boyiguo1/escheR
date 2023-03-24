@@ -5,19 +5,17 @@
 \alias{make_escheR.SpatialExperiment}
 \title{Create a new spatial map for spatial transcriptomics data}
 \usage{
-make_escheR(object, ...)
+make_escheR(object, spot_size = 2, ...)
 
-\method{make_escheR}{SpatialExperiment}(spe, spot_size = 2, ...)
+\method{make_escheR}{SpatialExperiment}(object, spot_size = 2, ...)
 }
 \arguments{
 \item{object}{a data object that contains the spatial transcriptomics data.
 Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects.}
 
-\item{...}{Reserved for future arguments.}
-
-\item{spe}{a \code{SpatialExperiment} object that contains the spatial transcriptomics data}
-
 \item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.}
+
+\item{...}{Reserved for future arguments.}
 }
 \value{
 an ggplot object that contains the spatial transcriptomics data.
