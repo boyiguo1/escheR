@@ -9,6 +9,9 @@
 #' @return an ggplot object.
 #'
 #' @import ggplot2
+#' @import spatialLIBD
+#' @importFrom SummarizedExperiment colData
+#'
 #' @export
 #' @examples
 #' \dontrun{
@@ -37,11 +40,11 @@ add_ground <- function(
   if(!var %in% colnames(p$data))
     stop(paste0("Please add the variable ", var, " to colData(spe)."))
 
-  if(is.numeric(p$data[,var])) {
-    p <- suppressMessages({p + scale_color_continuous()})
-  } else{
-    p <- suppressMessages({p + scale_color_discrete()})
-  }
+  # if(is.numeric(p$data[,var])) {
+  #   p <- suppressMessages({p + scale_color_continuous()})
+  # } else{
+  #   p <- suppressMessages({p + scale_color_discrete()})
+  # }
 
   p +
     geom_point(
