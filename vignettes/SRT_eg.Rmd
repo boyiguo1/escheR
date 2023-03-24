@@ -1,6 +1,6 @@
 ---
 title: "Create Multi-dimensional Plot of Spaitally-resolved Transcriptomics Data"
-output: rmarkdown::html_vignette
+output: BiocStyle::html_document
 vignette: >
   %\VignetteIndexEntry{Create Multi-dimensional Plot of Spaitally-resolved Transcriptomics Data}
   %\VignetteEngine{knitr::rmarkdown}
@@ -21,9 +21,36 @@ library(ggplot2)
 if (!exists("spe"))
   spe <- fetch_data("spatialDLPFC_Visium")
 
-subspe <- spe[, spe$sample_id == "Br8667_mid"]
+spe <- spe[, spe$sample_id == "Br8667_mid"]
+
+colData(spe)$spDomain <- factor(
+  spe$BayesSpace_harmony_09,
+  levels = c(1, 2, 3, 5, 8, 4, 7, 6, 9),
+  labels = c("L1", "L1", "L2", "L3", "L4", "L5", "L6", "WM", "WM")
+)
+
+
 ```
 
+
+```{r eval = F}
+p <- make_escheR(spe)
+```
+
+
+Unlike `ggplot2`, we use piping `|>` instead of `+` to assemble the figure.  
+
+```{r eval = F}
+
+p |> 
+  add_fill(var = "sum_umi") |> # Figure layer
+  add_ground(var = "spDomain") |> # Background layer
+  add_symbol(var = "in_tissue", size = 0.2) # Symbol layer
+```
+
+It is okay to change the ordering of these `add_*` functions. However, we advise to always have the `add_fill` as the first step to achieve the best visual effect due to the laying mechanism. 
+
+To change the aethetics of each layer, one can simply use the `scale_*` from `ggplot2` to optimize the final visual presentation. For example, to optimize `add_fill`, one can use `scale_fill_*`; to optimize `add_ground`, one can use `scale_color_*`; to optimize `add_sumbol`, one use `scale_shape_*`. 
 
 
 
