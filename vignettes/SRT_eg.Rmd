@@ -1,0 +1,33 @@
+---
+title: "Create Multi-dimensional Plot of Spaitally-resolved Transcriptomics Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Create Multi-dimensional Plot of Spaitally-resolved Transcriptomics Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(escheR)
+library(spatialLIBD)
+library(ggplot2)
+if (!exists("spe"))
+  spe <- fetch_data("spatialDLPFC_Visium")
+
+subspe <- spe[, spe$sample_id == "Br8667_mid"]
+```
+
+
+
+
+
+
+
+
