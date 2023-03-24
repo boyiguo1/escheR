@@ -49,15 +49,77 @@ make_escheR.SpatialExperiment <- function(
 
   if(length(unique(object$sample_id))!= 1)
     stop("The function only works for spe object with one sample.")
+  # browser()
 
-  p <- spatialLIBD::vis_gene(
-    spe = object,
-    spatial = FALSE,
-    point_size = spot_size
-  ) +
-    labs(title = "")
 
-  p$layers <- NULL
+  ## Some variables
+  pxl_row_in_fullres <-
+    pxl_col_in_fullres <- key <- NULL
+
+  spe <- object
+  auto_crop <- TRUE
+
+  d <- as.data.frame(cbind(colData(spe), SpatialExperiment::spatialCoords(spe)), optional = TRUE)
+
+  sampleid <- unique(spe$sample_id)[1]
+  image_id <- "lowres"
+
+  # stopifnot(all(c("pxl_col_in_fullres", "pxl_row_in_fullres", "COUNT", "key") %in% colnames(d)))
+  img <-
+    SpatialExperiment::imgRaster(
+      spe,
+      sample_id = unique(spe$sample_id)[1],
+      image_id = image_id)
+
+
+  ## Crop the image if needed
+  if (auto_crop) {
+    frame_lims <-
+      frame_limits(spe, sampleid = sampleid, image_id = image_id)
+    img <-
+      img[frame_lims$y_min:frame_lims$y_max, frame_lims$x_min:frame_lims$x_max]
+    adjust <-
+      list(x = frame_lims$x_min, y = frame_lims$y_min)
+  } else {
+    adjust <- list(x = 0, y = 0)
+  }
+  # browser()
+  p <-
+    ggplot(
+      d,
+      aes(
+        x = pxl_col_in_fullres * SpatialExperiment::scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$x,
+        y = pxl_row_in_fullres * SpatialExperiment::scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$y,
+        key = key
+      )
+    ) +
+    xlab("") +
+    ylab("") +
+    theme_set(theme_bw(base_size = 20)) +
+    theme(
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.background = element_blank(),
+      axis.line = element_blank(),
+      axis.text = element_blank(),
+      axis.ticks = element_blank(),
+      legend.title = element_text(size = 10),
+      legend.box.spacing = unit(0, "pt")
+    )
+
+
+
+  # object$escheR_na <- NA_integer_
+  # p <- spatialLIBD::vis_clus(
+  #   spe = object,
+  #   spatial = FALSE,
+  #   clustervar = "escheR_na",
+  #   point_size = spot_size
+  # ) +
+  #   labs(title = "")
+
+  # p$layers <- NULL
+  # p$scales <- NULL
 
   p$spe <- object
   return(p)
