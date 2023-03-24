@@ -1,5 +1,31 @@
+#' Adding symbols to each spot in the spatial map
+#'
+#' @param p a spatial map created by \code{make_escheR()}, with or without other layers of aesthetics.
+#' @param var A character(1) with the name of the colData(spe) column that has the values to be used as the background.
+#' @param size A numeric(1) specifying the size of the symbols in the ggplot. Defaults to 1.
+#' @param ... Reserved for future arguments.
+#'
+#' @return an ggplot object.
+#'
+#' @import ggplot2
+#'
 #' @export
-add_symbol.SpatialExperiment <- function(
+#'
+#' @examples
+#' \dontrun{
+#'library(spatialLIBD)
+#'
+#'if (!exists("spe"))
+#'   spe <- fetch_data("spatialDLPFC_Visium")
+#'
+#'# Subset one sample
+#'spe <- spe[, spe$sample_id == "Br8667_mid"]
+#'
+#'make_escheR(spe) |>
+#' add_ground(var = "BayesSpace_harmony_09") |>
+#' add_symbol(var = "intissue")
+#'}
+add_symbol <- function(
     p,
     var,
     size = 1,
