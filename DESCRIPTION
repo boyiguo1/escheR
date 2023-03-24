@@ -17,12 +17,16 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 biocViews: 
     Spatial, 
-    Transcriptomics, 
+    SingleCell,
+    Transcriptomics,
+    Visualization,
+    Software
 Depends:
     ggplot2   
 Imports: 
     SpatialExperiment (>= 1.6.1),
-    spatialLIBD
+    spatialLIBD,
+    rlang
 BugReports: https://github.com/boyiguo1/escheR/issues
 URL: https://github.com/boyiguo1/escheR
 Remotes: 

@@ -24,7 +24,7 @@ an ggplot object.
 Adding border to highlight the ground in the spatial map
 }
 \examples{
-#'\dontrun{
+\dontrun{
 library(spatialLIBD)
 
 if (!exists("spe"))
