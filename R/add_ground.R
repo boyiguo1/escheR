@@ -8,6 +8,7 @@
 #'
 #' @return an ggplot object.
 #'
+#' @import ggplot2
 #' @export
 #' @examples
 #' \dontrun{
