@@ -1,5 +1,5 @@
 Package: escheR
-Title: Colocalization Visiualization for Spatial Transcriptomics Data
+Title: Unified multi-dimensional visualizations with Gestalt principles
 Version: 0.0.0.9000
 Authors@R: c(
     person("Boyi", "Guo",
@@ -9,8 +9,8 @@ Authors@R: c(
             email = "shicks19@jhu.edu", 
             comment = c(ORCID = "0000-0002-7858-0231"))
             )
-Description: Functions that visualize colocalization for spatially resolved transcriptomics 
-    datasets stored in SpatialExperiment format.
+Description: Functions to create multi-dimensional spatial maps for spatially resolved transcriptomics 
+    datasets.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
