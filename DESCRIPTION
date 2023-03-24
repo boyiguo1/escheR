@@ -1,12 +1,14 @@
 Package: escheR
 Title: Colocalization Visiualization for Spatial Transcriptomics Data
 Version: 0.0.0.9000
-Authors@R: 
-    person("Boyi", "Guo", , "boyi.guo.work@gmail.com", role = c("aut", "cre"),
+Authors@R: c(
+    person("Boyi", "Guo",
+           email = "boyi.guo.work@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2950-2349")),
-    person("Stephanie", "Hicks", "C.", role = c("aut"), 
+    person(c("Stephanie", "C."), "Hicks",  role = c("aut"), 
             email = "shicks19@jhu.edu", 
             comment = c(ORCID = "0000-0002-7858-0231"))
+            )
 Description: Functions that visualize colocalization for spatially resolved transcriptomics 
     datasets stored in SpatialExperiment format.
 License: MIT + file LICENSE
