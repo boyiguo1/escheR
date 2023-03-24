@@ -10,7 +10,7 @@
 #'
 #' @export
 #' @examples
-#' #'\dontrun{
+#' \dontrun{
 #'library(spatialLIBD)
 #'
 #'if (!exists("spe"))
