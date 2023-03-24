@@ -2,13 +2,40 @@
 % Please edit documentation in R/make_escheR.R
 \name{make_escheR}
 \alias{make_escheR}
-\title{Title}
+\alias{make_escheR.SpatialExperiment}
+\title{Create a new spatial map for spatial transcriptomics data}
 \usage{
 make_escheR(object, ...)
+
+\method{make_escheR}{SpatialExperiment}(spe, spot_size = 2, ...)
 }
 \arguments{
-\item{...}{}
+\item{object}{a data object that contains the spatial transcriptomics data.
+Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects}
+
+\item{...}{Reserved for future arguments}
+
+\item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.}
+}
+\value{
+an ggplot object that contains the spatial transcriptomics data
 }
 \description{
-Title
+\code{make_escheR()} is a generic function to initialize a ggplot object that contains a
+spatial map. Because the ggplot object saves the input spatial transcriptomics data,
+the transcriptomics data will be used in the following layering process to add
+more aesthestic components in the plot following the grammar of graphics and ggplot2 syntax.
+}
+\examples{
+\dontrun{
+library(spatialLIBD)
+
+if (!exists("spe"))
+  spe <- fetch_data("spatialDLPFC_Visium")
+
+# Subset one sample
+spe <- spe[, spe$sample_id == "Br8667_mid"]
+
+make_escheR(spe)
+}
 }
