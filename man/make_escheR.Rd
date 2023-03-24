@@ -11,14 +11,16 @@ make_escheR(object, ...)
 }
 \arguments{
 \item{object}{a data object that contains the spatial transcriptomics data.
-Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects}
+Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects.}
 
-\item{...}{Reserved for future arguments}
+\item{...}{Reserved for future arguments.}
+
+\item{spe}{a \code{SpatialExperiment} object that contains the spatial transcriptomics data}
 
 \item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.}
 }
 \value{
-an ggplot object that contains the spatial transcriptomics data
+an ggplot object that contains the spatial transcriptomics data.
 }
 \description{
 \code{make_escheR()} is a generic function to initialize a ggplot object that contains a

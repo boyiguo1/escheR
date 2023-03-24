@@ -6,11 +6,12 @@
 #'   more aesthestic components in the plot following the grammar of graphics and ggplot2 syntax.
 #'
 #' @param object a data object that contains the spatial transcriptomics data.
-#'  Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects
+#'  Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects.
+#' @param spe a \code{SpatialExperiment} object that contains the spatial transcriptomics data
 #' @param spot_size A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.
-#' @param ... Reserved for future arguments
+#' @param ... Reserved for future arguments.
 #'
-#' @return an ggplot object that contains the spatial transcriptomics data
+#' @return an ggplot object that contains the spatial transcriptomics data.
 #'
 #' @rdname make_escheR
 #'
