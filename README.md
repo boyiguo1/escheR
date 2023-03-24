@@ -8,6 +8,8 @@
 
 The goal of escheR is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
 
+Our preprint describing the innovative visualization is available from [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
+
 ## Installation
 
 You can install the development version of escheR from [GitHub](https://github.com/) with:
@@ -16,4 +18,18 @@ You can install the development version of escheR from [GitHub](https://github.c
 # install.packages("devtools")
 devtools::install_github("boyiguo1/escheR")
 ```
+
+The authors are submitting the package to [Bioconductor](https://bioconductor.org/). 
+
+# Input data format
+
+In the examples below, we assume the input data are provided as a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) Bioconductor object. For people whose data are stored as a [`Seurat`](https://satijalab.org/seurat/articles/spatial_vignette.html) object, we advise to convert to a [`SpatialExperiment`] object before applying the workflow below.  
+
+
+
+# Citation
+
+Our preprint describing `escheR` is available from bioRxiv:
+
+    Guo B, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
 

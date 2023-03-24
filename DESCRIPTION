@@ -26,7 +26,8 @@ Depends:
 Imports: 
     SpatialExperiment (>= 1.6.1),
     spatialLIBD,
-    rlang
+    rlang,
+    SummarizedExperiment
 BugReports: https://github.com/boyiguo1/escheR/issues
 URL: https://github.com/boyiguo1/escheR
 Remotes: 
