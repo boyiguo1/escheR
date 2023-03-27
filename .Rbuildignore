@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 R\fun_coloc.R
 vignettes\*
+^\.github$
