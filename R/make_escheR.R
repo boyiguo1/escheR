@@ -52,6 +52,7 @@ make_escheR.SpatialExperiment <- function(
   # browser()
 
 
+  ## This section of code is adapted from spatialLIBD (http://spatial.libd.org/spatialLIBD/)
   ## Some variables
   pxl_row_in_fullres <-
     pxl_col_in_fullres <- key <- NULL
@@ -106,7 +107,7 @@ make_escheR.SpatialExperiment <- function(
       legend.title = element_text(size = 10),
       legend.box.spacing = unit(0, "pt")
     )
-
+### END
 
 
   # object$escheR_na <- NA_integer_
