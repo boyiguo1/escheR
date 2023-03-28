@@ -43,7 +43,7 @@ add_fill <- function(
 
 
   # browser()
- p +
+  p +
     geom_point(
       aes(fill = !!sym(var)
       ),

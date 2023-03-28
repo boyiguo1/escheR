@@ -30,18 +30,11 @@ add_ground <- function(
     point_size = 2,
     ...){
 
-
   if(!is.character(var) || length(var) != 1)
     stop("The argument var must be character of length one.")
 
   if(!var %in% colnames(p$data))
     stop(paste0("Please add the variable ", var, " to colData(spe)."))
-
-  # if(is.numeric(p$data[,var])) {
-  #   p <- suppressMessages({p + scale_color_continuous()})
-  # } else{
-  #   p <- suppressMessages({p + scale_color_discrete()})
-  # }
 
   p +
     geom_point(

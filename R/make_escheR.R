@@ -44,11 +44,10 @@ make_escheR.SpatialExperiment <- function(
 
   if(length(unique(object$sample_id))!= 1)
     stop("The function only works for spe object with one sample.")
-  # browser()
 
 
-  ## This section of code is adapted from spatialLIBD (http://spatial.libd.org/spatialLIBD/)
-  ## Some variables
+  ## This section of code is adapted from spatialLIBD
+  ## (http://spatial.libd.org/spatialLIBD/)
   pxl_row_in_fullres <-
     pxl_col_in_fullres <- key <- NULL
 
@@ -60,7 +59,6 @@ make_escheR.SpatialExperiment <- function(
   sampleid <- unique(spe$sample_id)[1]
   image_id <- "lowres"
 
-  # stopifnot(all(c("pxl_col_in_fullres", "pxl_row_in_fullres", "COUNT", "key") %in% colnames(d)))
   img <-
     SpatialExperiment::imgRaster(
       spe,
@@ -79,7 +77,6 @@ make_escheR.SpatialExperiment <- function(
   } else {
     adjust <- list(x = 0, y = 0)
   }
-  # browser()
   p <-
     ggplot(
       d,
@@ -102,20 +99,8 @@ make_escheR.SpatialExperiment <- function(
       legend.title = element_text(size = 10),
       legend.box.spacing = unit(0, "pt")
     )
-### END
+  ### END
 
-
-  # object$escheR_na <- NA_integer_
-  # p <- spatialLIBD::vis_clus(
-  #   spe = object,
-  #   spatial = FALSE,
-  #   clustervar = "escheR_na",
-  #   point_size = spot_size
-  # ) +
-  #   labs(title = "")
-
-  # p$layers <- NULL
-  # p$scales <- NULL
 
   p$spe <- object
   return(p)
