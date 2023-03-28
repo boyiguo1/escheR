@@ -26,6 +26,9 @@ The authors are submitting the package to [Bioconductor](https://bioconductor.or
 To use `escheR`, we assume the input data are provided as a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) Bioconductor object. For people whose data are stored as a [`Seurat`](https://satijalab.org/seurat/articles/spatial_vignette.html) object, we advise to convert to a `SpatialExperiment` object before applying the workflow below.  
 
 
+# Tutorial
+Please find an end-to-end tutorial at [https://boyiguo1.github.io/escheR/](https://boyiguo1.github.io/escheR/articles/SRT_eg.html)
+
 
 # Citation
 
