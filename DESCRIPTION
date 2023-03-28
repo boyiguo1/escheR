@@ -40,9 +40,6 @@ Imports:
     SummarizedExperiment
 BugReports: https://github.com/boyiguo1/escheR/issues
 URL: https://github.com/boyiguo1/escheR
-Remotes: 
-    LieberInstitute/spatialLIBD,
-    drighelli/SpatialExperiment
 Suggests: 
     STexampleData, 
     knitr,
