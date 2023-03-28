@@ -8,6 +8,8 @@
 
 The goal of escheR is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
 
+![](man/figures/insitu.jpg)
+
 Our preprint describing the innovative visualization is available from [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
 
 ## Installation
