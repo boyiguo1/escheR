@@ -20,34 +20,34 @@
 #' # Convert a continuous variable to categorical
 #' spe$in_tissue <- factor(spe$in_tissue)
 #'
-#'make_escheR(spe) |>
-#' add_ground(var = "ground_truth") |>
-#' add_symbol(var = "in_tissue", size = 0.5)
+#' make_escheR(spe) |>
+#'     add_ground(var = "ground_truth") |>
+#'     add_symbol(var = "in_tissue", size = 0.5)
 add_symbol <- function(
-    p,
-    var,
-    size = 1,
-    ...){
+        p,
+        var,
+        size = 1,
+        ...) {
+    if (!is.character(var) || length(var) != 1) {
+        stop("The argument var must be character of length one.")
+    }
 
-  if(!is.character(var) || length(var) != 1)
-    stop("The argument var must be character of length one.")
+    if (!var %in% colnames(p$data)) {
+        stop(paste0("Please add the variable ", var, " to colData(spe)."))
+    }
 
-  if(!var %in% colnames(p$data))
-    stop(paste0("Please add the variable ", var, " to colData(spe)."))
+    if (is.numeric(p$data[, var])) {
+        stop("add_symbol can only work with discrete variables.")
+    }
 
-  if(is.numeric(p$data[,var]))
-    stop("add_symbol can only work with discrete variables.")
+    p$data[, var] <- factor(p$data[, var])
 
-  p$data[,var] <- factor(p$data[,var])
-
-  p +
-    geom_point(
-      aes(shape = !!sym(var)),
-      size = size,
-      color = "black",
-      alpha = 1
-    ) +
-    scale_shape()
-
-
+    p +
+        geom_point(
+            aes(shape = !!sym(var)),
+            size = size,
+            color = "black",
+            alpha = 1
+        ) +
+        scale_shape()
 }

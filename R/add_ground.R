@@ -20,30 +20,30 @@
 #'
 #' spe <- Visium_humanDLPFC()
 #'
-#'make_escheR(spe) |>
-#' add_ground(var = "ground_truth")
+#' make_escheR(spe) |>
+#'     add_ground(var = "ground_truth")
 #'
 add_ground <- function(
-    p,
-    var,
-    stroke = 0.5,
-    point_size = 2,
-    ...){
+        p,
+        var,
+        stroke = 0.5,
+        point_size = 2,
+        ...) {
+    if (!is.character(var) || length(var) != 1) {
+        stop("The argument var must be character of length one.")
+    }
 
-  if(!is.character(var) || length(var) != 1)
-    stop("The argument var must be character of length one.")
+    if (!var %in% colnames(p$data)) {
+        stop(paste0("Please add the variable ", var, " to colData(spe)."))
+    }
 
-  if(!var %in% colnames(p$data))
-    stop(paste0("Please add the variable ", var, " to colData(spe)."))
-
-  p +
-    geom_point(
-      aes(color = !!sym(var),
-      ),
-      shape = 21,
-      fill = "transparent",
-      size = point_size,
-      stroke = stroke,
-      ...
-    )
+    p +
+        geom_point(
+            aes(color = !!sym(var), ),
+            shape = 21,
+            fill = "transparent",
+            size = point_size,
+            stroke = stroke,
+            ...
+        )
 }
