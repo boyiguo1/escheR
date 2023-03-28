@@ -31,6 +31,6 @@ library(spatialLIBD)
 spe <- Visium_humanDLPFC()
 
 make_escheR(spe) |>
-add_ground(var = "ground_truth")
+    add_ground(var = "ground_truth")
 
 }

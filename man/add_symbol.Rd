@@ -31,6 +31,6 @@ spe <- Visium_humanDLPFC()
 spe$in_tissue <- factor(spe$in_tissue)
 
 make_escheR(spe) |>
-add_ground(var = "ground_truth") |>
-add_symbol(var = "in_tissue", size = 0.5)
+    add_ground(var = "ground_truth") |>
+    add_symbol(var = "in_tissue", size = 0.5)
 }
