@@ -12,7 +12,7 @@ The goal of escheR is to create an unified multi-dimensional spatial visualizati
 
 Our preprint describing the innovative visualization is available from [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
 
-## Installation
+# Installation
 
 You can install the development version of escheR from [GitHub](https://github.com/) with:
 
