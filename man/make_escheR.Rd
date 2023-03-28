@@ -27,15 +27,10 @@ the transcriptomics data will be used in the following layering process to add
 more aesthestic components in the plot following the grammar of graphics and ggplot2 syntax.
 }
 \examples{
-\dontrun{
+library(STexampleData)
 library(spatialLIBD)
 
-if (!exists("spe"))
-  spe <- fetch_data("spatialDLPFC_Visium")
-
-# Subset one sample
-spe <- spe[, spe$sample_id == "Br8667_mid"]
+spe <- Visium_humanDLPFC()
 
 make_escheR(spe)
-}
 }

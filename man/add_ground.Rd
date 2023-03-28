@@ -24,16 +24,13 @@ an ggplot object.
 Adding border to highlight the ground in the spatial map
 }
 \examples{
-\dontrun{
+
+library(STexampleData)
 library(spatialLIBD)
 
-if (!exists("spe"))
-  spe <- fetch_data("spatialDLPFC_Visium")
-
-# Subset one sample
-spe <- spe[, spe$sample_id == "Br8667_mid"]
+spe <- Visium_humanDLPFC()
 
 make_escheR(spe) |>
-add_ground(var = "BayesSpace_harmony_09")
-}
+add_ground(var = "ground_truth")
+
 }

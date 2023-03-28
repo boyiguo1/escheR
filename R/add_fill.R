@@ -12,19 +12,13 @@
 #'
 #' @export
 #' @examples
-#' \dontrun{
-#'library(spatialLIBD)
+#' library(STexampleData)
+#' library(spatialLIBD)
 #'
-#'if (!exists("spe"))
-#'   spe <- fetch_data("spatialDLPFC_Visium")
-#'
-#'# Subset one sample
-#'spe <- spe[, spe$sample_id == "Br8667_mid"]
+#' spe <- Visium_humanDLPFC()
 #'
 #'make_escheR(spe) |>
-#' add_ground(var = "BayesSpace_harmony_09") |>
-#' add_fill(var = "")
-#'}
+#' add_fill(var = "ground_truth")
 add_fill <- function(
     p,
     var,

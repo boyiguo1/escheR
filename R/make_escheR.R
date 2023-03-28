@@ -19,17 +19,12 @@
 #' @export
 #'
 #' @examples
-#'\dontrun{
-#'library(spatialLIBD)
+#' library(STexampleData)
+#' library(spatialLIBD)
 #'
-#'if (!exists("spe"))
-#'   spe <- fetch_data("spatialDLPFC_Visium")
+#' spe <- Visium_humanDLPFC()
 #'
-#'# Subset one sample
-#'spe <- spe[, spe$sample_id == "Br8667_mid"]
-#'
-#'make_escheR(spe)
-#'}
+#' make_escheR(spe)
 make_escheR <- function(object, spot_size = 2, ...){
   UseMethod("make_escheR", object)
 }

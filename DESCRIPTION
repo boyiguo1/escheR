@@ -44,6 +44,7 @@ Remotes:
     LieberInstitute/spatialLIBD,
     drighelli/SpatialExperiment
 Suggests: 
+    STexampleData, 
     knitr,
     rmarkdown
 VignetteBuilder: knitr

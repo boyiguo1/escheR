@@ -22,17 +22,15 @@ an ggplot object.
 Adding symbols to each spot in the spatial map
 }
 \examples{
-\dontrun{
+library(STexampleData)
 library(spatialLIBD)
 
-if (!exists("spe"))
-  spe <- fetch_data("spatialDLPFC_Visium")
+spe <- Visium_humanDLPFC()
 
-# Subset one sample
-spe <- spe[, spe$sample_id == "Br8667_mid"]
+# Convert a continuous variable to categorical
+spe$in_tissue <- factor(spe$in_tissue)
 
 make_escheR(spe) |>
-add_ground(var = "BayesSpace_harmony_09") |>
-add_symbol(var = "intissue")
-}
+add_ground(var = "ground_truth") |>
+add_symbol(var = "in_tissue", size = 0.5)
 }
