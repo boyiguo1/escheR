@@ -4,3 +4,6 @@
 R\fun_coloc.R
 vignettes\*
 ^\.github$
+^_pkgdown\.yml$
+
+R/check_var.R
