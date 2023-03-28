@@ -43,5 +43,6 @@ URL: https://github.com/boyiguo1/escheR
 Suggests: 
     STexampleData, 
     knitr,
-    rmarkdown
+    rmarkdown,
+    BiocStyle
 VignetteBuilder: knitr
