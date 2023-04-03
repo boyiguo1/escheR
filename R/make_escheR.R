@@ -34,7 +34,8 @@ make_escheR <- function(object, spot_size = 2, ...) {
 #'
 #' @rdname make_escheR
 #' @import ggplot2
-#' @importFrom spatialLIBD vis_gene
+#' @importFrom SpatialExperiment imgRaster spatialCoords
+#' @importFrom spatialLIBD frame_limits
 #' @export
 #'
 make_escheR.SpatialExperiment <- function(
