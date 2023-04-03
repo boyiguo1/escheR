@@ -55,29 +55,20 @@ To run the demonstration, there are two necessary packages to load, `escheR` and
 To note, `escheR`  will automatically load `ggplot2` package. Hence, explicitly loading `ggplot2` is not required. 
 ```{r setup}
 library(escheR)
+library(STexampleData)
 library(spatialLIBD)
 ```
 
 
 ## Preparing Exmaple Data
 
-In this step, we will find one 10xVisium sample from `spatialLIBD` package, indexed by "Br8667_mid" by subsetting from the overall dorsolateral pre-frontal cortex (DLPFC) dataset `spatialDLPFC_Visium`. 
+In this step, we will find one 10xVisium sample from [`STexampleData`](https://bioconductor.org/packages/release/data/experiment/html/STexampleData.html) package, indexed by brain number of "151673". For more information, please see the vignettes of [`STexampleData`](https://bioconductor.org/packages/release/data/experiment/vignettes/STexampleData/inst/doc/STexampleData_overview.html).
 
-```{r data.prep}
-if (!exists("spe")) {
-    spe <- fetch_data("spatialDLPFC_Visium")
-}
+```{r data.import}
+spe <- Visium_humanDLPFC()
 
-spe <- spe[, spe$sample_id == "Br8667_mid"]
-```
-
-We also apply an optional step, creating an categorical variable named `spDomain`.  
-```{r data.subset}
-colData(spe)$spDomain <- factor(
-    spe$BayesSpace_harmony_09,
-    levels = c(1, 2, 3, 5, 8, 4, 7, 6, 9),
-    labels = c("L1", "L1", "L2", "L3", "L4", "L5", "L6", "WM", "WM")
-)
+# Subset in-tissue spots
+spe <- spe[, spe$in_tissue == 1]
 ```
 
 Here is a summary of the `SpatialExperiment` object called `spe`.
@@ -95,23 +86,26 @@ p <- make_escheR(spe)
 
 Unlike `ggplot2`, we use piping `|>` instead of `+` to apply layers the figure. Mainly, we have three functions `add_fill`, `add_ground`, `add_symbol`. The inputs of these `add_*` functions include the plots created using `make_scheR()` and the variable name for the layer. Currently, the variable name should be in the the column data of the `spe` object, i.e. `colData(spe)`.
 
-Here we first apply the `add_fill` to add the spots color-coded by the total umi counts of all spots(`sum_umi`).  
+Here we first apply the `add_fill` to add the spots color-coded by the total number of cells all spots(`sum_umi`).  
 
 ```{r creat_fill}
-p |>
-    add_fill(var = "sum_umi")
+(p1 <- p |>
+    add_fill(var = "cell_count"))
+
+p1 +
+  scale_fill_viridis_c()
 ```
 
 It is okay to use any combination of the `add_*` functions. For example, we want to show the spatial domains of the samples as the ground of the figure and use symbols to denote if each spot is within the outline of the tissue slice. In this example, all plotted spots are in the outlines of the tissue slice and hence marked with dots.
 ```{r create_ground}
 (p2 <- p |>
-    add_ground(var = "spDomain")) # round layer
+    add_ground(var = "ground_truth")) # round layer
 ```
 
 
 ```{r add_symbol}
 p2 |>
-    add_symbol(var = "in_tissue", size = 0.2) # Symbol layer
+    add_symbol(var = "ground_truth", size = 0.2) # Symbol layer
 ```
 
 It is okay to change the ordering of these `add_*` functions. However, we advise to always have the `add_fill` as the first step to achieve the best visual effect due to the laying mechanism. 
@@ -127,8 +121,7 @@ spatialLIBD::libd_layer_colors
 p2 +
     scale_color_manual(
         name = "", # No legend name
-        values = libd_layer_colors |> # Named vector for color
-            setNames(c(paste0("L", 1:6), "WM", "NA", "WM2"))
+        values = spatialLIBD::libd_layer_colors
     ) +
     labs(title = "Example Title")
 ```
