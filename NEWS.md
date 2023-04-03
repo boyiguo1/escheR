@@ -1,3 +1,5 @@
+# escheR 0.99.2
+
 # escheR 0.99.1
 
 # escheR 0.1.0
