@@ -1,6 +1,6 @@
 Package: escheR
 Title: Unified multi-dimensional visualizations with Gestalt principles
-Version: 0.99.2
+Version: 0.99.4
 Authors@R: c(
     person("Boyi", "Guo",
            email = "boyi.guo.work@gmail.com", role = c("aut", "cre"),
@@ -35,7 +35,7 @@ Depends:
     ggplot2   
 Imports: 
     SpatialExperiment (>= 1.6.1),
-    spatialLIBD,
+    spatialLIBD (>= 1.11.3),
     rlang,
     SummarizedExperiment
 BugReports: https://github.com/boyiguo1/escheR/issues
