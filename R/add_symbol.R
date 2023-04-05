@@ -34,7 +34,7 @@ add_symbol <- function(
     }
 
     if (!var %in% colnames(p$data)) {
-        stop(paste0("Please add the variable ", var, " to colData(spe)."))
+        stop("Please add the variable ", var, " to colData(spe).")
     }
 
     if (is.numeric(p$data[, var])) {

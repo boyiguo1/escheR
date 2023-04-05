@@ -33,7 +33,7 @@ add_ground <- function(
     }
 
     if (!var %in% colnames(p$data)) {
-        stop(paste0("Please add the variable ", var, " to colData(spe)."))
+        stop("Please add the variable ", var, " to colData(spe).")
     }
 
     p +
