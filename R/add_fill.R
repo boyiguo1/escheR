@@ -7,7 +7,7 @@
 #'
 #' @return an ggplot object.
 #'
-#' @import ggplot2
+#' @importFrom ggplot2 geom_point aes
 #' @importFrom rlang sym
 #'
 #' @export

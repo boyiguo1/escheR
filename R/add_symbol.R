@@ -7,8 +7,9 @@
 #'
 #' @return an ggplot object.
 #'
-#' @import ggplot2
 #'
+#' @importFrom ggplot2 geom_point aes scale_shape
+#' @importFrom rlang sym
 #' @export
 #'
 #' @examples
