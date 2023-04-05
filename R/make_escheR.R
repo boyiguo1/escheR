@@ -14,7 +14,6 @@
 #'
 #' @rdname make_escheR
 #'
-#' @import SpatialExperiment
 #'
 #' @export
 #'

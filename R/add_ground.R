@@ -9,7 +9,6 @@
 #' @return an ggplot object.
 #'
 #' @import ggplot2
-#' @import spatialLIBD
 #' @importFrom SummarizedExperiment colData
 #'
 #' @export
