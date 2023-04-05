@@ -8,8 +8,7 @@
 #'
 #' @return an ggplot object.
 #'
-#' @import ggplot2
-#' @import spatialLIBD
+#' @importFrom ggplot2 geom_point aes
 #' @importFrom SummarizedExperiment colData
 #'
 #' @export
@@ -23,18 +22,17 @@
 #' make_escheR(spe) |>
 #'     add_ground(var = "ground_truth")
 #'
-add_ground <- function(
-        p,
-        var,
-        stroke = 0.5,
-        point_size = 2,
-        ...) {
+add_ground <- function(p,
+    var,
+    stroke = 0.5,
+    point_size = 2,
+    ...) {
     if (!is.character(var) || length(var) != 1) {
         stop("The argument var must be character of length one.")
     }
 
     if (!var %in% colnames(p$data)) {
-        stop(paste0("Please add the variable ", var, " to colData(spe)."))
+        stop("Please add the variable ", var, " to colData(spe).")
     }
 
     p +

@@ -7,8 +7,9 @@
 #'
 #' @return an ggplot object.
 #'
-#' @import ggplot2
 #'
+#' @importFrom ggplot2 geom_point aes scale_shape
+#' @importFrom rlang sym
 #' @export
 #'
 #' @examples
@@ -23,17 +24,16 @@
 #' make_escheR(spe) |>
 #'     add_ground(var = "ground_truth") |>
 #'     add_symbol(var = "in_tissue", size = 0.5)
-add_symbol <- function(
-        p,
-        var,
-        size = 1,
-        ...) {
+add_symbol <- function(p,
+    var,
+    size = 1,
+    ...) {
     if (!is.character(var) || length(var) != 1) {
         stop("The argument var must be character of length one.")
     }
 
     if (!var %in% colnames(p$data)) {
-        stop(paste0("Please add the variable ", var, " to colData(spe)."))
+        stop("Please add the variable ", var, " to colData(spe).")
     }
 
     if (is.numeric(p$data[, var])) {

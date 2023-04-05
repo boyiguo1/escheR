@@ -14,7 +14,6 @@
 #'
 #' @rdname make_escheR
 #'
-#' @import SpatialExperiment
 #'
 #' @export
 #'
@@ -33,8 +32,9 @@ make_escheR <- function(object, spot_size = 2, ...) {
 
 #'
 #' @rdname make_escheR
-#' @import ggplot2
-#' @importFrom SpatialExperiment imgRaster spatialCoords
+#' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
+#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab
+#' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
 #' @importFrom spatialLIBD frame_limits
 #' @export
 #'
@@ -48,14 +48,19 @@ make_escheR.SpatialExperiment <- function(
 
 
     ## This section of code is adapted from spatialLIBD
-    ## (http://spatial.libd.org/spatialLIBD/)
     pxl_row_in_fullres <-
         pxl_col_in_fullres <- key <- NULL
 
     spe <- object
     auto_crop <- TRUE
 
-    d <- as.data.frame(cbind(colData(spe), SpatialExperiment::spatialCoords(spe)), optional = TRUE)
+    d <- as.data.frame(
+        cbind(
+            colData(spe),
+            SpatialExperiment::spatialCoords(spe)
+        ),
+        optional = TRUE
+    )
 
     sampleid <- unique(spe$sample_id)[1]
     image_id <- "lowres"
@@ -84,7 +89,7 @@ make_escheR.SpatialExperiment <- function(
             d,
             aes(
                 x = pxl_col_in_fullres * SpatialExperiment::scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$x,
-                y = pxl_row_in_fullres * SpatialExperiment::scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$y,
+                y = pxl_row_in_fullres * scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$y,
                 key = key
             )
         ) +
