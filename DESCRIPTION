@@ -32,7 +32,8 @@ biocViews:
     Visualization,
     Software
 Depends:
-    ggplot2   
+    ggplot2,
+    R (>= 3.6)
 Imports: 
     SpatialExperiment (>= 1.6.1),
     spatialLIBD (>= 1.11.3),
