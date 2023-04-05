@@ -48,7 +48,6 @@ make_escheR.SpatialExperiment <- function(
 
 
   ## This section of code is adapted from spatialLIBD
-  ## (http://spatial.libd.org/spatialLIBD/)
   pxl_row_in_fullres <-
     pxl_col_in_fullres <- key <- NULL
 

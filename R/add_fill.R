@@ -28,21 +28,11 @@ add_fill <- function(
         stop("The argument var must be character of length one.")
     }
 
-    # browser()
 
     if (!var %in% colnames(p$data)) {
         stop("Please add the variable ", var, " to colData(spe).")
     }
 
-    # if(is.numeric(p$data[,var])) {
-    #   stop("")
-    #   p <- suppressMessages({p + scale_fill_continuous()})
-    # } else{
-    #   p <- suppressMessages({p + scale_fill_discrete()})
-    # }
-
-
-    # browser()
     p +
         geom_point(
             aes(fill = !!sym(var)),
@@ -51,14 +41,4 @@ add_fill <- function(
             size = point_size
         )
 
-    # if(!is.numeric(p$data[,var]))
-    #   tmp <- tmp +
-    #   scale_fill_manual(
-    #     name = "",
-    #     values = libd_layer_colors |>
-    #       setNames(c(paste0("L", 1:6), "WM", "NA", "WM2"))
-    #   )
-
-
-    # tmp$scales <- tmp$scales[[-1]]
 }
