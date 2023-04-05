@@ -22,12 +22,11 @@
 #' make_escheR(spe) |>
 #'     add_ground(var = "ground_truth")
 #'
-add_ground <- function(
-        p,
-        var,
-        stroke = 0.5,
-        point_size = 2,
-        ...) {
+add_ground <- function(p,
+    var,
+    stroke = 0.5,
+    point_size = 2,
+    ...) {
     if (!is.character(var) || length(var) != 1) {
         stop("The argument var must be character of length one.")
     }

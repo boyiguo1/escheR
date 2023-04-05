@@ -36,8 +36,9 @@ Our preprint describing the innovative visualization is available from [bioRxiv]
 You can install the latest release version of `escheR` from Bioconductor. with using the following code will install version of the `nnSVG` package from Bioconductor. Additional details are shown on the [Bioconductor](https://bioconductor.org/packages/escheR) page.
 
 ```{r install_bioc, eval=FALSE}
-if (!require("BiocManager", quietly = TRUE))
+if (!require("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
+}
 BiocManager::install("escheR")
 ```
 
@@ -100,7 +101,7 @@ Here we first apply the `add_fill` to add the spots color-coded by the total num
     add_fill(var = "cell_count"))
 
 p1 +
-  scale_fill_viridis_c()
+    scale_fill_viridis_c()
 ```
 
 It is okay to use any combination of the `add_*` functions. For example, we want to show the spatial domains of the samples as the ground of the figure and use symbols to denote if each spot is within the outline of the tissue slice. In this example, all plotted spots are in the outlines of the tissue slice and hence marked with dots.

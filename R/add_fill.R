@@ -19,11 +19,10 @@
 #'
 #' make_escheR(spe) |>
 #'     add_fill(var = "ground_truth")
-add_fill <- function(
-        p,
-        var,
-        point_size = 2,
-        ...) {
+add_fill <- function(p,
+    var,
+    point_size = 2,
+    ...) {
     if (!is.character(var) || length(var) != 1) {
         stop("The argument var must be character of length one.")
     }
@@ -40,5 +39,4 @@ add_fill <- function(
             stroke = 0,
             size = point_size
         )
-
 }

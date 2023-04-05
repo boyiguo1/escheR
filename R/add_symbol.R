@@ -24,11 +24,10 @@
 #' make_escheR(spe) |>
 #'     add_ground(var = "ground_truth") |>
 #'     add_symbol(var = "in_tissue", size = 0.5)
-add_symbol <- function(
-        p,
-        var,
-        size = 1,
-        ...) {
+add_symbol <- function(p,
+    var,
+    size = 1,
+    ...) {
     if (!is.character(var) || length(var) != 1) {
         stop("The argument var must be character of length one.")
     }
