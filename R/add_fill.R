@@ -10,7 +10,7 @@
 #'
 #' @return an ggplot object.
 #'
-#' @importFrom ggplot2 geom_point aes
+#' @importFrom ggplot2 geom_point aes scale_fill_viridis_c scale_fill_viridis_d
 #' @importFrom rlang sym
 #'
 #' @export
@@ -35,11 +35,20 @@ add_fill <- function(p,
         stop("Please add the variable ", var, " to colData(spe).")
     }
 
-    p +
+
+    ret_p <- p +
         geom_point(
             aes(fill = !!sym(var)),
             shape = 21,
             stroke = 0,
             size = point_size
         )
+
+    if(is.numeric(p$data[, var])){
+      ret_p <- ret_p + scale_fill_viridis_c()
+    } else {
+      ret_p <- ret_p + scale_fill_viridis_d(direction = -1)
+    }
+
+    return(ret_p)
 }
