@@ -11,9 +11,11 @@ make_escheR(object, spot_size = 2, ...)
 }
 \arguments{
 \item{object}{a data object that contains the spatial transcriptomics data.
-Currently only working for spatial transcriptomics data as \code{SpatialExperiment} objects.}
+Currently only working for spatial transcriptomics data as
+\code{SpatialExperiment} objects.}
 
-\item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.}
+\item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot.
+Defaults to 2.}
 
 \item{...}{Reserved for future arguments.}
 }
@@ -21,10 +23,17 @@ Currently only working for spatial transcriptomics data as \code{SpatialExperime
 an ggplot object that contains the spatial transcriptomics data.
 }
 \description{
-\code{make_escheR()} is a generic function to initialize a ggplot object that contains a
-spatial map. Because the ggplot object saves the input spatial transcriptomics data,
-the transcriptomics data will be used in the following layering process to add
-more aesthestic components in the plot following the grammar of graphics and ggplot2 syntax.
+\code{make_escheR()} is a generic function to initialize a ggplot object
+that contains a spatial map. Because the ggplot object saves the input
+spatial transcriptomics data, the transcriptomics data will be used in
+the following layering process to add more aesthestic components in the
+plot following the grammar of graphics and ggplot2 syntax.
+}
+\details{
+Some code blocks are borrowed from the R package spatialLIBD
+(Pardo et al, 2022) to  automatically adjust the plotting area
+when underlying histology iamge (if provided) is not centered
+and is not a square
 }
 \examples{
 library(STexampleData)
@@ -33,4 +42,13 @@ library(spatialLIBD)
 spe <- Visium_humanDLPFC()
 
 make_escheR(spe)
+}
+\references{
+Guo B & Hicks SC (2023). escheR: Unified multi-dimensional visualizations
+with Gestalt principles. \emph{bioRxiv}, doi: 10.1101/2023.03.18.533302
+
+Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
+Maynard KR, Collado-Torres L (2022). spatialLIBD: an R/Bioconductor
+package to visualize spatially-resolved transcriptomics data.
+\emph{BMC Genomics}. doi: 10.1186/s12864-022-08601-w
 }
