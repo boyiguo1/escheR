@@ -14,14 +14,30 @@ Our preprint describing the innovative visualization is available from [bioRxiv]
 
 # Installation
 
-You can install the development version of escheR from [GitHub](https://github.com/) with:
+You can install the latest release version of `escheR` from Bioconductor. with using the following code will install version of the `nnSVG` package from Bioconductor. Additional details are shown on the [Bioconductor](https://bioconductor.org/packages/escheR) page.
 
-``` r
-# install.packages("devtools")
+```{r install_bioc, eval=FALSE}
+if (!require("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+}
+BiocManager::install("escheR")
+```
+
+The latest development version can also be installed from the `devel` version of Bioconductor or from [GitHub](https://github.com/boyiguo1/escheR) following
+
+```{r install_github, eval = FALSE}
+if (!require("devtools")) install.packages("devtools")
 devtools::install_github("boyiguo1/escheR")
 ```
 
-The authors are submitting the package to [Bioconductor](https://bioconductor.org/). 
+If you have R version before v4.3 and would like to install `escheR`, you can follow
+
+```{r pre-R4.3, eval = FALSE}
+if (!require("devtools")) install.packages("devtools")
+devtools::install_github("boyiguo1/escheR@pre-R4.3")
+```
+
+> WARNING: The purpose of having the branch `pre-R4.3` is to allow users to use `escheR` before the formal release of R 4.3 and during the early stage of R 4.3 release. This branch will not update with any further development passing [`escheR v0.99.6`](https://github.com/boyiguo1/escheR/blob/devel/NEWS.md). We recommend users to update their R versions up to date.
 
 # Input data format
 
