@@ -1,3 +1,10 @@
+# escheR 0.99.7
+SIGNIFICANT USER-VISIBLE CHANGES
+* Add default color scheme (`viridis`) to `add_fill`
+* Add explicit reference to spatialLIBD in `make_escheR` documentation
+* Add installation instruction for users whose R version is pre-R4.3 
+
+
 # escheR 0.99.6
 SIGNIFICANT USER-VISIBLE CHANGES
 * Add minimium versions to dependencies and imported packages
