@@ -1,8 +1,11 @@
 #' Adding fill to highlight the figure in the spatial map
 #'
-#' @param p a spatial map created by \code{make_escheR()}, with or without other layers of aesthetics.
-#' @param var A character(1) with the name of the colData(spe) column that has the values to be used as the background.
-#' @param point_size A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.
+#' @param p a spatial map created by \code{make_escheR()}, with or without
+#' other layers of aesthetics.
+#' @param var A character(1) with the name of the colData(spe) column that
+#'  has the values to be used as the background.
+#' @param point_size A numeric(1) specifying the size of the spot in the
+#' ggplot. Defaults to 2.
 #' @param ... Reserved for future arguments.
 #'
 #' @return an ggplot object.

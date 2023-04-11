@@ -14,7 +14,8 @@ make_escheR(object, spot_size = 2, ...)
 Currently only working for spatial transcriptomics data as
 \code{SpatialExperiment} objects.}
 
-\item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.}
+\item{spot_size}{A numeric(1) specifying the size of the spot in the ggplot.
+Defaults to 2.}
 
 \item{...}{Reserved for future arguments.}
 }

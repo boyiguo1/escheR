@@ -7,11 +7,14 @@
 add_fill(p, var, point_size = 2, ...)
 }
 \arguments{
-\item{p}{a spatial map created by \code{make_escheR()}, with or without other layers of aesthetics.}
+\item{p}{a spatial map created by \code{make_escheR()}, with or without
+other layers of aesthetics.}
 
-\item{var}{A character(1) with the name of the colData(spe) column that has the values to be used as the background.}
+\item{var}{A character(1) with the name of the colData(spe) column that
+has the values to be used as the background.}
 
-\item{point_size}{A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.}
+\item{point_size}{A numeric(1) specifying the size of the spot in the
+ggplot. Defaults to 2.}
 
 \item{...}{Reserved for future arguments.}
 }

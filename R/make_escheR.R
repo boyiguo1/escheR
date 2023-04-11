@@ -15,7 +15,8 @@
 #' @param object a data object that contains the spatial transcriptomics data.
 #'  Currently only working for spatial transcriptomics data as
 #'  \code{SpatialExperiment} objects.
-#' @param spot_size A numeric(1) specifying the size of the spot in the ggplot. Defaults to 2.
+#' @param spot_size A numeric(1) specifying the size of the spot in the ggplot.
+#'  Defaults to 2.
 #' @param ... Reserved for future arguments.
 #'
 #' @return an ggplot object that contains the spatial transcriptomics data.
