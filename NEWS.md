@@ -1,5 +1,13 @@
+# escheR 0.99.8
+SIGNIFICANT USER-VISIBLE CHANGES
+
+* Add a new argument `y_reverse = TRUE` to `make_escheR` to provide a consistent
+orientation between spot plot and tissue image 
+(see [Issue #13](https://github.com/boyiguo1/escheR/issues/13))
+
 # escheR 0.99.7
 SIGNIFICANT USER-VISIBLE CHANGES
+
 * Add default color scheme (`viridis`) to `add_fill`
 * Add explicit reference to spatialLIBD in `make_escheR` documentation
 * Add installation instruction for users whose R version is pre-R4.3 
@@ -7,6 +15,7 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
 # escheR 0.99.6
 SIGNIFICANT USER-VISIBLE CHANGES
+
 * Add minimium versions to dependencies and imported packages
 * Import individual functions in NAMESPACE from packages
 * Clean up comments in code
@@ -14,5 +23,6 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
 # escheR 0.99.1
 NEW FEATURES
+
 * Added a `NEWS.md` file to track changes to the package.
 * First full version of the package to be submitted to Bioconductor. See Bioconductor submission [here](https://github.com/Bioconductor/Contributions/issues/2988#event-8964456296).
