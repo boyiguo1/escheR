@@ -68,7 +68,7 @@ library(spatialLIBD)
 ```
 
 
-## Preparing Exmaple Data
+## Preparing example data
 
 In this step, we will find one 10xVisium sample from [`STexampleData`](https://bioconductor.org/packages/release/data/experiment/html/STexampleData.html) package, indexed by brain number of "151673". For more information, please see the vignettes of [`STexampleData`](https://bioconductor.org/packages/release/data/experiment/vignettes/STexampleData/inst/doc/STexampleData_overview.html).
 
@@ -118,7 +118,7 @@ p2 |>
 
 It is okay to change the ordering of these `add_*` functions. However, we advise to always have the `add_fill` as the first step to achieve the best visual effect due to the laying mechanism. 
 
-## Adjusting Aesthetics
+## Adjusting aesthetics
 
 To change the aesthetics of each layer, one can simply use the `scale_*` from `ggplot2` to optimize the final visual presentation. For example, to optimize `add_fill`, one can use `scale_fill_*`; to optimize `add_ground`, one can use `scale_color_*`; to optimize `add_sumbol`, one use `scale_shape_*`. Here, we demonstrate how to change the color for the ground layer ( `add_ground`) using `scale_color_manual`.
 
