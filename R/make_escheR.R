@@ -17,6 +17,8 @@
 #'  \code{SpatialExperiment} objects.
 #' @param spot_size A numeric(1) specifying the size of the spot in the ggplot.
 #'  Defaults to 2.
+#' @param y_reverse (logical) Whether to reverse y coordinates, which is often
+#'   required for 10x Genomics Visium data. Default = TRUE.
 #' @param ... Reserved for future arguments.
 #'
 #' @return an ggplot object that contains the spatial transcriptomics data.
@@ -59,6 +61,7 @@ make_escheR <- function(object, spot_size = 2, ...) {
 make_escheR.SpatialExperiment <- function(
     object,
     spot_size = 2,
+    y_reverse = TRUE,
     ...) {
   if (length(unique(object$sample_id)) != 1) {
     stop("The function only works for spe object with one sample.")
@@ -67,14 +70,16 @@ make_escheR.SpatialExperiment <- function(
 
   ## This section of code is adapted from spatialLIBD
   pxl_row_in_fullres <-
-    pxl_col_in_fullres <- key <- NULL
+    pxl_col_in_fullres <- NULL
 
   spe <- object
   auto_crop <- TRUE
 
+  # browser()
   d <- as.data.frame(
     cbind(
       colData(spe),
+      # TODO: not robust to other spatialCoords names
       SpatialExperiment::spatialCoords(spe)
     ),
     optional = TRUE
@@ -83,6 +88,7 @@ make_escheR.SpatialExperiment <- function(
   sampleid <- unique(spe$sample_id)[1]
   image_id <- "lowres"
 
+  # TODO: check if img exists
   img <-
     SpatialExperiment::imgRaster(
       spe,
@@ -102,13 +108,17 @@ make_escheR.SpatialExperiment <- function(
   } else {
     adjust <- list(x = 0, y = 0)
   }
+
   p <-
     ggplot(
       d,
       aes(
-        x = pxl_col_in_fullres * SpatialExperiment::scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$x,
-        y = pxl_row_in_fullres * scaleFactors(spe, sample_id = sampleid, image_id = image_id) - adjust$y,
-        key = key
+        # TODO: the spatial coord names seems to be somewhat arbitary
+        # Not robust
+        x = pxl_col_in_fullres * SpatialExperiment::scaleFactors(
+          spe, sample_id = sampleid, image_id = image_id) - adjust$x,
+        y = pxl_row_in_fullres * scaleFactors(
+          spe, sample_id = sampleid, image_id = image_id) - adjust$y
       )
     ) +
     xlab("") +
@@ -125,6 +135,13 @@ make_escheR.SpatialExperiment <- function(
       legend.box.spacing = unit(0, "pt")
     )
   ### END
+
+  # reverse y coordinates to match orientation of images
+  # Inspiration from
+  # https://github.com/lmweber/ggspavis/blob/004e1528829641cd2112e4264bb7fb708316c0e5/R/plotSpots.R#L102
+  if(y_reverse){
+    p <- p + scale_y_reverse()
+  }
 
 
   p$spe <- object
