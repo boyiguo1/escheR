@@ -2,8 +2,15 @@
 # escheR
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![BioC status](http://www.bioconductor.org/shields/build/release/bioc/escheR.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/escheR)
+R Package Status: 
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![R build status](https://github.com/boyiguo1/escheR/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/boyiguo1/escheR/actions)
+
+Bioc Status: 
+[![Bioc release status](http://www.bioconductor.org/shields/build/release/bioc/escheR.svg)](https://bioconductor.org/checkResults/release/bioc-LATEST/escheR)
+[![Bioc devel status](http://www.bioconductor.org/shields/build/devel/bioc/escheR.svg)](https://bioconductor.org/checkResults/devel/bioc-LATEST/escheR)
+[![Bioc history](https://bioconductor.org/shields/years-in-bioc/escheR.svg)](https://bioconductor.org/packages/release/bioc/html/escheR.html#since)
+[![Bioc last commit](https://bioconductor.org/shields/lastcommit/devel/bioc/escheR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/escheR/)
 <!-- badges: end -->
 
 The goal of escheR is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
@@ -54,3 +61,19 @@ Our preprint describing `escheR` is available from bioRxiv:
 
 * Guo B, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
 
+# Acknowledgement
+
+## Development tools
+
+- Continuous code testing is possible thanks to [GitHub
+  actions](https://www.tidyverse.org/blog/2020/04/usethis-1-6-0/)
+  through *[biocthis](https://lcolladotor.github.io/biocthis/)*,
+- The [documentation
+  website](https://boyiguo1.github.io/escheR/) is
+  automatically updated thanks to
+  *[pkgdown](https://CRAN.R-project.org/package=pkgdown)*.
+- The code is styled automatically thanks to
+  *[styler](https://CRAN.R-project.org/package=styler)*.
+- The documentation is formatted thanks to
+  *[devtools](https://CRAN.R-project.org/package=devtools)* and
+  *[roxygen2](https://CRAN.R-project.org/package=roxygen2)*.

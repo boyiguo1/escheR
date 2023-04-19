@@ -7,7 +7,7 @@
 \usage{
 make_escheR(object, spot_size = 2, ...)
 
-\method{make_escheR}{SpatialExperiment}(object, spot_size = 2, ...)
+\method{make_escheR}{SpatialExperiment}(object, spot_size = 2, y_reverse = TRUE, ...)
 }
 \arguments{
 \item{object}{a data object that contains the spatial transcriptomics data.
@@ -18,6 +18,9 @@ Currently only working for spatial transcriptomics data as
 Defaults to 2.}
 
 \item{...}{Reserved for future arguments.}
+
+\item{y_reverse}{(logical) Whether to reverse y coordinates, which is often
+required for 10x Genomics Visium data. Default = TRUE.}
 }
 \value{
 an ggplot object that contains the spatial transcriptomics data.
