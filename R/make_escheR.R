@@ -53,7 +53,7 @@ make_escheR <- function(object, spot_size = 2, ...) {
 #'
 #' @rdname make_escheR
 #' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
-#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab
+#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
 #' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
 #' @importFrom spatialLIBD frame_limits
 #' @export
