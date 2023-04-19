@@ -24,6 +24,7 @@ on:
   push: [devel]
   pull_request:
     - devel
+    - '**'
 
 name: R-CMD-check-bioc
 
