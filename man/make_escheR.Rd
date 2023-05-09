@@ -32,12 +32,6 @@ spatial transcriptomics data, the transcriptomics data will be used in
 the following layering process to add more aesthestic components in the
 plot following the grammar of graphics and ggplot2 syntax.
 }
-\details{
-Some code blocks are borrowed from the R package spatialLIBD
-(Pardo et al, 2022) to  automatically adjust the plotting area
-when underlying histology iamge (if provided) is not centered
-and is not a square
-}
 \examples{
 library(STexampleData)
 library(spatialLIBD)
@@ -49,9 +43,4 @@ make_escheR(spe)
 \references{
 Guo B & Hicks SC (2023). escheR: Unified multi-dimensional visualizations
 with Gestalt principles. \emph{bioRxiv}, doi: 10.1101/2023.03.18.533302
-
-Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
-Maynard KR, Collado-Torres L (2022). spatialLIBD: an R/Bioconductor
-package to visualize spatially-resolved transcriptomics data.
-\emph{BMC Genomics}. doi: 10.1186/s12864-022-08601-w
 }

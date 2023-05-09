@@ -6,10 +6,6 @@
 #'   the following layering process to add more aesthestic components in the
 #'    plot following the grammar of graphics and ggplot2 syntax.
 #'
-#'    Some code blocks are borrowed from the R package spatialLIBD
-#'    (Pardo et al, 2022) to  automatically adjust the plotting area
-#'    when underlying histology iamge (if provided) is not centered
-#'    and is not a square
 #'
 #'
 #' @param object a data object that contains the spatial transcriptomics data.
@@ -29,10 +25,6 @@
 #' Guo B & Hicks SC (2023). escheR: Unified multi-dimensional visualizations
 #' with Gestalt principles. _bioRxiv_, doi: 10.1101/2023.03.18.533302
 #'
-#' Pardo B, Spangler A, Weber LM, Hicks SC, Jaffe AE, Martinowich K,
-#' Maynard KR, Collado-Torres L (2022). spatialLIBD: an R/Bioconductor
-#' package to visualize spatially-resolved transcriptomics data.
-#' _BMC Genomics_. doi: 10.1186/s12864-022-08601-w
 #'
 #'
 #' @export
@@ -55,7 +47,6 @@ make_escheR <- function(object, spot_size = 2, ...) {
 #' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
 #' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
 #' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
-#' @importFrom spatialLIBD frame_limits
 #' @export
 #'
 make_escheR.SpatialExperiment <- function(
@@ -73,7 +64,7 @@ make_escheR.SpatialExperiment <- function(
     pxl_col_in_fullres <- NULL
 
   spe <- object
-  auto_crop <- TRUE
+  # auto_crop <- TRUE
 
   # browser()
   d <- as.data.frame(
@@ -98,16 +89,16 @@ make_escheR.SpatialExperiment <- function(
 
 
   ## Crop the image if needed
-  if (auto_crop) {
-    frame_lims <-
-      frame_limits(spe, sampleid = sampleid, image_id = image_id)
-    img <-
-      img[frame_lims$y_min:frame_lims$y_max, frame_lims$x_min:frame_lims$x_max]
-    adjust <-
-      list(x = frame_lims$x_min, y = frame_lims$y_min)
-  } else {
+  # if (auto_crop) {
+  #   frame_lims <-
+  #     frame_limits(spe, sampleid = sampleid, image_id = image_id)
+  #   img <-
+  #     img[frame_lims$y_min:frame_lims$y_max, frame_lims$x_min:frame_lims$x_max]
+  #   adjust <-
+  #     list(x = frame_lims$x_min, y = frame_lims$y_min)
+  # } else {
     adjust <- list(x = 0, y = 0)
-  }
+  # }
 
   p <-
     ggplot(
@@ -119,10 +110,13 @@ make_escheR.SpatialExperiment <- function(
           spe, sample_id = sampleid, image_id = image_id) - adjust$x,
         y = pxl_row_in_fullres * scaleFactors(
           spe, sample_id = sampleid, image_id = image_id) - adjust$y
+        # x = pxl_col_in_fullres,
+        # y = pxl_row_in_fullres
       )
     ) +
     xlab("") +
     ylab("") +
+    coord_fixed() +
     theme_set(theme_bw(base_size = 20)) +
     theme(
       panel.grid.major = element_blank(),
