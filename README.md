@@ -13,7 +13,7 @@ Bioc Status:
 [![Bioc last commit](https://bioconductor.org/shields/lastcommit/devel/bioc/escheR.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/escheR/)
 <!-- badges: end -->
 
-The goal of escheR is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
+The goal of `escheR` is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles. [Gestalt principles](http://www.scholarpedia.org/article/Gestalt_principles) refer to a set of rules describing how humans perceive and interpret visual information and are commonly applied in art and designs. Our implementation is based on the state-of-art data visualization framework [`ggplot2`](https://ggplot2.tidyverse.org/) to map individual variables to different aesthetics to simultaneously display disparate variables, showing their relationship in a spatial context.
 
 ![](man/figures/insitu.jpg)
 
@@ -23,7 +23,7 @@ Our preprint describing the innovative visualization is available from [bioRxiv]
 
 You can install the latest release version of `escheR` from Bioconductor. with using the following code will install version of the `nnSVG` package from Bioconductor. Additional details are shown on the [Bioconductor](https://bioconductor.org/packages/escheR) page.
 
-```{r install_bioc, eval=FALSE}
+```{r}
 if (!require("BiocManager", quietly = TRUE)) {
     install.packages("BiocManager")
 }
@@ -32,14 +32,14 @@ BiocManager::install("escheR")
 
 The latest development version can also be installed from the `devel` version of Bioconductor or from [GitHub](https://github.com/boyiguo1/escheR) following
 
-```{r install_github, eval = FALSE}
+```{r}
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("boyiguo1/escheR")
 ```
 
 If you have R version before v4.3 and would like to install `escheR`, you can follow
 
-```{r pre-R4.3, eval = FALSE}
+```{r}
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("boyiguo1/escheR@pre-R4.3")
 ```
