@@ -26,7 +26,6 @@ Adding border to highlight the ground in the spatial map
 \examples{
 
 library(STexampleData)
-library(spatialLIBD)
 
 spe <- Visium_humanDLPFC()
 

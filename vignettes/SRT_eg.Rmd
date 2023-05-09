@@ -58,13 +58,12 @@ In the examples below, we assume the input data are provided as a [`SpatialExper
 
 ## Load Packages
 
-To run the demonstration, there are two necessary packages to load, `escheR` and `spatialLIBD`. [`spatialLIBD`](http://spatial.libd.org/spatialLIBD/) contains a pre-processed 10x Visium dataset.
+To run the demonstration, there are two necessary packages to load, `escheR` and `STexampleData`. [`STexampleData`](https://bioconductor.org/packages/STexampleData) contains a pre-processed 10x Visium dataset.
 
 To note, `escheR`  will automatically load `ggplot2` package. Hence, explicitly loading `ggplot2` is not required. 
 ```{r setup}
 library(escheR)
 library(STexampleData)
-library(spatialLIBD)
 ```
 
 
@@ -123,13 +122,10 @@ It is okay to change the ordering of these `add_*` functions. However, we advise
 To change the aesthetics of each layer, one can simply use the `scale_*` from `ggplot2` to optimize the final visual presentation. For example, to optimize `add_fill`, one can use `scale_fill_*`; to optimize `add_ground`, one can use `scale_color_*`; to optimize `add_sumbol`, one use `scale_shape_*`. Here, we demonstrate how to change the color for the ground layer ( `add_ground`) using `scale_color_manual`.
 
 ```{r customize}
-# Currated color pallette from spatialLIBD
-spatialLIBD::libd_layer_colors
 
 p2 +
     scale_color_manual(
         name = "", # No legend name
-        values = spatialLIBD::libd_layer_colors
     ) +
     labs(title = "Example Title")
 ```

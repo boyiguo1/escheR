@@ -34,7 +34,6 @@ plot following the grammar of graphics and ggplot2 syntax.
 }
 \examples{
 library(STexampleData)
-library(spatialLIBD)
 
 spe <- Visium_humanDLPFC()
 

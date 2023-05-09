@@ -31,7 +31,6 @@
 #'
 #' @examples
 #' library(STexampleData)
-#' library(spatialLIBD)
 #'
 #' spe <- Visium_humanDLPFC()
 #'
@@ -59,7 +58,6 @@ make_escheR.SpatialExperiment <- function(
   }
 
 
-  ## This section of code is adapted from spatialLIBD
   pxl_row_in_fullres <-
     pxl_col_in_fullres <- NULL
 

@@ -23,7 +23,6 @@ Adding symbols to each spot in the spatial map
 }
 \examples{
 library(STexampleData)
-library(spatialLIBD)
 
 spe <- Visium_humanDLPFC()
 

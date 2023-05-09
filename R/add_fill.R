@@ -16,7 +16,6 @@
 #' @export
 #' @examples
 #' library(STexampleData)
-#' library(spatialLIBD)
 #'
 #' spe <- Visium_humanDLPFC()
 #'
