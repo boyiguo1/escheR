@@ -126,6 +126,15 @@ To change the aesthetics of each layer, one can simply use the `scale_*` from `g
 p2 +
     scale_color_manual(
         name = "", # No legend name
+        values = c(
+          "Layer1" = "#F0027F",
+          "Layer2" = "#377EB8",
+          "Layer3" = "#4DAF4A",
+          "Layer4" = "#984EA3",
+          "Layer5" = "#FFD700",
+          "Layer6" = "#FF7F00",
+          "WM" = "#1A1A1A",
+          NA = "transparent")
     ) +
     labs(title = "Example Title")
 ```
