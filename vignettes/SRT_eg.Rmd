@@ -134,7 +134,7 @@ p2 +
           "Layer5" = "#FFD700",
           "Layer6" = "#FF7F00",
           "WM" = "#1A1A1A",
-          NA = "transparent")
+          "NA" = "transparent")
     ) +
     labs(title = "Example Title")
 ```
