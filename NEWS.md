@@ -1,3 +1,11 @@
+# escheR 1.1.1
+SIGNIFICANT USER-VISIBLE CHANGES
+
+* The dependency on the package `spatialLIBD` are removed
+* Revise the README file to add explanations for Gestalt Principles to help 
+users grasp the big picture idea without going to read the manuscript.
+
+
 # escheR 0.99.8
 SIGNIFICANT USER-VISIBLE CHANGES
 
