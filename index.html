@@ -48,7 +48,7 @@
     
     <a class="navbar-brand me-2" href="index.html">escheR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,8 +93,9 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>Bioc Status: <a href="https://bioconductor.org/checkResults/release/bioc-LATEST/escheR" class="external-link"><img src="http://www.bioconductor.org/shields/build/release/bioc/escheR.svg" alt="Bioc release status"></a> <a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/escheR" class="external-link"><img src="http://www.bioconductor.org/shields/build/devel/bioc/escheR.svg" alt="Bioc devel status"></a> <a href="https://bioconductor.org/packages/release/bioc/html/escheR.html#since" class="external-link"><img src="https://bioconductor.org/shields/years-in-bioc/escheR.svg" alt="Bioc history"></a> <a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/escheR/" class="external-link"><img src="https://bioconductor.org/shields/lastcommit/devel/bioc/escheR.svg" alt="Bioc last commit"></a> <!-- badges: end --></p>
-<p>The goal of escheR is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.</p>
+
+<!-- badges: end -->
+<p>The goal of <code>escheR</code> is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles. <a href="http://www.scholarpedia.org/article/Gestalt_principles" class="external-link">Gestalt principles</a> refer to a set of rules describing how humans perceive and interpret visual information and are commonly applied in art and designs. Our implementation is based on the state-of-art data visualization framework <a href="https://ggplot2.tidyverse.org/" class="external-link"><code>ggplot2</code></a> to map individual variables to different aesthetics to simultaneously display disparate variables, showing their relationship in a spatial context.</p>
 <p><img src="reference/figures/insitu.jpg"></p>
 <p>Our preprint describing the innovative visualization is available from <a href="https://www.biorxiv.org/content/10.1101/2023.03.18.533302" class="external-link">bioRxiv</a>.</p>
 </div>
@@ -102,11 +103,16 @@
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h1>
 <p>You can install the latest release version of <code>escheR</code> from Bioconductor. with using the following code will install version of the <code>nnSVG</code> package from Bioconductor. Additional details are shown on the <a href="https://bioconductor.org/packages/escheR" class="external-link">Bioconductor</a> page.</p>
-<p><code>{r install_bioc, eval=FALSE} if (!require("BiocManager", quietly = TRUE)) {     install.packages("BiocManager") } BiocManager::install("escheR")</code></p>
+<pre class="{r}"><code><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"escheR"</span><span class="op">)</span></span></code></pre>
 <p>The latest development version can also be installed from the <code>devel</code> version of Bioconductor or from <a href="https://github.com/boyiguo1/escheR" class="external-link">GitHub</a> following</p>
-<p><code>{r install_github, eval = FALSE} if (!require("devtools")) install.packages("devtools") devtools::install_github("boyiguo1/escheR")</code></p>
+<pre class="{r}"><code><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"boyiguo1/escheR"</span><span class="op">)</span></span></code></pre>
 <p>If you have R version before v4.3 and would like to install <code>escheR</code>, you can follow</p>
-<p><code>{r pre-R4.3, eval = FALSE} if (!require("devtools")) install.packages("devtools") devtools::install_github("boyiguo1/escheR@pre-R4.3")</code></p>
+<pre class="{r}"><code><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"boyiguo1/escheR@pre-R4.3"</span><span class="op">)</span></span></code></pre>
 <blockquote>
 <p>WARNING: The purpose of having the branch <code>pre-R4.3</code> is to allow users to use <code>escheR</code> before the formal release of R 4.3 and during the early stage of R 4.3 release. This branch will not update with any further development passing <a href="https://github.com/boyiguo1/escheR/blob/devel/NEWS.md" class="external-link"><code>escheR v0.99.6</code></a>. We recommend users to update their R versions up to date.</p>
 </blockquote>
@@ -181,8 +187,12 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/boyiguo1/escheR/actions" class="external-link"><img src="https://github.com/boyiguo1/escheR/workflows/R-CMD-check-bioc/badge.svg" alt="R build status"></a></li>
+<li><a href="https://bioconductor.org/checkResults/release/bioc-LATEST/escheR" class="external-link"><img src="http://www.bioconductor.org/shields/build/release/bioc/escheR.svg" alt="Bioc release status"></a></li>
+<li><a href="https://bioconductor.org/checkResults/devel/bioc-LATEST/escheR" class="external-link"><img src="http://www.bioconductor.org/shields/build/devel/bioc/escheR.svg" alt="Bioc devel status"></a></li>
+<li><a href="https://bioconductor.org/packages/release/bioc/html/escheR.html#since" class="external-link"><img src="https://bioconductor.org/shields/years-in-bioc/escheR.svg" alt="Bioc history"></a></li>
+<li><a href="http://bioconductor.org/checkResults/devel/bioc-LATEST/escheR/" class="external-link"><img src="https://bioconductor.org/shields/lastcommit/devel/bioc/escheR.svg" alt="Bioc last commit"></a></li>
 </ul>
 </div>
 
