@@ -26,7 +26,6 @@ Adding fill to highlight the figure in the spatial map
 }
 \examples{
 library(STexampleData)
-library(spatialLIBD)
 
 spe <- Visium_humanDLPFC()
 
