@@ -5,6 +5,12 @@ Authors@R: c(
     person("Boyi", "Guo",
            email = "boyi.guo.work@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-2950-2349")),
+    person("Louise", "Huuki-Myers",
+            role = "ctb", email = "lahuuki@gmail.com",
+            comment = c(ORCID = "0000-0001-5148-3602")),
+    person("Leonardo", "Collado-Torres",
+            role = c("cre"), email = "lcolladotor@gmail.com",
+            comment = c(ORCID = "0000-0003-2140-308X")),
     person(c("Stephanie", "C."), "Hicks",  role = c("aut"), 
             email = "shicks19@jhu.edu", 
             comment = c(ORCID = "0000-0002-7858-0231"))
