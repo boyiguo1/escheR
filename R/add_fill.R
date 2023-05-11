@@ -39,7 +39,7 @@ add_fill <- function(p,
         geom_point(
             aes(fill = !!sym(var)),
             shape = 21,
-            stroke = 0,
+            stroke = NA,
             size = point_size
         )
 
