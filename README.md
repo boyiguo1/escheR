@@ -66,7 +66,7 @@ Our preprint describing `escheR` is available from bioRxiv:
 
 ## The importance of visual analytics
 ![](man/figures/visual_analytics.png)
-The book _the visual display of quantitative information_ by [Edward Tufte](https://www.edwardtufte.com/tufte/books_vdqi) inspired me to think more about the meaning of visual analytics in the era of computational science, and motivates me to think about statistical graphics design and its meaning.
+The panel of relational plots is from the book _the visual display of quantitative information_ by [Edward Tufte](https://www.edwardtufte.com/tufte/books_vdqi). This book inspired me to think more about the meaning of visual analytics in the era of computational science, and motivates me to think about statistical graphics design and its meaning.
 
 
 ## Development tools
