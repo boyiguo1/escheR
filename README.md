@@ -60,7 +60,7 @@ Please find an end-to-end tutorial at [https://boyiguo1.github.io/escheR/](https
 
 Our preprint describing `escheR` is available from bioRxiv:
 
-* Guo B, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
+* Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
 
 # Acknowledgement
 
