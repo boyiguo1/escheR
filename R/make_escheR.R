@@ -22,8 +22,9 @@
 #' @rdname make_escheR
 #'
 #' @references
-#' Guo B & Hicks SC (2023). escheR: Unified multi-dimensional visualizations
-#' with Gestalt principles. _bioRxiv_, doi: 10.1101/2023.03.18.533302
+#'  Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023).
+#'  escheR: Unified multi-dimensional visualizations with Gestalt principles.
+#'   _bioRxiv_. doi:10.1101/2023.03.18.533302
 #'
 #'
 #'
@@ -51,6 +52,7 @@ make_escheR <- function(object, spot_size = 2, ...) {
 make_escheR.SpatialExperiment <- function(
     object,
     spot_size = 2,
+    # assay_name = "counts",
     y_reverse = TRUE,
     ...) {
   if (length(unique(object$sample_id)) != 1) {
@@ -58,74 +60,93 @@ make_escheR.SpatialExperiment <- function(
   }
 
 
-  pxl_row_in_fullres <-
-    pxl_col_in_fullres <- NULL
-
   spe <- object
-  # auto_crop <- TRUE
 
-  # browser()
+  # Error prevention: Check necessary spe components
+  if(is.null(spatialCoords(spe)))
+    stop("The object (SpatialExperiment) must have spatialCoords(object)")
+
+  if(is.null(colData(spe)))
+    warning("The object (SpatialExperiment) did not have colData(object)")
+
+
+  # Allowing to use different assays which array data this should be
+  # Check assay name exists
+  # Note: maybe future solution
+  # if(!(assay_name %in% assayNames(spe)))
+  #   stop("assay_name = ", assay_name,
+  #        " are not found in assayNames(object).")
+
+  # TODO (Must): save assay in the data.frame
+
+  # TODO (Medium): How about dimension reduction assays?
+  coord_df <- SpatialExperiment::spatialCoords(spe)
+  colnames(coord_df) <- c(".x", ".y")
+
   d <- as.data.frame(
     cbind(
       colData(spe),
-      # TODO: not robust to other spatialCoords names
-      SpatialExperiment::spatialCoords(spe)
+      SpatialExperiment::spatialCoords(spe) #,
+      # NOTE: Computation cost as this conversion
+      #       will take a lot of memory space
+      # t(as.matrix(assays(spe)[[assay_name]]))
     ),
     optional = TRUE
   )
 
+  if(.contain_reserved_col_name(colnames(d)))
+    warning("CAUSTION: colData(spe) contains the reserved names, which will
+            be overwriten by make_escheR. Reserved names include ",
+            .reserved_col_name(), ".")
+
+  d <- cbind(d, coord_df)
+
+
   sampleid <- unique(spe$sample_id)[1]
-  image_id <- "lowres"
-
-  # TODO: check if img exists
-  img <-
-    SpatialExperiment::imgRaster(
-      spe,
-      sample_id = unique(spe$sample_id)[1],
-      image_id = image_id
-    )
 
 
-  ## Crop the image if needed
-  # if (auto_crop) {
-  #   frame_lims <-
-  #     frame_limits(spe, sampleid = sampleid, image_id = image_id)
-  #   img <-
-  #     img[frame_lims$y_min:frame_lims$y_max, frame_lims$x_min:frame_lims$x_max]
-  #   adjust <-
-  #     list(x = frame_lims$x_min, y = frame_lims$y_min)
-  # } else {
-    adjust <- list(x = 0, y = 0)
+  # TODO (must): what if there no underlying image
+  # if(is.null(SpatialExperiment::imgData(spe))){
+  #   stop("Not implmented yet")
+  #   #TODO: implement this
   # }
 
+
+
+  # TODO (low): underlying image exists, should we adjust the underlying image
+  # img <-
+  #   SpatialExperiment::imgRaster(
+  #     spe,
+  #     sample_id = unique(spe$sample_id)[1],
+  #     image_id = image_id
+  #   )
+
+
+  # TODO: this to be an internal funciton operating on .x and .y
   p <-
     ggplot(
       d,
       aes(
-        # TODO: the spatial coord names seems to be somewhat arbitary
-        # Not robust
-        x = pxl_col_in_fullres * SpatialExperiment::scaleFactors(
-          spe, sample_id = sampleid, image_id = image_id) - adjust$x,
-        y = pxl_row_in_fullres * scaleFactors(
-          spe, sample_id = sampleid, image_id = image_id) - adjust$y
-        # x = pxl_col_in_fullres,
-        # y = pxl_row_in_fullres
+        x = .x,
+        y = .y
       )
     ) +
+    # TODO (medium): maybe move the theme to an outside function
     xlab("") +
     ylab("") +
     coord_fixed() +
-    theme_set(theme_bw(base_size = 20)) +
-    theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      panel.background = element_blank(),
-      axis.line = element_blank(),
-      axis.text = element_blank(),
-      axis.ticks = element_blank(),
-      legend.title = element_text(size = 10),
-      legend.box.spacing = unit(0, "pt")
-    )
+    theme_void() #+
+  # theme_set(theme_bw(base_size = 20)) +
+  # theme(
+  #   panel.grid.major = element_blank(),
+  #   panel.grid.minor = element_blank(),
+  #   panel.background = element_blank(),
+  #   axis.line = element_blank(),
+  #   axis.text = element_blank(),
+  #   axis.ticks = element_blank(),
+  #   legend.title = element_text(size = 10),
+  #   legend.box.spacing = unit(0, "pt")
+  # )
   ### END
 
   # reverse y coordinates to match orientation of images
