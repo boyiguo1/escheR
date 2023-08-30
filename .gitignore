@@ -7,3 +7,4 @@
 *.DS_Store
 *.Rproj
 R/check_var.R
+inst/doc
