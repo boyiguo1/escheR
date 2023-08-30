@@ -1,0 +1,52 @@
+---
+title: "besides_visium"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{besides_visium}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(escheR)
+library(STexampleData)
+```
+
+
+## seqFISH
+```{r}
+# TODO: suggest "BumpyMatrix"
+spe_seqFISH <- seqFISH_mouseEmbryo()
+
+make_escheR(spe_seqFISH) |>
+     add_fill(var = "embryo")
+```
+
+NOTE: trim down your `colData()` when it is high-dimensional.
+Taking more time to make plots
+
+
+
+## Spatial Transcriptomics
+```{r}
+spe_ST <- ST_mouseOB()
+
+make_escheR(spe_ST) |>
+     add_fill(var = "layer")
+```
+
+
+## SlideSeqV2_mouseHPC
+```{r}
+spe_slideseq <- SlideSeqV2_mouseHPC()
+
+make_escheR(spe_slideseq) |>
+     add_fill(var = "celltype")
+```
