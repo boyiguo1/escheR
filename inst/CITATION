@@ -6,13 +6,16 @@ c(
   bibtype = "Article",
   title   = "escheR: Unified multi-dimensional visualizations with Gestalt principles",
   author  = personList(
-                    as.person("Boyi Guo"),
-                    as.person("Stephanie C. Hicks")
+              as.person("Boyi Guo"),
+              as.person("Louise A Huuki-Myers"),
+              as.person("Melissa Grant-Peters"),
+              as.person("Leonardo Collado-Torres"),
+              as.person("Stephanie C. Hicks")
          ),
   journal = "bioRxiv",
   year    = "2023",
   doi     = "10.1101/2023.03.18.533302",
   publisher = "Cold Spring Harbor Laboratory",
-  url     = "https://www.biorxiv.org/content/early/2023/03/23/2023.03.18.533302"
+  url     = "https://www.biorxiv.org/content/10.1101/2023.03.18.533302v2"
   )
 )
