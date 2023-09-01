@@ -138,10 +138,15 @@ make_escheR.SpatialExperiment <- function(
     y_reverse = TRUE,
     ...) {
 
+
   # TODO (must): To plot low dimension embeddings
-  if(!is.null(object)){
+  if(!is.null(dimred)){
     # TODO (must): does it work? Test it via low dimensional embeddings vignettes
-    make_escheR.SingleCellExperiment(object)
+    return(
+      make_escheR.SingleCellExperiment(
+        object = object,
+        dimred = dimred)
+    )
   }
 
 
