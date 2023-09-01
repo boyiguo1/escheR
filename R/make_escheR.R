@@ -41,6 +41,87 @@ make_escheR <- function(object, spot_size = 2, ...) {
 }
 
 
+#'
+#' @rdname make_escheR
+#' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
+#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
+#' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
+#' @export
+#'
+make_escheR.SingleCellExperiment <- function(
+    object,
+    spot_size = 2,
+    dimred="PCA",
+    # assay_name = "counts",
+    # y_reverse = TRUE,       # Doesn't needs converse
+    ...){
+
+  sce <- object
+
+
+  # Error prevention: Check necessary spe components
+  # TODO: this may be redundent
+  if(is.null(reducedDim(sce)))
+    stop("The object (SingleCellExperiment) must have reducedDim(object)")
+
+  if(is.null(colData(sce)))
+    warning("The object (SpatialExperiment) did not have colData(object)")
+
+
+  # Allowing to use different assays which array data this should be
+  # Check assay name exists
+  # Note: maybe future solution
+  if(!(dimred %in% reducedDimNames(sce)))
+    stop("dimred = ", dimred,
+         " is not found in reducedDim(object).")
+
+  if(!(dimred %in% reducedDimNames(sce)))
+    stop("dimred = ", dimred,
+         " is not found in reducedDim(object).")
+
+
+  if(ncol(reducedDim(sce, dimred)) <= 2)
+    stop("reducedDim(object, ", dimred, " ) must have more than 2 columns.")
+
+  # TODO (Medium): How about dimension reduction assays?
+  coord_df <- reducedDim(sce, dimred)[ , c(1,2), drop = FALSE]
+  colnames(coord_df) <- c(".x", ".y")
+
+  d <- as.data.frame(
+    cbind(
+      colData(sce),
+      reducedDim(sce, dimred)
+      # NOTE: Computation cost as this conversion
+      #       will take a lot of memory space
+      # t(as.matrix(assays(spe)[[assay_name]]))
+    ),
+    optional = TRUE
+  )
+
+  if(.contain_reserved_col_name(colnames(d)))
+    warning("CAUSTION: colData(spe) contains the reserved names, which will
+            be overwriten by make_escheR. Reserved names include ",
+            .reserved_col_name(), ".")
+
+  d <- cbind(d, coord_df)
+
+
+  # TODO (medium): this could be the default function or an internal funciton operating on .x and .y
+  p <-
+    ggplot(
+      d,
+      aes(
+        x = .x,
+        y = .y
+      )
+    ) +
+    # TODO (medium): maybe move the theme to an outside function
+    xlab("") +
+    ylab("") +
+    coord_fixed() +
+    theme_void() #+
+}
+
 
 #'
 #' @rdname make_escheR
@@ -52,9 +133,19 @@ make_escheR <- function(object, spot_size = 2, ...) {
 make_escheR.SpatialExperiment <- function(
     object,
     spot_size = 2,
+    dimred=NULL,
     # assay_name = "counts",
     y_reverse = TRUE,
     ...) {
+
+  # TODO (must): To plot low dimension embeddings
+  if(!is.null(object)){
+    # TODO (must): does it work? Test it via low diensional embeddings vignettes
+    make_escheR.SingleCellExperiment(object)
+  }
+
+
+  #TODO (must): fix sample_id hard coding :(
   if (length(unique(object$sample_id)) != 1) {
     stop("The function only works for spe object with one sample.")
   }
@@ -77,7 +168,6 @@ make_escheR.SpatialExperiment <- function(
   #   stop("assay_name = ", assay_name,
   #        " are not found in assayNames(object).")
 
-  # TODO (Must): save assay in the data.frame
 
   # TODO (Medium): How about dimension reduction assays?
   coord_df <- SpatialExperiment::spatialCoords(spe)
@@ -95,18 +185,19 @@ make_escheR.SpatialExperiment <- function(
   )
 
   if(.contain_reserved_col_name(colnames(d)))
-    warning("CAUSTION: colData(spe) contains the reserved names, which will
+    warning("CAUSTION: colData(object) contains the reserved names, which will
             be overwriten by make_escheR. Reserved names include ",
             .reserved_col_name(), ".")
 
   d <- cbind(d, coord_df)
 
 
+  #TODO (must): fix sample_id hard coding :(
   sampleid <- unique(spe$sample_id)[1]
 
 
   # TODO (must): what if there no underlying image
-  # if(is.null(SpatialExperiment::imgData(spe))){
+  # if(!is.null(SpatialExperiment::imgData(spe))){
   #   stop("Not implmented yet")
   #   #TODO: implement this
   # }
@@ -152,9 +243,12 @@ make_escheR.SpatialExperiment <- function(
   # reverse y coordinates to match orientation of images
   # Inspiration from
   # https://github.com/lmweber/ggspavis/blob/004e1528829641cd2112e4264bb7fb708316c0e5/R/plotSpots.R#L102
-  if(y_reverse){
-    p <- p + scale_y_reverse()
-  }
+  # This could move out of the function to the cotumization part I think.
+  # if(y_reverse){
+  #   p <- p + scale_y_reverse()
+  # }
+
+
 
 
   p$spe <- object
