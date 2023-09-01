@@ -140,15 +140,21 @@ make_escheR.SpatialExperiment <- function(
 
   # TODO (must): To plot low dimension embeddings
   if(!is.null(object)){
-    # TODO (must): does it work? Test it via low diensional embeddings vignettes
+    # TODO (must): does it work? Test it via low dimensional embeddings vignettes
     make_escheR.SingleCellExperiment(object)
   }
 
 
-  #TODO (must): fix sample_id hard coding :(
-  if (length(unique(object$sample_id)) != 1) {
-    stop("The function only works for spe object with one sample.")
+
+  if(! "sample_id" %in% names(colData(object))){
+    stop("make_escheR requries sample names to be specificied",
+         " in colData(object)$sample_id.",
+         " `sample_id` is not detected in colData(object).")
   }
+
+  if (length(unique(object$sample_id)) != 1) {
+    stop("make_escheR currently only supports spe object with 1 sample.",
+         " Please find tips multiple sample plots in [TODO] vignettes.")}
 
 
   spe <- object
@@ -192,8 +198,7 @@ make_escheR.SpatialExperiment <- function(
   d <- cbind(d, coord_df)
 
 
-  #TODO (must): fix sample_id hard coding :(
-  sampleid <- unique(spe$sample_id)[1]
+
 
 
   # TODO (must): what if there no underlying image
