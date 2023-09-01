@@ -1,0 +1,42 @@
+---
+title: "reducedDim_plots"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{reducedDim_plots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(escheR)
+```
+
+
+## Single Cell Example
+
+
+
+
+## Spatial Resolved Transcrimtpomics Example
+```{r}
+library(STexampleData)
+spe <- Visium_humanDLPFC()
+spe <- logNormCounts(spe)  # Log normalizationi
+library(scater)
+top.gene <- getTopHVGs(spe, n=500)
+
+set.seed(100) # See below.
+spe <- runPCA(spe, subset_row = top.gene) 
+
+make_escheR(spe, dimred = "PCA") |> 
+  add_fill(var = "cell_count")
+
+make_escheR(spe, dimred = "tSNE") # Error/Warning
+```
