@@ -1,0 +1,53 @@
+---
+title: "plot_multi_sample"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{plot_multi_sample}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(escheR)
+library(purrr)
+```
+
+
+# Warning message for multiple sample
+
+```{r}
+
+library("spatialLIBD")
+
+spe <- fetch_data(type = "spe")
+
+unique(spe$sample_id)
+```
+
+```{r}
+plot_list <- unique(spe$sample_id) |> 
+lapply(FUN = function(.sample_id){
+  spe_single <- spe[, spe$sample_id == .sample_id]
+  # browser()
+  make_escheR(spe_single) |> 
+    add_fill(var = "layer_guess") |> 
+    add_ground(var = "Maynard") + 
+    scale_y_reverse() +
+    coord_fixed()
+})
+```
+
+```{r}
+library(ggpubr)
+
+ggarrange(
+  plotlist = plot_list, ncol = 4, nrow =3,
+  common.legend = TRUE)
+```
