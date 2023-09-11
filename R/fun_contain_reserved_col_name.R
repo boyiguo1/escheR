@@ -20,4 +20,6 @@
     ".x",
     ".y"
   )
+
+  reserved_col_names
 }
