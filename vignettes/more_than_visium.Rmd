@@ -1,5 +1,5 @@
 ---
-title: "besides_visium"
+title: "Beyond Visium and Bioconductor"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{besides_visium}
@@ -19,7 +19,10 @@ library(escheR)
 library(STexampleData)
 ```
 
+# Working with SingleCellExperiment
 
+
+# `SpatialExperiment` Object
 ## seqFISH
 ```{r}
 # TODO: suggest "BumpyMatrix"
@@ -34,7 +37,7 @@ Taking more time to make plots
 
 
 
-## Spatial Transcriptomics
+# Working with SpatialExperiment
 ```{r}
 spe_ST <- ST_mouseOB()
 
@@ -49,4 +52,12 @@ spe_slideseq <- SlideSeqV2_mouseHPC()
 
 make_escheR(spe_slideseq) |>
      add_fill(var = "celltype")
+```
+
+# Besides Bioconductor Eco-system
+
+We strive to provide equal
+
+## `make_escheR.default` works with `data.frame`
+```{r}
 ```
