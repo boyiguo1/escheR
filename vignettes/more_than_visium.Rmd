@@ -20,7 +20,23 @@ library(STexampleData)
 ```
 
 # Working with SingleCellExperiment
+```{r}
+library(STexampleData)
+library(scater)
+library(scran)
 
+spe <- Visium_humanDLPFC() |> 
+  logNormCounts()
+top.gene <- getTopHVGs(spe, n=500)
+
+set.seed(100) # See below.
+spe <- runPCA(spe, subset_row = top.gene) 
+
+make_escheR(spe, dimred = "PCA") |> 
+  add_fill(var = "cell_count")
+
+make_escheR(spe, dimred = "tSNE") # Error/Warning
+```
 
 # `SpatialExperiment` Object
 ## seqFISH
@@ -59,5 +75,8 @@ make_escheR(spe_slideseq) |>
 We strive to provide equal
 
 ## `make_escheR.default` works with `data.frame`
+
+For people whose data are stored as a [`Seurat`](https://satijalab.org/seurat/articles/spatial_vignette.html) object, we advise to convert to a `SpatialExperiment` object before applying the workflow below.
+
 ```{r}
 ```
