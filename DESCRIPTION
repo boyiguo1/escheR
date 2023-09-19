@@ -42,11 +42,13 @@ Imports:
 BugReports: https://github.com/boyiguo1/escheR/issues
 URL: https://github.com/boyiguo1/escheR
 Suggests: 
-    STexampleData, 
+    STexampleData,
+    BumpyMatrix,
     knitr,
     rmarkdown,
     BiocStyle,
     ggpubr,
     scran,
-    scater
+    scater,
+    scuttle
 VignetteBuilder: knitr
