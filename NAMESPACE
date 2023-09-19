@@ -2,6 +2,7 @@
 
 S3method(make_escheR,SingleCellExperiment)
 S3method(make_escheR,SpatialExperiment)
+S3method(make_escheR,data.frame)
 export(add_fill)
 export(add_ground)
 export(add_symbol)
@@ -27,4 +28,5 @@ importFrom(ggplot2,theme_set)
 importFrom(ggplot2,unit)
 importFrom(ggplot2,xlab)
 importFrom(ggplot2,ylab)
+importFrom(rlang,.data)
 importFrom(rlang,sym)

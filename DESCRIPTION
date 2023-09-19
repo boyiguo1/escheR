@@ -45,5 +45,6 @@ Suggests:
     STexampleData, 
     knitr,
     rmarkdown,
-    BiocStyle
+    BiocStyle,
+    ggpubr
 VignetteBuilder: knitr

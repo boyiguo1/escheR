@@ -111,8 +111,8 @@ make_escheR.SingleCellExperiment <- function(
     ggplot(
       d,
       aes(
-        x = .x,
-        y = .y
+        x = .data$.x,
+        y = .data$.y
       )
     ) +
     # TODO (medium): maybe move the theme to an outside function
@@ -125,6 +125,7 @@ make_escheR.SingleCellExperiment <- function(
 
 #'
 #' @rdname make_escheR
+#' @importFrom rlang .data
 #' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
 #' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
 #' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
@@ -222,8 +223,8 @@ make_escheR.SpatialExperiment <- function(
     ggplot(
       d,
       aes(
-        x = .x,
-        y = .y
+        x = .data$.x,
+        y = .data$.y
       )
     ) +
     # TODO (medium): maybe move the theme to an outside function
@@ -259,11 +260,16 @@ make_escheR.SpatialExperiment <- function(
   return(p)
 }
 
-
-make_escheR.default <- function(
+#' @param .x the X-coordinate
+#' @param .y the Y-coordinate
+#' @rdname make_escheR
+#' @export
+#'
+make_escheR.data.frame <- function(
+    object,
+    spot_size = 2,
     .x,
     .y,
-    d,
     ...){
 
   d <- cbind(
@@ -277,8 +283,8 @@ make_escheR.default <- function(
     ggplot(
       d,
       aes(
-        x = .x,
-        y = .y
+        x = .data$.x,
+        y = .data$.y
       )
     ) +
     # TODO (medium): maybe move the theme to an outside function

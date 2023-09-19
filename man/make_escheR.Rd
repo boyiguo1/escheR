@@ -2,12 +2,18 @@
 % Please edit documentation in R/make_escheR.R
 \name{make_escheR}
 \alias{make_escheR}
+\alias{make_escheR.SingleCellExperiment}
 \alias{make_escheR.SpatialExperiment}
+\alias{make_escheR.data.frame}
 \title{Create a new spatial map for spatial transcriptomics data}
 \usage{
 make_escheR(object, spot_size = 2, ...)
 
-\method{make_escheR}{SpatialExperiment}(object, spot_size = 2, y_reverse = TRUE, ...)
+\method{make_escheR}{SingleCellExperiment}(object, spot_size = 2, dimred = "PCA", ...)
+
+\method{make_escheR}{SpatialExperiment}(object, spot_size = 2, dimred = NULL, y_reverse = TRUE, ...)
+
+\method{make_escheR}{data.frame}(object, spot_size = 2, .x, .y, ...)
 }
 \arguments{
 \item{object}{a data object that contains the spatial transcriptomics data.
@@ -19,8 +25,14 @@ Defaults to 2.}
 
 \item{...}{Reserved for future arguments.}
 
+\item{dimred}{String or integer scalar specifying the existing dimensionality reduction results to use.}
+
 \item{y_reverse}{(logical) Whether to reverse y coordinates, which is often
 required for 10x Genomics Visium data. Default = TRUE.}
+
+\item{.x}{the X-coordinate}
+
+\item{.y}{the Y-coordinate}
 }
 \value{
 an ggplot object that contains the spatial transcriptomics data.
@@ -40,6 +52,7 @@ spe <- Visium_humanDLPFC()
 make_escheR(spe)
 }
 \references{
-Guo B & Hicks SC (2023). escheR: Unified multi-dimensional visualizations
-with Gestalt principles. \emph{bioRxiv}, doi: 10.1101/2023.03.18.533302
+Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023).
+escheR: Unified multi-dimensional visualizations with Gestalt principles.
+\emph{bioRxiv}. doi:10.1101/2023.03.18.533302
 }
