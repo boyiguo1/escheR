@@ -46,5 +46,7 @@ Suggests:
     knitr,
     rmarkdown,
     BiocStyle,
-    ggpubr
+    ggpubr,
+    scran,
+    scater
 VignetteBuilder: knitr
