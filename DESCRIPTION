@@ -36,6 +36,7 @@ Depends:
     R (>= 4.3)
 Imports: 
     SpatialExperiment (>= 1.6.1),
+    SingleCellExperiment, 
     rlang,
     SummarizedExperiment
 BugReports: https://github.com/boyiguo1/escheR/issues

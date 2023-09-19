@@ -42,10 +42,10 @@ make_escheR <- function(object, spot_size = 2, ...) {
 
 
 #'
+#' @param dimred String or integer scalar specifying the existing dimensionality reduction results to use.
+#'
 #' @rdname make_escheR
-#' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
-#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
-#' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
+#' @importFrom SingleCellExperiment reducedDim reducedDimNames
 #' @export
 #'
 make_escheR.SingleCellExperiment <- function(
@@ -117,9 +117,9 @@ make_escheR.SingleCellExperiment <- function(
     ) +
     # TODO (medium): maybe move the theme to an outside function
     xlab("") +
-    ylab("") +
-    coord_fixed() +
-    theme_void() #+
+    ylab("") # +
+    # coord_fixed() +
+    # theme_void() #+
 }
 
 
@@ -202,17 +202,11 @@ make_escheR.SpatialExperiment <- function(
 
   d <- cbind(d, coord_df)
 
-
-
-
-
   # TODO (must): what if there no underlying image
   # if(!is.null(SpatialExperiment::imgData(spe))){
   #   stop("Not implmented yet")
   #   #TODO: implement this
   # }
-
-
 
   # TODO (low): underlying image exists, should we adjust the underlying image
   # img <-
@@ -234,9 +228,9 @@ make_escheR.SpatialExperiment <- function(
     ) +
     # TODO (medium): maybe move the theme to an outside function
     xlab("") +
-    ylab("") +
-    coord_fixed() +
-    theme_void() #+
+    ylab("") #+
+    # coord_fixed() +
+    # theme_void() #+
   # theme_set(theme_bw(base_size = 20)) +
   # theme(
   #   panel.grid.major = element_blank(),
@@ -264,3 +258,34 @@ make_escheR.SpatialExperiment <- function(
   p$spe <- object
   return(p)
 }
+
+
+make_escheR.default <- function(
+    .x,
+    .y,
+    d,
+    ...){
+
+  d <- cbind(
+    d,
+    `.x` = .x,
+    `.y` = .y
+  )
+
+
+  p <-
+    ggplot(
+      d,
+      aes(
+        x = .x,
+        y = .y
+      )
+    ) +
+    # TODO (medium): maybe move the theme to an outside function
+    xlab("") +
+    ylab("")# +
+    # coord_fixed() +
+    # theme_void() #+
+
+}
+
