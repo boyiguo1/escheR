@@ -1,5 +1,5 @@
 ---
-title: "Beyond Visium and Bioconductor"
+title: "Beyond Visium"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{besides_visium}
@@ -19,7 +19,7 @@ library(escheR)
 library(STexampleData)
 ```
 
-# Working with SingleCellExperiment
+# Working with `SingleCellExperiment`
 ```{r}
 library(STexampleData)
 library(scater)
@@ -34,8 +34,6 @@ spe <- runPCA(spe, subset_row = top.gene)
 
 make_escheR(spe, dimred = "PCA") |> 
   add_fill(var = "cell_count")
-
-make_escheR(spe, dimred = "tSNE") # Error/Warning
 ```
 
 # `SpatialExperiment` Object
