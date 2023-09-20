@@ -1,3 +1,5 @@
+# escheR 1.1.2
+
 # escheR 1.1.1
 SIGNIFICANT USER-VISIBLE CHANGES
 

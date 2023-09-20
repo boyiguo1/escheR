@@ -22,8 +22,9 @@
 #' @rdname make_escheR
 #'
 #' @references
-#' Guo B & Hicks SC (2023). escheR: Unified multi-dimensional visualizations
-#' with Gestalt principles. _bioRxiv_, doi: 10.1101/2023.03.18.533302
+#'  Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023).
+#'  escheR: Unified multi-dimensional visualizations with Gestalt principles.
+#'   _bioRxiv_. doi:10.1101/2023.03.18.533302
 #'
 #'
 #'
@@ -40,9 +41,91 @@ make_escheR <- function(object, spot_size = 2, ...) {
 }
 
 
+#'
+#' @param dimred String or integer scalar specifying the existing dimensionality reduction results to use.
+#'
+#' @rdname make_escheR
+#' @importFrom SingleCellExperiment reducedDim reducedDimNames
+#' @export
+#'
+make_escheR.SingleCellExperiment <- function(
+    object,
+    spot_size = 2,
+    dimred="PCA",
+    # assay_name = "counts",
+    # y_reverse = TRUE,       # Doesn't needs converse
+    ...){
+
+  sce <- object
+
+
+  # Error prevention: Check necessary spe components
+  # TODO: this may be redundent
+  if(is.null(reducedDim(sce)))
+    stop("The object (SingleCellExperiment) must have reducedDim(object)")
+
+  if(is.null(colData(sce)))
+    warning("The object (SpatialExperiment) did not have colData(object)")
+
+
+  # Allowing to use different assays which array data this should be
+  # Check assay name exists
+  # Note: maybe future solution
+  if(!(dimred %in% reducedDimNames(sce)))
+    stop("dimred = ", dimred,
+         " is not found in reducedDim(object).")
+
+  if(!(dimred %in% reducedDimNames(sce)))
+    stop("dimred = ", dimred,
+         " is not found in reducedDim(object).")
+
+
+  if(ncol(reducedDim(sce, dimred)) <= 2)
+    stop("reducedDim(object, ", dimred, " ) must have more than 2 columns.")
+
+  # TODO (Medium): How about dimension reduction assays?
+  coord_df <- reducedDim(sce, dimred)[ , c(1,2), drop = FALSE]
+  colnames(coord_df) <- c(".x", ".y")
+
+  d <- as.data.frame(
+    cbind(
+      colData(sce),
+      reducedDim(sce, dimred)
+      # NOTE: Computation cost as this conversion
+      #       will take a lot of memory space
+      # t(as.matrix(assays(spe)[[assay_name]]))
+    ),
+    optional = TRUE
+  )
+
+  if(.contain_reserved_col_name(colnames(d)))
+    warning("CAUSTION: colData(spe) contains the reserved names, which will
+            be overwriten by make_escheR. Reserved names include ",
+            .reserved_col_name(), ".")
+
+  d <- cbind(d, coord_df)
+
+
+  # TODO (medium): this could be the default function or an internal funciton operating on .x and .y
+  p <-
+    ggplot(
+      d,
+      aes(
+        x = .data$.x,
+        y = .data$.y
+      )
+    ) +
+    # TODO (medium): maybe move the theme to an outside function
+    xlab("") +
+    ylab("") # +
+    # coord_fixed() +
+    # theme_void() #+
+}
+
 
 #'
 #' @rdname make_escheR
+#' @importFrom rlang .data
 #' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
 #' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
 #' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
@@ -51,91 +134,164 @@ make_escheR <- function(object, spot_size = 2, ...) {
 make_escheR.SpatialExperiment <- function(
     object,
     spot_size = 2,
+    dimred=NULL,
+    # assay_name = "counts",
     y_reverse = TRUE,
     ...) {
-  if (length(unique(object$sample_id)) != 1) {
-    stop("The function only works for spe object with one sample.")
+
+
+  # TODO (must): To plot low dimension embeddings
+  if(!is.null(dimred)){
+    # TODO (must): does it work? Test it via low dimensional embeddings vignettes
+    return(
+      make_escheR.SingleCellExperiment(
+        object = object,
+        dimred = dimred)
+    )
   }
 
 
-  pxl_row_in_fullres <-
-    pxl_col_in_fullres <- NULL
+
+  if(! "sample_id" %in% names(colData(object))){
+    stop("make_escheR requries sample names to be specificied",
+         " in colData(object)$sample_id.",
+         " `sample_id` is not detected in colData(object).")
+  }
+
+  if (length(unique(object$sample_id)) != 1) {
+    stop("make_escheR currently only supports spe object with 1 sample.",
+         " Please find tips multiple sample plots in [TODO] vignettes.")}
+
 
   spe <- object
-  # auto_crop <- TRUE
 
-  # browser()
+  # Error prevention: Check necessary spe components
+  if(is.null(spatialCoords(spe)))
+    stop("The object (SpatialExperiment) must have spatialCoords(object)")
+
+  if(is.null(colData(spe)))
+    warning("The object (SpatialExperiment) did not have colData(object)")
+
+
+  # Allowing to use different assays which array data this should be
+  # Check assay name exists
+  # Note: maybe future solution
+  # if(!(assay_name %in% assayNames(spe)))
+  #   stop("assay_name = ", assay_name,
+  #        " are not found in assayNames(object).")
+
+
+  # TODO (Medium): How about dimension reduction assays?
+  coord_df <- SpatialExperiment::spatialCoords(spe)
+  colnames(coord_df) <- c(".x", ".y")
+
   d <- as.data.frame(
     cbind(
       colData(spe),
-      # TODO: not robust to other spatialCoords names
-      SpatialExperiment::spatialCoords(spe)
+      SpatialExperiment::spatialCoords(spe) #,
+      # NOTE: Computation cost as this conversion
+      #       will take a lot of memory space
+      # t(as.matrix(assays(spe)[[assay_name]]))
     ),
     optional = TRUE
   )
 
-  sampleid <- unique(spe$sample_id)[1]
-  image_id <- "lowres"
+  if(.contain_reserved_col_name(colnames(d)))
+    warning("CAUSTION: colData(object) contains the reserved names, which will
+            be overwriten by make_escheR. Reserved names include ",
+            .reserved_col_name(), ".")
 
-  # TODO: check if img exists
-  img <-
-    SpatialExperiment::imgRaster(
-      spe,
-      sample_id = unique(spe$sample_id)[1],
-      image_id = image_id
-    )
+  d <- cbind(d, coord_df)
 
-
-  ## Crop the image if needed
-  # if (auto_crop) {
-  #   frame_lims <-
-  #     frame_limits(spe, sampleid = sampleid, image_id = image_id)
-  #   img <-
-  #     img[frame_lims$y_min:frame_lims$y_max, frame_lims$x_min:frame_lims$x_max]
-  #   adjust <-
-  #     list(x = frame_lims$x_min, y = frame_lims$y_min)
-  # } else {
-    adjust <- list(x = 0, y = 0)
+  # TODO (must): what if there no underlying image
+  # if(!is.null(SpatialExperiment::imgData(spe))){
+  #   stop("Not implmented yet")
+  #   #TODO: implement this
   # }
 
+  # TODO (low): underlying image exists, should we adjust the underlying image
+  # img <-
+  #   SpatialExperiment::imgRaster(
+  #     spe,
+  #     sample_id = unique(spe$sample_id)[1],
+  #     image_id = image_id
+  #   )
+
+
+  # TODO: this to be an internal funciton operating on .x and .y
   p <-
     ggplot(
       d,
       aes(
-        # TODO: the spatial coord names seems to be somewhat arbitary
-        # Not robust
-        x = pxl_col_in_fullres * SpatialExperiment::scaleFactors(
-          spe, sample_id = sampleid, image_id = image_id) - adjust$x,
-        y = pxl_row_in_fullres * scaleFactors(
-          spe, sample_id = sampleid, image_id = image_id) - adjust$y
-        # x = pxl_col_in_fullres,
-        # y = pxl_row_in_fullres
+        x = .data$.x,
+        y = .data$.y
       )
     ) +
+    # TODO (medium): maybe move the theme to an outside function
     xlab("") +
-    ylab("") +
-    coord_fixed() +
-    theme_set(theme_bw(base_size = 20)) +
-    theme(
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      panel.background = element_blank(),
-      axis.line = element_blank(),
-      axis.text = element_blank(),
-      axis.ticks = element_blank(),
-      legend.title = element_text(size = 10),
-      legend.box.spacing = unit(0, "pt")
-    )
+    ylab("") #+
+    # coord_fixed() +
+    # theme_void() #+
+  # theme_set(theme_bw(base_size = 20)) +
+  # theme(
+  #   panel.grid.major = element_blank(),
+  #   panel.grid.minor = element_blank(),
+  #   panel.background = element_blank(),
+  #   axis.line = element_blank(),
+  #   axis.text = element_blank(),
+  #   axis.ticks = element_blank(),
+  #   legend.title = element_text(size = 10),
+  #   legend.box.spacing = unit(0, "pt")
+  # )
   ### END
 
   # reverse y coordinates to match orientation of images
   # Inspiration from
   # https://github.com/lmweber/ggspavis/blob/004e1528829641cd2112e4264bb7fb708316c0e5/R/plotSpots.R#L102
-  if(y_reverse){
-    p <- p + scale_y_reverse()
-  }
+  # This could move out of the function to the cotumization part I think.
+  # if(y_reverse){
+  #   p <- p + scale_y_reverse()
+  # }
+
+
 
 
   p$spe <- object
   return(p)
 }
+
+#' @param .x the X-coordinate
+#' @param .y the Y-coordinate
+#' @rdname make_escheR
+#' @export
+#'
+make_escheR.data.frame <- function(
+    object,
+    spot_size = 2,
+    .x,
+    .y,
+    ...){
+
+  d <- cbind(
+    object,
+    `.x` = .x,
+    `.y` = .y
+  )
+
+
+  p <-
+    ggplot(
+      d,
+      aes(
+        x = .data$.x,
+        y = .data$.y
+      )
+    ) +
+    # TODO (medium): maybe move the theme to an outside function
+    xlab("") +
+    ylab("")# +
+    # coord_fixed() +
+    # theme_void() #+
+
+}
+

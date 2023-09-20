@@ -1,5 +1,5 @@
 ---
-title: "Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data"
+title: "Getting Started with `escheR`"
 author: 
   - name: Boyi Guo
     affiliation: &id1 "Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA"
@@ -8,36 +8,36 @@ author:
 package: escheR
 output: BiocStyle::html_document
 vignette: >
-  %\VignetteIndexEntry{Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data}
+  %\VignetteIndexEntry{Getting Start with `escheR`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-    collapse = TRUE,
-    message = FALSE,
-    comment = "#>",
-    # fig.width = 8,
-    # fig.height = 8,
-    fig.small = TRUE
+  collapse = TRUE,
+  message = FALSE,
+  comment = "#>",
+  # fig.width = 8,
+  # fig.height = 8,
+  fig.small = TRUE
 )
 ```
 
 # Introduction
 
-The goal of escheR is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
+The goal of `escheR` is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
 
-Our preprint describing the innovative visualization is available from [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
+Our preprint describing the innovative visualization is available via [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
 
 
 ## Installation
 
-You can install the latest release version of `escheR` from Bioconductor. with using the following code will install version of the `nnSVG` package from Bioconductor. Additional details are shown on the [Bioconductor](https://bioconductor.org/packages/escheR) page.
+You can install the latest release version of `escheR` from Bioconductor via the following code. Additional details are shown on the [Bioconductor](https://bioconductor.org/packages/escheR) page.
 
 ```{r install_bioc, eval=FALSE}
 if (!require("BiocManager", quietly = TRUE)) {
-    install.packages("BiocManager")
+  install.packages("BiocManager")
 }
 BiocManager::install("escheR")
 ```
@@ -47,15 +47,18 @@ The latest development version can also be installed from the `devel` version of
 ```{r install_github, eval = FALSE}
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("boyiguo1/escheR")
+
+# `devel` version from Bioconductor
+BiocManager::install(version='devel')
 ```
 
 # Input data format
+Starting from Version 1.2.0 [TODO: add link], `escheR` package supports three data structures, including [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html), [`SingleCellExperiment`](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html), and `data.frame` from `base` R.
 
-In the examples below, we assume the input data are provided as a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) Bioconductor object. For people whose data are stored as a [`Seurat`](https://satijalab.org/seurat/articles/spatial_vignette.html) object, we advise to convert to a `SpatialExperiment` object before applying the workflow below.  
+
+In the following example, we demonstrate the how to use `escheR` with a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) object. Please visit our other tutorials for [TODO: add items and list]. 
 
 # Tutorial
-
-
 ## Load Packages
 
 To run the demonstration, there are two necessary packages to load, `escheR` and `STexampleData`. [`STexampleData`](https://bioconductor.org/packages/STexampleData) contains a pre-processed 10x Visium dataset.
@@ -82,7 +85,7 @@ Here is a summary of the `SpatialExperiment` object called `spe`.
 ```{r spe_summary}
 spe
 ```
-  
+
 ## Setting up for escheR plot
 Similar to `ggplot2::ggplot()`, we first use the function `make_escheR()` to create an empty plot. The input of `make_escheR()` is a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) object. The output of the function is a `ggplot` object with no layer in it. 
 ```{r create_plot}
@@ -97,22 +100,22 @@ Here we first apply the `add_fill` to add the spots color-coded by the total num
 
 ```{r creat_fill}
 (p1 <- p |>
-    add_fill(var = "cell_count"))
+   add_fill(var = "cell_count"))
 
 p1 +
-    scale_fill_viridis_c()
+  scale_fill_viridis_c()
 ```
 
 It is okay to use any combination of the `add_*` functions. For example, we want to show the spatial domains of the samples as the ground of the figure and use symbols to denote if each spot is within the outline of the tissue slice. In this example, all plotted spots are in the outlines of the tissue slice and hence marked with dots.
 ```{r create_ground}
 (p2 <- p |>
-    add_ground(var = "ground_truth")) # round layer
+   add_ground(var = "ground_truth")) # round layer
 ```
 
 
 ```{r add_symbol}
 p2 |>
-    add_symbol(var = "ground_truth", size = 0.2) # Symbol layer
+  add_symbol(var = "ground_truth", size = 0.2) # Symbol layer
 ```
 
 It is okay to change the ordering of these `add_*` functions. However, we advise to always have the `add_fill` as the first step to achieve the best visual effect due to the laying mechanism. 
@@ -123,22 +126,53 @@ To change the aesthetics of each layer, one can simply use the `scale_*` from `g
 
 ```{r customize}
 
-p2 +
-    scale_color_manual(
-        name = "", # No legend name
-        values = c(
-          "Layer1" = "#F0027F",
-          "Layer2" = "#377EB8",
-          "Layer3" = "#4DAF4A",
-          "Layer4" = "#984EA3",
-          "Layer5" = "#FFD700",
-          "Layer6" = "#FF7F00",
-          "WM" = "#1A1A1A",
-          "NA" = "transparent")
-    ) +
-    labs(title = "Example Title")
+p_final <- p2 +
+  scale_color_manual(
+    name = "", # No legend name
+    values = c(
+      "Layer1" = "#F0027F",
+      "Layer2" = "#377EB8",
+      "Layer3" = "#4DAF4A",
+      "Layer4" = "#984EA3",
+      "Layer5" = "#FFD700",
+      "Layer6" = "#FF7F00",
+      "WM" = "#1A1A1A",
+      "NA" = "transparent")
+  ) +
+  labs(title = "Example Title")
 ```
 
+## Plot Multiple Samples
+By design, `make_escheR` operates on only one sample. In order to create a figure compiling the spatial plots for multiple samples, individual plots are required via a series of calls to `make_escheR`, possibly via a `for` loop or an iterator function (e.g. `lapply`). 
+
+```{r make_plot_list, eval = FALSE}
+# Create a list of `escheR` plots
+plot_list <- unique(spe$sample_id) |> # Create a list of sample names
+  lapply(FUN = function(.sample_id){ # Iterate over all samples
+    spe_single <- spe[, spe$sample_id == .sample_id]
+    make_escheR(spe_single) |> 
+      add_fill(var = "layer_guess") |> 
+      add_ground(var = "Maynard") + 
+      # Customize theme
+      scale_y_reverse() +
+      coord_fixed()
+  })
+```
+
+Given all plots made for individual samples are stored in a preferred data structure 
+(e.g. a `list`), one can use many functions, e.g. [`cowplot::plot_grid`](https://wilkelab.org/cowplot/articles/plot_grid.html), [`patchwork`](https://patchwork.data-imaginist.com/index.html), to compile and arrange
+individual plots to a paneled figure. The following example uses 
+[`ggpubr::ggarrange`](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html) to create a figure from a list of `escheR` plots.
+
+
+```{r paneling}
+library(ggpubr)
+plot_list <- list(p_final, p_final)
+ggarrange(
+  plotlist = plot_list,
+  ncol = 2, nrow = 1,
+  common.legend = TRUE)
+```
 
 # Session information
 

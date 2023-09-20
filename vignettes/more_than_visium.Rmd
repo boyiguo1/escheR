@@ -1,0 +1,92 @@
+---
+title: "Beyond Sequence-based Spatially-Resolved Data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{beyond_visium}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(escheR)
+library(STexampleData)
+```
+
+Starting from Version 1.2.0 [TODO: add link], `escheR` package supports additional two data structures as input, including [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) and `data.frame` from `base` R. In addition, `escheR` supports in-situ visualization of image-based spatially resolved data, which will be the focus of future development. 
+
+
+# Visualized Dimensionality Reduced Embedding with `SingleCellExperiment`
+
+## `SpatialExperiment` inherits `SingleCellExperiment`
+Following the same syntax, one can also visualize dimensionality reduced embeddings of a `SpatialExperiment` object by providing the argument `dimred` with a non-null value. Hence, the first 2 columns of the corresponding `reducedDim(spe)` assay will be used as the x-y coordinate of the plot, replacing `spatialCoords(spe)`.
+
+```{r redDim_spe}
+library(STexampleData)
+library(scater)
+library(scran)
+
+spe <- Visium_humanDLPFC() |> 
+  logNormCounts()
+top.gene <- getTopHVGs(spe, n=500)
+
+set.seed(100) # See below.
+spe <- runPCA(spe, subset_row = top.gene) 
+
+make_escheR(
+  spe,
+  dimred = "PCA"
+) |> 
+  add_fill(var = "ground_truth") +
+  theme_minimal()
+```
+
+# Image-based `SpatialExperiment` Object
+To demonstrate the principle that `escheR` can be used to visualize image-based spatially-resolved data pending optimization, we include two image-based spatially resolved transcriptomics data generated via seqFish platform and Slide-seq V2 platform respectively. The two datasets have been previously curated in the [`STexampleData`](https://bioconductor.org/packages/release/data/experiment/vignettes/STexampleData/inst/doc/STexampleData_overview.html) package
+
+## seqFISH
+```{r im_seqFISH}
+library(STexampleData)
+spe_seqFISH <- seqFISH_mouseEmbryo()
+
+make_escheR(spe_seqFISH) |>
+  add_fill(var = "embryo")
+```
+
+> NOTE: trimming down the `colData(spe)` before piping into make-escheR could reduce the computation time to make the plots, specifically when `colData(spe)` contains extremely large number of irrelavent features/columns.
+
+
+## SlideSeqV2
+```{r im_slideseq}
+library(STexampleData)
+spe_slideseq <- SlideSeqV2_mouseHPC()
+
+make_escheR(spe_slideseq) |>
+  add_fill(var = "celltype")
+```
+
+# Beyond Bioconductor Eco-system
+We aim to provide accessibility to all users regardless of their programming background and preferred single-cell analysis pipelines. Nevertheless , with limited resource, our sustaining efforts will prioritize towards the maintenance of the established functionality and the optimization for image-based spatially resolved data. We regret we are not be able to provide seamless interface to other R pipelines such as `Seurat` and `Giotto` in foreseeable future.
+
+Instead, we provide a generic function that works with a `data.frame` object as input. For example, relevant features in `Suerat` can be easily exported as a `data.frame` object manually or via `tidyseurat`[https://github.com/stemangiola/tidyseurat]. The exported data frame can be pipe into `escheR`.
+
+```{r seurat_to_dataframe}
+library(Seurat)
+pbmc_small <- SeuratObject::pbmc_small
+pbmc_2pc <- pbmc_small@reductions$pca@cell.embeddings[,1:2]
+pbmc_meta <- pbmc_small@meta.data
+
+#> Call generic function for make_escheR.data.frame
+make_escheR(
+  object = pbmc_meta,
+  .x = pbmc_2pc[,1],
+  .y = pbmc_2pc[,2]) |> 
+  add_fill(var = "groups")
+```
+

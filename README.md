@@ -47,20 +47,35 @@ devtools::install_github("boyiguo1/escheR@pre-R4.3")
 
 > WARNING: The purpose of having the branch `pre-R4.3` is to allow users to use `escheR` before the formal release of R 4.3 and during the early stage of R 4.3 release. This branch will not update with any further development passing [`escheR v0.99.6`](https://github.com/boyiguo1/escheR/blob/devel/NEWS.md). We recommend users to update their R versions up to date.
 
-# Input data format
-
-To use `escheR`, we assume the input data are provided as a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) Bioconductor object. For people whose data are stored as a [`Seurat`](https://satijalab.org/seurat/articles/spatial_vignette.html) object, we advise to convert to a `SpatialExperiment` object before applying the workflow below.  
-
-
 # Tutorial
 Please find an end-to-end tutorial at [https://boyiguo1.github.io/escheR/](https://boyiguo1.github.io/escheR/articles/SRT_eg.html)
 
+## Syntax
+![](man/figures/escheR_syntax.pdf)
+
+# Frequently Asked Questions
+
+* Can I use `escheR` on `SingleCellExperiment` object?
+
+* How can I make plots to visualize dimensional reduced embeddings?
+
+* Can I highlight only one group/level of a multi-level categorical variables?
+
+* Can `escheR` be directly applied to `Seurat` or `Giotto` objects?
+
+* How can I make a paneled figure containing multiple `escheR` plots?
+
+* How can I choose color palettes for `add_fill` and `add_ground` to minimize interference?
+
+* Can I apply `escheR` to plot image-based spatially resolved data?
+
+* Can I plot polygons as each data points to show cell morphology?
 
 # Citation
 
 Our preprint describing `escheR` is available from bioRxiv:
 
-* Guo B, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
+* Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
 
 # Acknowledgement
 
