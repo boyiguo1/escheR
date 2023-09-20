@@ -50,5 +50,6 @@ Suggests:
     ggpubr,
     scran,
     scater,
-    scuttle
+    scuttle,
+    Seurat
 VignetteBuilder: knitr
