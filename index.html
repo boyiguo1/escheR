@@ -48,7 +48,7 @@
     
     <a class="navbar-brand me-2" href="index.html">escheR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,9 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/SRT_eg.html">Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data</a>
+    <a class="dropdown-item" href="articles/SRT_eg.html">Getting Started with `escheR`</a>
+    <a class="dropdown-item" href="articles/customize_color_and_theme.html">customize_theme</a>
+    <a class="dropdown-item" href="articles/more_than_visium.html">Beyond Sequence-based Spatially-Resolved Data</a>
   </div>
 </li>
 <li class="nav-item">
@@ -103,36 +105,45 @@
 <h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h1>
 <p>You can install the latest release version of <code>escheR</code> from Bioconductor. with using the following code will install version of the <code>nnSVG</code> package from Bioconductor. Additional details are shown on the <a href="https://bioconductor.org/packages/escheR" class="external-link">Bioconductor</a> page.</p>
-<pre class="{r}"><code><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"escheR"</span><span class="op">)</span></span></code></pre>
+<p><code>{r} if (!require("BiocManager", quietly = TRUE)) {     install.packages("BiocManager") } BiocManager::install("escheR")</code></p>
 <p>The latest development version can also be installed from the <code>devel</code> version of Bioconductor or from <a href="https://github.com/boyiguo1/escheR" class="external-link">GitHub</a> following</p>
-<pre class="{r}"><code><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"boyiguo1/escheR"</span><span class="op">)</span></span></code></pre>
+<p><code>{r} if (!require("devtools")) install.packages("devtools") devtools::install_github("boyiguo1/escheR")</code></p>
 <p>If you have R version before v4.3 and would like to install <code>escheR</code>, you can follow</p>
-<pre class="{r}"><code><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"boyiguo1/escheR@pre-R4.3"</span><span class="op">)</span></span></code></pre>
+<p><code>{r} if (!require("devtools")) install.packages("devtools") devtools::install_github("boyiguo1/escheR@pre-R4.3")</code></p>
 <blockquote>
 <p>WARNING: The purpose of having the branch <code>pre-R4.3</code> is to allow users to use <code>escheR</code> before the formal release of R 4.3 and during the early stage of R 4.3 release. This branch will not update with any further development passing <a href="https://github.com/boyiguo1/escheR/blob/devel/NEWS.md" class="external-link"><code>escheR v0.99.6</code></a>. We recommend users to update their R versions up to date.</p>
 </blockquote>
 </div>
 <div class="section level1">
-<h1 id="input-data-format">Input data format<a class="anchor" aria-label="anchor" href="#input-data-format"></a>
-</h1>
-<p>To use <code>escheR</code>, we assume the input data are provided as a <a href="https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html" class="external-link"><code>SpatialExperiment</code></a> Bioconductor object. For people whose data are stored as a <a href="https://satijalab.org/seurat/articles/spatial_vignette.html" class="external-link"><code>Seurat</code></a> object, we advise to convert to a <code>SpatialExperiment</code> object before applying the workflow below.</p>
-</div>
-<div class="section level1">
 <h1 id="tutorial">Tutorial<a class="anchor" aria-label="anchor" href="#tutorial"></a>
 </h1>
 <p>Please find an end-to-end tutorial at <a href="https://boyiguo1.github.io/escheR/articles/SRT_eg.html" class="external-link">https://boyiguo1.github.io/escheR/</a></p>
+<div class="section level2">
+<h2 id="syntax">Syntax<a class="anchor" aria-label="anchor" href="#syntax"></a>
+</h2>
+<p><embed src="man/figures/escheR_syntax.pdf"></embed></p>
+</div>
+</div>
+<div class="section level1">
+<h1 id="frequently-asked-questions">Frequently Asked Questions<a class="anchor" aria-label="anchor" href="#frequently-asked-questions"></a>
+</h1>
+<ul>
+<li><p>Can I use <code>escheR</code> on <code>SingleCellExperiment</code> object?</p></li>
+<li><p>How can I make plots to visualize dimensional reduced embeddings?</p></li>
+<li><p>Can I highlight only one group/level of a multi-level categorical variables?</p></li>
+<li><p>Can <code>escheR</code> be directly applied to <code>Seurat</code> or <code>Giotto</code> objects?</p></li>
+<li><p>How can I make a paneled figure containing multiple <code>escheR</code> plots?</p></li>
+<li><p>How can I choose color palettes for <code>add_fill</code> and <code>add_ground</code> to minimize interference?</p></li>
+<li><p>Can I apply <code>escheR</code> to plot image-based spatially resolved data?</p></li>
+<li><p>Can I plot polygons as each data points to show cell morphology?</p></li>
+</ul>
 </div>
 <div class="section level1">
 <h1 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h1>
 <p>Our preprint describing <code>escheR</code> is available from bioRxiv:</p>
 <ul>
-<li>Guo B, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” <em>bioRxiv</em>. <a href="doi:10.1101/2023.03.18.533302" class="uri">doi:10.1101/2023.03.18.533302</a>
+<li>Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” <em>bioRxiv</em>. <a href="doi:10.1101/2023.03.18.533302" class="uri">doi:10.1101/2023.03.18.533302</a>
 </li>
 </ul>
 </div>

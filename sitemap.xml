@@ -13,7 +13,13 @@
     <loc>/articles/SRT_eg.html</loc>
   </url>
   <url>
+    <loc>/articles/customize_color_and_theme.html</loc>
+  </url>
+  <url>
     <loc>/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>/articles/more_than_visium.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>
@@ -32,6 +38,9 @@
   </url>
   <url>
     <loc>/reference/add_symbol.html</loc>
+  </url>
+  <url>
+    <loc>/reference/dot-contain_reserved_col_name.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>

@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="escheR">
-<title>Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data • escheR</title>
+<title>Getting Started with `escheR` • escheR</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with `escheR`">
 <meta property="og:description" content="escheR">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">escheR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,9 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/SRT_eg.html">Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data</a>
+    <a class="dropdown-item" href="../articles/SRT_eg.html">Getting Started with `escheR`</a>
+    <a class="dropdown-item" href="../articles/customize_color_and_theme.html">customize_theme</a>
+    <a class="dropdown-item" href="../articles/more_than_visium.html">Beyond Sequence-based Spatially-Resolved Data</a>
   </div>
 </li>
 <li class="nav-item">
@@ -71,7 +73,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Create Multi-dimensional Plot of Spatially-resolved Transcriptomics Data</h1>
+      <img src="" class="logo" alt=""><h1>Getting Started with `escheR`</h1>
                         <h4 data-toc-skip class="author">Boyi Guo</h4>
             <address class="author_afil">
       Johns Hopkins Bloomberg School of Public Health, Baltimore, MD,
@@ -90,38 +92,44 @@ USA<br><small class="dont-index">Source: <a href="https://github.com/boyiguo1/es
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The goal of escheR is to create an unified multi-dimensional spatial
-visualizations for spatially-resolved transcriptomics data following
-Gestalt principles.</p>
-<p>Our preprint describing the innovative visualization is available
-from <a href="https://www.biorxiv.org/content/10.1101/2023.03.18.533302" class="external-link">bioRxiv</a>.</p>
+<p>The goal of <code>escheR</code> is to create an unified
+multi-dimensional spatial visualizations for spatially-resolved
+transcriptomics data following Gestalt principles.</p>
+<p>Our preprint describing the innovative visualization is available via
+<a href="https://www.biorxiv.org/content/10.1101/2023.03.18.533302" class="external-link">bioRxiv</a>.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
 <p>You can install the latest release version of <code>escheR</code>
-from Bioconductor. with using the following code will install version of
-the <code>nnSVG</code> package from Bioconductor. Additional details are
-shown on the <a href="https://bioconductor.org/packages/escheR" class="external-link">Bioconductor</a>
+from Bioconductor via the following code. Additional details are shown
+on the <a href="https://bioconductor.org/packages/escheR" class="external-link">Bioconductor</a>
 page.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"escheR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"escheR"</span><span class="op">)</span></span></code></pre></div>
 <p>The latest development version can also be installed from the
 <code>devel</code> version of Bioconductor or from <a href="https://github.com/boyiguo1/escheR" class="external-link">GitHub</a> following</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"boyiguo1/escheR"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"boyiguo1/escheR"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># `devel` version from Bioconductor</span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span>version<span class="op">=</span><span class="st">'devel'</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="input-data-format">Input data format<a class="anchor" aria-label="anchor" href="#input-data-format"></a>
 </h2>
-<p>In the examples below, we assume the input data are provided as a <a href="https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html" class="external-link"><code>SpatialExperiment</code></a>
-Bioconductor object. For people whose data are stored as a <a href="https://satijalab.org/seurat/articles/spatial_vignette.html" class="external-link"><code>Seurat</code></a>
-object, we advise to convert to a <code>SpatialExperiment</code> object
-before applying the workflow below.</p>
+<p>Starting from Version 1.2.0 [TODO: add link], <code>escheR</code>
+package supports three data structures, including <a href="https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html" class="external-link"><code>SpatialExperiment</code></a>,
+<a href="https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html" class="external-link"><code>SingleCellExperiment</code></a>,
+and <code>data.frame</code> from <code>base</code> R.</p>
+<p>In the following example, we demonstrate the how to use
+<code>escheR</code> with a <a href="https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html" class="external-link"><code>SpatialExperiment</code></a>
+object. Please visit our other tutorials for [TODO: add items and
+list].</p>
 </div>
 <div class="section level2">
 <h2 id="tutorial">Tutorial<a class="anchor" aria-label="anchor" href="#tutorial"></a>
@@ -137,10 +145,6 @@ contains a pre-processed 10x Visium dataset.</p>
 <code>ggplot2</code> is not required.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR" class="external-link">escheR</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'S4Arrays::read_block' by</span></span>
-<span><span class="co">#&gt; 'DelayedArray::read_block' when loading 'SummarizedExperiment'</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'S4Arrays::read_block' by</span></span>
-<span><span class="co">#&gt; 'DelayedArray::read_block' when loading 'HDF5Array'</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/STexampleData" class="external-link">STexampleData</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -201,12 +205,12 @@ color-coded by the total number of cells all
 spots(<code>sum_umi</code>).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"cell_count"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>   <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"cell_count"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SRT_eg_files/figure-html/creat_fill-1.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">p1</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_c</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_c</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="SRT_eg_files/figure-html/creat_fill-2.png" width="700"></p>
 <p>It is okay to use any combination of the <code>add_*</code>
 functions. For example, we want to show the spatial domains of the
@@ -216,11 +220,11 @@ plotted spots are in the outlines of the tissue slice and hence marked
 with dots.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="../reference/add_ground.html">add_ground</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span><span class="op">)</span><span class="op">)</span> <span class="co"># round layer</span></span></code></pre></div>
+<span>   <span class="fu"><a href="../reference/add_ground.html">add_ground</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span><span class="op">)</span><span class="op">)</span> <span class="co"># round layer</span></span></code></pre></div>
 <p><img src="SRT_eg_files/figure-html/create_ground-1.png" width="700"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="../reference/add_symbol.html">add_symbol</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span>, size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="co"># Symbol layer</span></span>
+<span>  <span class="fu"><a href="../reference/add_symbol.html">add_symbol</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span>, size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="co"># Symbol layer</span></span>
 <span><span class="co">#&gt; Warning: The shape palette can deal with a maximum of 6 discrete values because</span></span>
 <span><span class="co">#&gt; more than 6 becomes difficult to discriminate; you have 7. Consider</span></span>
 <span><span class="co">#&gt; specifying shapes manually if you must have them.</span></span>
@@ -244,31 +248,66 @@ demonstrate how to change the color for the ground layer (
 <code>add_ground</code>) using <code>scale_color_manual</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">p2</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span></span>
-<span>        name <span class="op">=</span> <span class="st">""</span>, <span class="co"># No legend name</span></span>
-<span>        values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>          <span class="st">"Layer1"</span> <span class="op">=</span> <span class="st">"#F0027F"</span>,</span>
-<span>          <span class="st">"Layer2"</span> <span class="op">=</span> <span class="st">"#377EB8"</span>,</span>
-<span>          <span class="st">"Layer3"</span> <span class="op">=</span> <span class="st">"#4DAF4A"</span>,</span>
-<span>          <span class="st">"Layer4"</span> <span class="op">=</span> <span class="st">"#984EA3"</span>,</span>
-<span>          <span class="st">"Layer5"</span> <span class="op">=</span> <span class="st">"#FFD700"</span>,</span>
-<span>          <span class="st">"Layer6"</span> <span class="op">=</span> <span class="st">"#FF7F00"</span>,</span>
-<span>          <span class="st">"WM"</span> <span class="op">=</span> <span class="st">"#1A1A1A"</span>,</span>
-<span>          <span class="st">"NA"</span> <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Example Title"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SRT_eg_files/figure-html/customize-1.png" width="700"></p>
+<span><span class="va">p_final</span> <span class="op">&lt;-</span> <span class="va">p2</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span></span>
+<span>    name <span class="op">=</span> <span class="st">""</span>, <span class="co"># No legend name</span></span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"Layer1"</span> <span class="op">=</span> <span class="st">"#F0027F"</span>,</span>
+<span>      <span class="st">"Layer2"</span> <span class="op">=</span> <span class="st">"#377EB8"</span>,</span>
+<span>      <span class="st">"Layer3"</span> <span class="op">=</span> <span class="st">"#4DAF4A"</span>,</span>
+<span>      <span class="st">"Layer4"</span> <span class="op">=</span> <span class="st">"#984EA3"</span>,</span>
+<span>      <span class="st">"Layer5"</span> <span class="op">=</span> <span class="st">"#FFD700"</span>,</span>
+<span>      <span class="st">"Layer6"</span> <span class="op">=</span> <span class="st">"#FF7F00"</span>,</span>
+<span>      <span class="st">"WM"</span> <span class="op">=</span> <span class="st">"#1A1A1A"</span>,</span>
+<span>      <span class="st">"NA"</span> <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Example Title"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="plot-multiple-samples">Plot Multiple Samples<a class="anchor" aria-label="anchor" href="#plot-multiple-samples"></a>
+</h3>
+<p>By design, <code>make_escheR</code> operates on only one sample. In
+order to create a figure compiling the spatial plots for multiple
+samples, individual plots are required via a series of calls to
+<code>make_escheR</code>, possibly via a <code>for</code> loop or an
+iterator function (e.g. <code>lapply</code>).</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create a list of `escheR` plots</span></span>
+<span><span class="va">plot_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">sample_id</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Create a list of sample names</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span>FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">.sample_id</span><span class="op">)</span><span class="op">{</span> <span class="co"># Iterate over all samples</span></span>
+<span>    <span class="va">spe_single</span> <span class="op">&lt;-</span> <span class="va">spe</span><span class="op">[</span>, <span class="va">spe</span><span class="op">$</span><span class="va">sample_id</span> <span class="op">==</span> <span class="va">.sample_id</span><span class="op">]</span></span>
+<span>    <span class="fu"><a href="../reference/make_escheR.html">make_escheR</a></span><span class="op">(</span><span class="va">spe_single</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>      <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"layer_guess"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>      <span class="fu"><a href="../reference/add_ground.html">add_ground</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"Maynard"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>      <span class="co"># Customize theme</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_reverse</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<p>Given all plots made for individual samples are stored in a preferred
+data structure (e.g. a <code>list</code>), one can use many functions,
+e.g. <a href="https://wilkelab.org/cowplot/articles/plot_grid.html" class="external-link"><code>cowplot::plot_grid</code></a>,
+<a href="https://patchwork.data-imaginist.com/index.html" class="external-link"><code>patchwork</code></a>,
+to compile and arrange individual plots to a paneled figure. The
+following example uses <a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link"><code>ggpubr::ggarrange</code></a>
+to create a figure from a list of <code>escheR</code> plots.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/" class="external-link">ggpubr</a></span><span class="op">)</span></span>
+<span><span class="va">plot_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">p_final</span>, <span class="va">p_final</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span></span>
+<span>  plotlist <span class="op">=</span> <span class="va">plot_list</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">2</span>, nrow <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  common.legend <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p><img src="SRT_eg_files/figure-html/paneling-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.3.0 (2023-04-21)</span></span>
+<span><span class="co">#&gt; R version 4.3.1 (2023-06-16)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 22.04.2 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.3 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -290,72 +329,76 @@ demonstrate how to change the color for the ground layer (
 <span><span class="co">#&gt; [8] base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] STexampleData_1.8.0         SpatialExperiment_1.10.0   </span></span>
-<span><span class="co">#&gt;  [3] SingleCellExperiment_1.22.0 SummarizedExperiment_1.30.1</span></span>
-<span><span class="co">#&gt;  [5] Biobase_2.60.0              GenomicRanges_1.52.0       </span></span>
-<span><span class="co">#&gt;  [7] GenomeInfoDb_1.36.0         IRanges_2.34.0             </span></span>
-<span><span class="co">#&gt;  [9] S4Vectors_0.38.1            MatrixGenerics_1.12.0      </span></span>
-<span><span class="co">#&gt; [11] matrixStats_0.63.0          ExperimentHub_2.8.0        </span></span>
-<span><span class="co">#&gt; [13] AnnotationHub_3.8.0         BiocFileCache_2.8.0        </span></span>
-<span><span class="co">#&gt; [15] dbplyr_2.3.2                BiocGenerics_0.46.0        </span></span>
-<span><span class="co">#&gt; [17] escheR_1.1.1                ggplot2_3.4.2              </span></span>
-<span><span class="co">#&gt; [19] BiocStyle_2.28.0           </span></span>
+<span><span class="co">#&gt;  [1] ggpubr_0.6.0                STexampleData_1.8.0        </span></span>
+<span><span class="co">#&gt;  [3] SpatialExperiment_1.10.0    SingleCellExperiment_1.22.0</span></span>
+<span><span class="co">#&gt;  [5] SummarizedExperiment_1.30.2 Biobase_2.60.0             </span></span>
+<span><span class="co">#&gt;  [7] GenomicRanges_1.52.0        GenomeInfoDb_1.36.3        </span></span>
+<span><span class="co">#&gt;  [9] IRanges_2.34.1              S4Vectors_0.38.1           </span></span>
+<span><span class="co">#&gt; [11] MatrixGenerics_1.12.3       matrixStats_1.0.0          </span></span>
+<span><span class="co">#&gt; [13] ExperimentHub_2.8.1         AnnotationHub_3.8.0        </span></span>
+<span><span class="co">#&gt; [15] BiocFileCache_2.8.0         dbplyr_2.3.3               </span></span>
+<span><span class="co">#&gt; [17] BiocGenerics_0.46.0         escheR_1.2.0               </span></span>
+<span><span class="co">#&gt; [19] ggplot2_3.4.3               BiocStyle_2.28.1           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] DBI_1.1.3                     bitops_1.0-7                 </span></span>
-<span><span class="co">#&gt;   [3] rlang_1.1.1                   magrittr_2.0.3               </span></span>
-<span><span class="co">#&gt;   [5] compiler_4.3.0                RSQLite_2.3.1                </span></span>
-<span><span class="co">#&gt;   [7] DelayedMatrixStats_1.22.0     png_0.1-8                    </span></span>
-<span><span class="co">#&gt;   [9] systemfonts_1.0.4             vctrs_0.6.2                  </span></span>
-<span><span class="co">#&gt;  [11] stringr_1.5.0                 pkgconfig_2.0.3              </span></span>
-<span><span class="co">#&gt;  [13] crayon_1.5.2                  fastmap_1.1.1                </span></span>
-<span><span class="co">#&gt;  [15] ellipsis_0.3.2                magick_2.7.4                 </span></span>
-<span><span class="co">#&gt;  [17] XVector_0.40.0                labeling_0.4.2               </span></span>
-<span><span class="co">#&gt;  [19] scuttle_1.10.1                utf8_1.2.3                   </span></span>
-<span><span class="co">#&gt;  [21] promises_1.2.0.1              rmarkdown_2.21               </span></span>
-<span><span class="co">#&gt;  [23] ragg_1.2.5                    purrr_1.0.1                  </span></span>
-<span><span class="co">#&gt;  [25] bit_4.0.5                     xfun_0.39                    </span></span>
-<span><span class="co">#&gt;  [27] zlibbioc_1.46.0               cachem_1.0.8                 </span></span>
-<span><span class="co">#&gt;  [29] beachmat_2.16.0               jsonlite_1.8.4               </span></span>
-<span><span class="co">#&gt;  [31] blob_1.2.4                    highr_0.10                   </span></span>
-<span><span class="co">#&gt;  [33] later_1.3.1                   rhdf5filters_1.12.1          </span></span>
-<span><span class="co">#&gt;  [35] DelayedArray_0.26.2           interactiveDisplayBase_1.38.0</span></span>
-<span><span class="co">#&gt;  [37] Rhdf5lib_1.22.0               BiocParallel_1.34.1          </span></span>
-<span><span class="co">#&gt;  [39] parallel_4.3.0                R6_2.5.1                     </span></span>
-<span><span class="co">#&gt;  [41] bslib_0.4.2                   stringi_1.7.12               </span></span>
-<span><span class="co">#&gt;  [43] limma_3.56.1                  jquerylib_0.1.4              </span></span>
-<span><span class="co">#&gt;  [45] Rcpp_1.0.10                   bookdown_0.34                </span></span>
-<span><span class="co">#&gt;  [47] knitr_1.42                    R.utils_2.12.2               </span></span>
-<span><span class="co">#&gt;  [49] httpuv_1.6.11                 Matrix_1.5-4                 </span></span>
-<span><span class="co">#&gt;  [51] tidyselect_1.2.0              yaml_2.3.7                   </span></span>
-<span><span class="co">#&gt;  [53] codetools_0.2-19              curl_5.0.0                   </span></span>
-<span><span class="co">#&gt;  [55] lattice_0.21-8                tibble_3.2.1                 </span></span>
-<span><span class="co">#&gt;  [57] KEGGREST_1.40.0               shiny_1.7.4                  </span></span>
-<span><span class="co">#&gt;  [59] withr_2.5.0                   evaluate_0.21                </span></span>
-<span><span class="co">#&gt;  [61] desc_1.4.2                    Biostrings_2.68.0            </span></span>
-<span><span class="co">#&gt;  [63] pillar_1.9.0                  BiocManager_1.30.20          </span></span>
-<span><span class="co">#&gt;  [65] filelock_1.0.2                generics_0.1.3               </span></span>
-<span><span class="co">#&gt;  [67] rprojroot_2.0.3               RCurl_1.98-1.12              </span></span>
-<span><span class="co">#&gt;  [69] BiocVersion_3.17.1            sparseMatrixStats_1.12.0     </span></span>
-<span><span class="co">#&gt;  [71] munsell_0.5.0                 scales_1.2.1                 </span></span>
-<span><span class="co">#&gt;  [73] xtable_1.8-4                  glue_1.6.2                   </span></span>
-<span><span class="co">#&gt;  [75] tools_4.3.0                   locfit_1.5-9.7               </span></span>
-<span><span class="co">#&gt;  [77] fs_1.6.2                      rhdf5_2.44.0                 </span></span>
-<span><span class="co">#&gt;  [79] grid_4.3.0                    AnnotationDbi_1.62.1         </span></span>
-<span><span class="co">#&gt;  [81] DropletUtils_1.20.0           edgeR_3.42.2                 </span></span>
-<span><span class="co">#&gt;  [83] colorspace_2.1-0              GenomeInfoDbData_1.2.10      </span></span>
-<span><span class="co">#&gt;  [85] HDF5Array_1.28.1              cli_3.6.1                    </span></span>
-<span><span class="co">#&gt;  [87] rappdirs_0.3.3                textshaping_0.3.6            </span></span>
-<span><span class="co">#&gt;  [89] fansi_1.0.4                   viridisLite_0.4.2            </span></span>
-<span><span class="co">#&gt;  [91] S4Arrays_1.0.4                dplyr_1.1.2                  </span></span>
-<span><span class="co">#&gt;  [93] gtable_0.3.3                  R.methodsS3_1.8.2            </span></span>
-<span><span class="co">#&gt;  [95] sass_0.4.6                    digest_0.6.31                </span></span>
-<span><span class="co">#&gt;  [97] dqrng_0.3.0                   farver_2.1.1                 </span></span>
-<span><span class="co">#&gt;  [99] rjson_0.2.21                  memoise_2.0.1                </span></span>
-<span><span class="co">#&gt; [101] htmltools_0.5.5               pkgdown_2.0.7                </span></span>
-<span><span class="co">#&gt; [103] R.oo_1.25.0                   lifecycle_1.0.3              </span></span>
-<span><span class="co">#&gt; [105] httr_1.4.6                    mime_0.12                    </span></span>
-<span><span class="co">#&gt; [107] bit64_4.0.5</span></span></code></pre></div>
+<span><span class="co">#&gt;   [1] jsonlite_1.8.7                magrittr_2.0.3               </span></span>
+<span><span class="co">#&gt;   [3] magick_2.7.5                  farver_2.1.1                 </span></span>
+<span><span class="co">#&gt;   [5] rmarkdown_2.25                fs_1.6.3                     </span></span>
+<span><span class="co">#&gt;   [7] zlibbioc_1.46.0               ragg_1.2.5                   </span></span>
+<span><span class="co">#&gt;   [9] vctrs_0.6.3                   memoise_2.0.1                </span></span>
+<span><span class="co">#&gt;  [11] DelayedMatrixStats_1.22.6     RCurl_1.98-1.12              </span></span>
+<span><span class="co">#&gt;  [13] rstatix_0.7.2                 htmltools_0.5.6              </span></span>
+<span><span class="co">#&gt;  [15] S4Arrays_1.0.6                curl_5.0.2                   </span></span>
+<span><span class="co">#&gt;  [17] broom_1.0.5                   Rhdf5lib_1.22.1              </span></span>
+<span><span class="co">#&gt;  [19] rhdf5_2.44.0                  sass_0.4.7                   </span></span>
+<span><span class="co">#&gt;  [21] bslib_0.5.1                   desc_1.4.2                   </span></span>
+<span><span class="co">#&gt;  [23] cachem_1.0.8                  mime_0.12                    </span></span>
+<span><span class="co">#&gt;  [25] lifecycle_1.0.3               pkgconfig_2.0.3              </span></span>
+<span><span class="co">#&gt;  [27] Matrix_1.6-1.1                R6_2.5.1                     </span></span>
+<span><span class="co">#&gt;  [29] fastmap_1.1.1                 GenomeInfoDbData_1.2.10      </span></span>
+<span><span class="co">#&gt;  [31] shiny_1.7.5                   digest_0.6.33                </span></span>
+<span><span class="co">#&gt;  [33] colorspace_2.1-0              AnnotationDbi_1.62.2         </span></span>
+<span><span class="co">#&gt;  [35] rprojroot_2.0.3               dqrng_0.3.1                  </span></span>
+<span><span class="co">#&gt;  [37] textshaping_0.3.6             RSQLite_2.3.1                </span></span>
+<span><span class="co">#&gt;  [39] beachmat_2.16.0               filelock_1.0.2               </span></span>
+<span><span class="co">#&gt;  [41] labeling_0.4.3                fansi_1.0.4                  </span></span>
+<span><span class="co">#&gt;  [43] httr_1.4.7                    abind_1.4-5                  </span></span>
+<span><span class="co">#&gt;  [45] compiler_4.3.1                bit64_4.0.5                  </span></span>
+<span><span class="co">#&gt;  [47] withr_2.5.0                   backports_1.4.1              </span></span>
+<span><span class="co">#&gt;  [49] BiocParallel_1.34.2           carData_3.0-5                </span></span>
+<span><span class="co">#&gt;  [51] DBI_1.1.3                     HDF5Array_1.28.1             </span></span>
+<span><span class="co">#&gt;  [53] R.utils_2.12.2                ggsignif_0.6.4               </span></span>
+<span><span class="co">#&gt;  [55] rappdirs_0.3.3                DelayedArray_0.26.7          </span></span>
+<span><span class="co">#&gt;  [57] rjson_0.2.21                  tools_4.3.1                  </span></span>
+<span><span class="co">#&gt;  [59] interactiveDisplayBase_1.38.0 httpuv_1.6.11                </span></span>
+<span><span class="co">#&gt;  [61] R.oo_1.25.0                   glue_1.6.2                   </span></span>
+<span><span class="co">#&gt;  [63] rhdf5filters_1.12.1           promises_1.2.1               </span></span>
+<span><span class="co">#&gt;  [65] grid_4.3.1                    generics_0.1.3               </span></span>
+<span><span class="co">#&gt;  [67] gtable_0.3.4                  R.methodsS3_1.8.2            </span></span>
+<span><span class="co">#&gt;  [69] tidyr_1.3.0                   car_3.1-2                    </span></span>
+<span><span class="co">#&gt;  [71] utf8_1.2.3                    XVector_0.40.0               </span></span>
+<span><span class="co">#&gt;  [73] BiocVersion_3.17.1            pillar_1.9.0                 </span></span>
+<span><span class="co">#&gt;  [75] stringr_1.5.0                 limma_3.56.2                 </span></span>
+<span><span class="co">#&gt;  [77] later_1.3.1                   dplyr_1.1.3                  </span></span>
+<span><span class="co">#&gt;  [79] lattice_0.21-8                bit_4.0.5                    </span></span>
+<span><span class="co">#&gt;  [81] tidyselect_1.2.0              locfit_1.5-9.8               </span></span>
+<span><span class="co">#&gt;  [83] Biostrings_2.68.1             scuttle_1.10.2               </span></span>
+<span><span class="co">#&gt;  [85] knitr_1.44                    gridExtra_2.3                </span></span>
+<span><span class="co">#&gt;  [87] bookdown_0.35                 edgeR_3.42.4                 </span></span>
+<span><span class="co">#&gt;  [89] xfun_0.40                     DropletUtils_1.20.0          </span></span>
+<span><span class="co">#&gt;  [91] stringi_1.7.12                yaml_2.3.7                   </span></span>
+<span><span class="co">#&gt;  [93] evaluate_0.21                 codetools_0.2-19             </span></span>
+<span><span class="co">#&gt;  [95] tibble_3.2.1                  BiocManager_1.30.22          </span></span>
+<span><span class="co">#&gt;  [97] cli_3.6.1                     xtable_1.8-4                 </span></span>
+<span><span class="co">#&gt;  [99] systemfonts_1.0.4             munsell_0.5.0                </span></span>
+<span><span class="co">#&gt; [101] jquerylib_0.1.4               Rcpp_1.0.11                  </span></span>
+<span><span class="co">#&gt; [103] png_0.1-8                     parallel_4.3.1               </span></span>
+<span><span class="co">#&gt; [105] ellipsis_0.3.2                pkgdown_2.0.7                </span></span>
+<span><span class="co">#&gt; [107] blob_1.2.4                    sparseMatrixStats_1.12.2     </span></span>
+<span><span class="co">#&gt; [109] bitops_1.0-7                  viridisLite_0.4.2            </span></span>
+<span><span class="co">#&gt; [111] scales_1.2.1                  purrr_1.0.2                  </span></span>
+<span><span class="co">#&gt; [113] crayon_1.5.2                  rlang_1.1.1                  </span></span>
+<span><span class="co">#&gt; [115] cowplot_1.1.1                 KEGGREST_1.40.0</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
