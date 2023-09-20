@@ -273,7 +273,7 @@ make_escheR.data.frame <- function(
     ...){
 
   d <- cbind(
-    d,
+    object,
     `.x` = .x,
     `.y` = .y
   )
