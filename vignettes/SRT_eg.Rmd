@@ -58,7 +58,7 @@ Starting from Version 1.2.0 [TODO: add link], `escheR` package supports three da
 
 In the following example, we demonstrate the how to use `escheR` with a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) object. Please visit our other tutorials for [TODO: add items and list]. 
 
-# Tutorial
+# Making escheR Plot
 ## Load Packages
 
 To run the demonstration, there are two necessary packages to load, `escheR` and `STexampleData`. [`STexampleData`](https://bioconductor.org/packages/STexampleData) contains a pre-processed 10x Visium dataset.
@@ -86,7 +86,7 @@ Here is a summary of the `SpatialExperiment` object called `spe`.
 spe
 ```
 
-## Setting up for escheR plot
+## Set up an `escheR` plot
 Similar to `ggplot2::ggplot()`, we first use the function `make_escheR()` to create an empty plot. The input of `make_escheR()` is a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) object. The output of the function is a `ggplot` object with no layer in it. 
 ```{r create_plot}
 p <- make_escheR(spe)
@@ -120,6 +120,8 @@ p2 |>
 
 It is okay to change the ordering of these `add_*` functions. However, we advise to always have the `add_fill` as the first step to achieve the best visual effect due to the laying mechanism. 
 
+
+# Customize escheR Plot
 ## Adjusting aesthetics
 
 To change the aesthetics of each layer, one can simply use the `scale_*` from `ggplot2` to optimize the final visual presentation. For example, to optimize `add_fill`, one can use `scale_fill_*`; to optimize `add_ground`, one can use `scale_color_*`; to optimize `add_sumbol`, one use `scale_shape_*`. Here, we demonstrate how to change the color for the ground layer ( `add_ground`) using `scale_color_manual`.
@@ -142,7 +144,31 @@ p_final <- p2 +
   labs(title = "Example Title")
 ```
 
-## Plot Multiple Samples
+
+## Show a subset of levels
+The easiest way to show only a subset of levels of a categorical variable is to
+create a new variable where all the unwanted levels will be set to NA values.
+Please see the example below
+
+```{r subset}
+table(spe$ground_truth, useNA = "ifany")
+
+spe$tmp_fac <- factor(spe$ground_truth,
+                      levels = c("Layer1", "Layer2"))
+table(spe$tmp_fac, useNA = "ifany")
+
+make_escheR(spe) |> 
+  add_ground(var = "ground_truth") |> 
+  add_symbol(var = "tmp_fac", size = 0.4) + 
+  scale_shape_manual(
+    values=c(3, 16),    #> Set different symbols for the 2 levels
+    breaks = c("Layer1", "Layer2") #> Remove NA from legend
+  )
+```
+
+
+
+## Multi-sample Figure
 By design, `make_escheR` operates on only one sample. In order to create a figure compiling the spatial plots for multiple samples, individual plots are required via a series of calls to `make_escheR`, possibly via a `for` loop or an iterator function (e.g. `lapply`). 
 
 ```{r make_plot_list, eval = FALSE}
@@ -173,6 +199,18 @@ ggarrange(
   ncol = 2, nrow = 1,
   common.legend = TRUE)
 ```
+
+# Save escheR plot
+The procedure to save `escheR` plots is exactly the same as saving a `ggplot` object.
+In the example below, we use the funciton `ggplot2::ggsave()` to save `escheR` plots in the `pdf` format.
+
+```{r save_escheR, eval = FALSE}
+ggsave(
+  filename = "path/file_name.pdf",
+  plot = p_final
+)
+```
+
 
 # Session information
 
