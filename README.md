@@ -51,25 +51,57 @@ devtools::install_github("boyiguo1/escheR@pre-R4.3")
 Please find an end-to-end tutorial at [https://boyiguo1.github.io/escheR/](https://boyiguo1.github.io/escheR/articles/SRT_eg.html)
 
 ## Syntax
-![](man/figures/escheR_syntax.pdf)
+![](man/figures/syntax.png)
 
 # Frequently Asked Questions
 
 * Can I use `escheR` on `SingleCellExperiment` object?
 
+  Yes. Starting from Version 1.2.0, `escheR` supports the visualization of 
+  dimensionality reduced embeddings of a `SingleCellExperiment` object by
+  providing values to the argument `dimred`. For more information, please see
+  [Beyond Sequence-based Spatially-Resolved Data](https://boyi-guo.com/escheR/articles/more_than_visium.html#visualized-dimensionality-reduced-embedding-with-singlecellexperiment).
+
 * How can I make plots to visualize dimensional reduced embeddings?
 
-* Can I highlight only one group/level of a multi-level categorical variables?
+  Yes, you can provide a string value to the`dimred` argument. The string value
+  should be included in `reducedDimNames(object)`. For more information, please
+  see [Beyond Sequence-based Spatially-Resolved Data](https://boyi-guo.com/escheR/articles/more_than_visium.html#visualized-dimensionality-reduced-embedding-with-singlecellexperiment).
+
+* Can I highlight only a subset of groups/levels for a categorical variables?
+
+  Yes, please find the example in [Adjusting aesthetics](https://boyi-guo.com/escheR/articles/SRT_eg.html#adjusting-aesthetics).
 
 * Can `escheR` be directly applied to `Seurat` or `Giotto` objects?
 
+  Unfortunately, `Seurat` or `Giotto` objects can not be directly pipe into
+  `make_escheR` function. Instead, we provide a generic function that works
+  with a `data.frame` object as input. Please find example via [Beyond Bioconductor Eco-system](https://boyi-guo.com/escheR/articles/more_than_visium.html#beyond-bioconductor-eco-system).
+
 * How can I make a paneled figure containing multiple `escheR` plots?
+
+  You can compile and arrange individual plots by `escheR` via functions, e.g. [`cowplot::plot_grid`](https://wilkelab.org/cowplot/articles/plot_grid.html), [`patchwork`](https://patchwork.data-imaginist.com/index.html). Please find the
+  example via [Plot Multiple Samples](https://boyi-guo.com/escheR/articles/SRT_eg.html#plot-multiple-samples).
 
 * How can I choose color palettes for `add_fill` and `add_ground` to minimize interference?
 
+  Interested user can explore the topic on bivariate color palette. The [blog post](https://jakubnowosad.com/posts/2020-08-25-cbc-bp2/) by Jakub Nowosad and R package [`biscale`](https://cran.r-project.org/web/packages/biscale/vignettes/bivariate_palettes.html) could be helpful.
+
 * Can I apply `escheR` to plot image-based spatially resolved data?
 
+  In principle, `escheR` can be used to visualize image-based spatially-resolved (SR)
+  data. See examples via [Image-based SpatialExperiment Object](https://boyi-guo.com/escheR/articles/more_than_visium.html#image-based-spatialexperiment-object).
+  
+  Nevertheless, we are still optimizing the design principles for image-based SR
+  data due to the difference in throughput compared to the sequence-based
+  spatially resolved data. Optimization for image-based SR data visualization
+  will be the main focus of our upcoming updates. We are open to working with
+  new ideas and seek collaboration.
+
 * Can I plot polygons as each data points to show cell morphology?
+
+  Unfortunately, not now. We acknowledge it would be a very important feature to
+  consider, and we are motivated to implement it in our future updates.
 
 # Citation
 
