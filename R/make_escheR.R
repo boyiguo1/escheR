@@ -32,10 +32,23 @@
 #'
 #' @examples
 #' library(STexampleData)
-#'
+#' # SpatialExperiment Object
 #' spe <- Visium_humanDLPFC()
-#'
 #' make_escheR(spe)
+#'
+#' # SingleCellExperiment Object
+#' sce <- SingleCellExperiment(counts(spe))
+#' reducedDims(sce) <- list(
+#'    # Example embedding
+#'     EG = matrix(seq.int(1, ncol(spe)*2), ncol = 2)
+#'     )
+#' make_escheR(sce, dimred = "EG")
+#'
+#' # data.frame Object
+#' x <- spatialCoords(spe)[,1]
+#' y <- spatialCoords(spe)[,2]
+#' df <- colData(spe) |> data.frame()
+#' make_escheR(object = df, .x = x , .y = y)
 make_escheR <- function(object, spot_size = 2, ...) {
   UseMethod("make_escheR", object)
 }
@@ -80,8 +93,8 @@ make_escheR.SingleCellExperiment <- function(
          " is not found in reducedDim(object).")
 
 
-  if(ncol(reducedDim(sce, dimred)) <= 2)
-    stop("reducedDim(object, ", dimred, " ) must have more than 2 columns.")
+  if(ncol(reducedDim(sce, dimred)) < 2)
+    stop("reducedDim(object, ", dimred, " ) must have at least 2 columns.")
 
   # TODO (Medium): How about dimension reduction assays?
   coord_df <- reducedDim(sce, dimred)[ , c(1,2), drop = FALSE]
@@ -135,14 +148,11 @@ make_escheR.SpatialExperiment <- function(
     object,
     spot_size = 2,
     dimred=NULL,
-    # assay_name = "counts",
     y_reverse = TRUE,
     ...) {
 
 
-  # TODO (must): To plot low dimension embeddings
   if(!is.null(dimred)){
-    # TODO (must): does it work? Test it via low dimensional embeddings vignettes
     return(
       make_escheR.SingleCellExperiment(
         object = object,
@@ -230,7 +240,7 @@ make_escheR.SpatialExperiment <- function(
     # TODO (medium): maybe move the theme to an outside function
     xlab("") +
     ylab("") #+
-    # coord_fixed() +
+    coord_fixed()
     # theme_void() #+
   # theme_set(theme_bw(base_size = 20)) +
   # theme(
@@ -249,9 +259,9 @@ make_escheR.SpatialExperiment <- function(
   # Inspiration from
   # https://github.com/lmweber/ggspavis/blob/004e1528829641cd2112e4264bb7fb708316c0e5/R/plotSpots.R#L102
   # This could move out of the function to the cotumization part I think.
-  # if(y_reverse){
-  #   p <- p + scale_y_reverse()
-  # }
+  if(y_reverse){
+    p <- p + scale_y_reverse()
+  }
 
 
 
@@ -287,11 +297,8 @@ make_escheR.data.frame <- function(
         y = .data$.y
       )
     ) +
-    # TODO (medium): maybe move the theme to an outside function
     xlab("") +
-    ylab("")# +
-    # coord_fixed() +
-    # theme_void() #+
+    ylab("")
 
 }
 
