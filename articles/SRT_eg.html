@@ -42,7 +42,6 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/SRT_eg.html">Getting Started with `escheR`</a>
-    <a class="dropdown-item" href="../articles/customize_color_and_theme.html">customize_theme</a>
     <a class="dropdown-item" href="../articles/more_than_visium.html">Beyond Sequence-based Spatially-Resolved Data</a>
   </div>
 </li>
@@ -132,7 +131,7 @@ object. Please visit our other tutorials for [TODO: add items and
 list].</p>
 </div>
 <div class="section level2">
-<h2 id="tutorial">Tutorial<a class="anchor" aria-label="anchor" href="#tutorial"></a>
+<h2 id="making-escher-plot">Making escheR Plot<a class="anchor" aria-label="anchor" href="#making-escher-plot"></a>
 </h2>
 <div class="section level3">
 <h3 id="load-packages">Load Packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
@@ -179,7 +178,7 @@ please see the vignettes of <a href="https://bioconductor.org/packages/release/d
 <span><span class="co">#&gt; imgData names(4): sample_id image_id data scaleFactor</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="setting-up-for-escher-plot">Setting up for escheR plot<a class="anchor" aria-label="anchor" href="#setting-up-for-escher-plot"></a>
+<h3 id="set-up-an-escher-plot">Set up an <code>escheR</code> plot<a class="anchor" aria-label="anchor" href="#set-up-an-escher-plot"></a>
 </h3>
 <p>Similar to <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot2::ggplot()</a></code>, we first use the function
 <code><a href="../reference/make_escheR.html">make_escheR()</a></code> to create an empty plot. The input of
@@ -235,6 +234,10 @@ functions. However, we advise to always have the <code>add_fill</code>
 as the first step to achieve the best visual effect due to the laying
 mechanism.</p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="customize-escher-plot">Customize escheR Plot<a class="anchor" aria-label="anchor" href="#customize-escher-plot"></a>
+</h2>
 <div class="section level3">
 <h3 id="adjusting-aesthetics">Adjusting aesthetics<a class="anchor" aria-label="anchor" href="#adjusting-aesthetics"></a>
 </h3>
@@ -264,14 +267,43 @@ demonstrate how to change the color for the ground layer (
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Example Title"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="plot-multiple-samples">Plot Multiple Samples<a class="anchor" aria-label="anchor" href="#plot-multiple-samples"></a>
+<h3 id="show-a-subset-of-levels">Show a subset of levels<a class="anchor" aria-label="anchor" href="#show-a-subset-of-levels"></a>
+</h3>
+<p>The easiest way to show only a subset of levels of a categorical
+variable is to create a new variable where all the unwanted levels will
+be set to NA values. Please see the example below</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">ground_truth</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Layer1 Layer2 Layer3 Layer4 Layer5 Layer6     WM   &lt;NA&gt; </span></span>
+<span><span class="co">#&gt;    273    253    989    218    673    692    513     28</span></span>
+<span></span>
+<span><span class="va">spe</span><span class="op">$</span><span class="va">tmp_fac</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">ground_truth</span>,</span>
+<span>                      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Layer1"</span>, <span class="st">"Layer2"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">tmp_fac</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Layer1 Layer2   &lt;NA&gt; </span></span>
+<span><span class="co">#&gt;    273    253   3113</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/make_escheR.html">make_escheR</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/add_ground.html">add_ground</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="../reference/add_symbol.html">add_symbol</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"tmp_fac"</span>, size <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_shape_manual</a></span><span class="op">(</span></span>
+<span>    values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">16</span><span class="op">)</span>,    <span class="co">#&gt; Set different symbols for the 2 levels</span></span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Layer1"</span>, <span class="st">"Layer2"</span><span class="op">)</span> <span class="co">#&gt; Remove NA from legend</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 3113 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
+<p><img src="SRT_eg_files/figure-html/subset-1.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="multi-sample-figure">Multi-sample Figure<a class="anchor" aria-label="anchor" href="#multi-sample-figure"></a>
 </h3>
 <p>By design, <code>make_escheR</code> operates on only one sample. In
 order to create a figure compiling the spatial plots for multiple
 samples, individual plots are required via a series of calls to
 <code>make_escheR</code>, possibly via a <code>for</code> loop or an
 iterator function (e.g. <code>lapply</code>).</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create a list of `escheR` plots</span></span>
 <span><span class="va">plot_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">sample_id</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Create a list of sample names</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span>FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">.sample_id</span><span class="op">)</span><span class="op">{</span> <span class="co"># Iterate over all samples</span></span>
@@ -290,7 +322,7 @@ e.g. <a href="https://wilkelab.org/cowplot/articles/plot_grid.html" class="exte
 to compile and arrange individual plots to a paneled figure. The
 following example uses <a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link"><code>ggpubr::ggarrange</code></a>
 to create a figure from a list of <code>escheR</code> plots.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/" class="external-link">ggpubr</a></span><span class="op">)</span></span>
 <span><span class="va">plot_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">p_final</span>, <span class="va">p_final</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html" class="external-link">ggarrange</a></span><span class="op">(</span></span>
@@ -301,9 +333,22 @@ to create a figure from a list of <code>escheR</code> plots.</p>
 </div>
 </div>
 <div class="section level2">
+<h2 id="save-escher-plot">Save escheR plot<a class="anchor" aria-label="anchor" href="#save-escher-plot"></a>
+</h2>
+<p>The procedure to save <code>escheR</code> plots is exactly the same
+as saving a <code>ggplot</code> object. In the example below, we use the
+funciton <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggplot2::ggsave()</a></code> to save <code>escheR</code>
+plots in the <code>pdf</code> format.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span></span>
+<span>  filename <span class="op">=</span> <span class="st">"path/file_name.pdf"</span>,</span>
+<span>  plot <span class="op">=</span> <span class="va">p_final</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
 </h2>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.3.1 (2023-06-16)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>

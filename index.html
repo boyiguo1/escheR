@@ -64,7 +64,6 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="articles/SRT_eg.html">Getting Started with `escheR`</a>
-    <a class="dropdown-item" href="articles/customize_color_and_theme.html">customize_theme</a>
     <a class="dropdown-item" href="articles/more_than_visium.html">Beyond Sequence-based Spatially-Resolved Data</a>
   </div>
 </li>
@@ -121,21 +120,46 @@
 <div class="section level2">
 <h2 id="syntax">Syntax<a class="anchor" aria-label="anchor" href="#syntax"></a>
 </h2>
-<p><embed src="man/figures/escheR_syntax.pdf"></embed></p>
+<p><img src="reference/figures/syntax.png"></p>
 </div>
 </div>
 <div class="section level1">
 <h1 id="frequently-asked-questions">Frequently Asked Questions<a class="anchor" aria-label="anchor" href="#frequently-asked-questions"></a>
 </h1>
 <ul>
-<li><p>Can I use <code>escheR</code> on <code>SingleCellExperiment</code> object?</p></li>
-<li><p>How can I make plots to visualize dimensional reduced embeddings?</p></li>
-<li><p>Can I highlight only one group/level of a multi-level categorical variables?</p></li>
-<li><p>Can <code>escheR</code> be directly applied to <code>Seurat</code> or <code>Giotto</code> objects?</p></li>
-<li><p>How can I make a paneled figure containing multiple <code>escheR</code> plots?</p></li>
-<li><p>How can I choose color palettes for <code>add_fill</code> and <code>add_ground</code> to minimize interference?</p></li>
-<li><p>Can I apply <code>escheR</code> to plot image-based spatially resolved data?</p></li>
-<li><p>Can I plot polygons as each data points to show cell morphology?</p></li>
+<li>
+<p>Can I use <code>escheR</code> on <code>SingleCellExperiment</code> object?</p>
+<p>Yes. Starting from Version 1.2.0, <code>escheR</code> supports the visualization of dimensionality reduced embeddings of a <code>SingleCellExperiment</code> object by providing values to the argument <code>dimred</code>. For more information, please see <a href="https://boyi-guo.com/escheR/articles/more_than_visium.html#visualized-dimensionality-reduced-embedding-with-singlecellexperiment" class="external-link">Beyond Sequence-based Spatially-Resolved Data</a>.</p>
+</li>
+<li>
+<p>How can I make plots to visualize dimensional reduced embeddings?</p>
+<p>Yes, you can provide a string value to the<code>dimred</code> argument. The string value should be included in <code>reducedDimNames(object)</code>. For more information, please see <a href="https://boyi-guo.com/escheR/articles/more_than_visium.html#visualized-dimensionality-reduced-embedding-with-singlecellexperiment" class="external-link">Beyond Sequence-based Spatially-Resolved Data</a>.</p>
+</li>
+<li>
+<p>Can I highlight only a subset of groups/levels for a categorical variables?</p>
+<p>Yes, please find the example in <a href="https://boyi-guo.com/escheR/articles/SRT_eg.html#adjusting-aesthetics" class="external-link">Adjusting aesthetics</a>.</p>
+</li>
+<li>
+<p>Can <code>escheR</code> be directly applied to <code>Seurat</code> or <code>Giotto</code> objects?</p>
+<p>Unfortunately, <code>Seurat</code> or <code>Giotto</code> objects can not be directly pipe into <code>make_escheR</code> function. Instead, we provide a generic function that works with a <code>data.frame</code> object as input. Please find example via <a href="https://boyi-guo.com/escheR/articles/more_than_visium.html#beyond-bioconductor-eco-system" class="external-link">Beyond Bioconductor Eco-system</a>.</p>
+</li>
+<li>
+<p>How can I make a paneled figure containing multiple <code>escheR</code> plots?</p>
+<p>You can compile and arrange individual plots by <code>escheR</code> via functions, e.g. <a href="https://wilkelab.org/cowplot/articles/plot_grid.html" class="external-link"><code>cowplot::plot_grid</code></a>, <a href="https://patchwork.data-imaginist.com/index.html" class="external-link"><code>patchwork</code></a>. Please find the example via <a href="https://boyi-guo.com/escheR/articles/SRT_eg.html#plot-multiple-samples" class="external-link">Plot Multiple Samples</a>.</p>
+</li>
+<li>
+<p>How can I choose color palettes for <code>add_fill</code> and <code>add_ground</code> to minimize interference?</p>
+<p>Interested user can explore the topic on bivariate color palette. The <a href="https://jakubnowosad.com/posts/2020-08-25-cbc-bp2/" class="external-link">blog post</a> by Jakub Nowosad and R package <a href="https://cran.r-project.org/web/packages/biscale/vignettes/bivariate_palettes.html" class="external-link"><code>biscale</code></a> could be helpful.</p>
+</li>
+<li>
+<p>Can I apply <code>escheR</code> to plot image-based spatially resolved data?</p>
+<p>In principle, <code>escheR</code> can be used to visualize image-based spatially-resolved (SR) data. See examples via <a href="https://boyi-guo.com/escheR/articles/more_than_visium.html#image-based-spatialexperiment-object" class="external-link">Image-based SpatialExperiment Object</a>.</p>
+<p>Nevertheless, we are still optimizing the design principles for image-based SR data due to the difference in throughput compared to the sequence-based spatially resolved data. Optimization for image-based SR data visualization will be the main focus of our upcoming updates. We are open to working with new ideas and seek collaboration.</p>
+</li>
+<li>
+<p>Can I plot polygons as each data points to show cell morphology?</p>
+<p>Unfortunately, not now. We acknowledge it would be a very important feature to consider, and we are motivated to implement it in our future updates.</p>
+</li>
 </ul>
 </div>
 <div class="section level1">
