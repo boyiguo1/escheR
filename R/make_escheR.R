@@ -239,9 +239,10 @@ make_escheR.SpatialExperiment <- function(
     ) +
     # TODO (medium): maybe move the theme to an outside function
     xlab("") +
-    ylab("") #+
-    coord_fixed()
-    # theme_void() #+
+    ylab("") +
+    coord_fixed(ratio = 1) +
+    # Remove random lines and axis in the plot
+    theme_void() #+
   # theme_set(theme_bw(base_size = 20)) +
   # theme(
   #   panel.grid.major = element_blank(),
