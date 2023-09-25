@@ -10,17 +10,14 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
+  message = FALSE,
   comment = "#>"
 )
 ```
 
-```{r setup}
-library(escheR)
-library(STexampleData)
-```
 
-Starting from Version 1.2.0 [TODO: add link], `escheR` package supports additional two data structures as input, including [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) and `data.frame` from `base` R. In addition, `escheR` supports in-situ visualization of image-based spatially resolved data, which will be the focus of future development. 
 
+Starting from Version 1.2.0, `escheR` package supports additional two data structures as input, including [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) and `data.frame` from `base` R. In addition, `escheR` supports in-situ visualization of image-based spatially resolved data, which will be the focus of future development. 
 
 # Visualized Dimensionality Reduced Embedding with `SingleCellExperiment`
 
@@ -28,6 +25,7 @@ Starting from Version 1.2.0 [TODO: add link], `escheR` package supports addition
 Following the same syntax, one can also visualize dimensionality reduced embeddings of a `SpatialExperiment` object by providing the argument `dimred` with a non-null value. Hence, the first 2 columns of the corresponding `reducedDim(spe)` assay will be used as the x-y coordinate of the plot, replacing `spatialCoords(spe)`.
 
 ```{r redDim_spe}
+library(escheR)
 library(STexampleData)
 library(scater)
 library(scran)
@@ -53,6 +51,7 @@ To demonstrate the principle that `escheR` can be used to visualize image-based 
 ## seqFISH
 ```{r im_seqFISH}
 library(STexampleData)
+library(escheR)
 spe_seqFISH <- seqFISH_mouseEmbryo()
 
 make_escheR(spe_seqFISH) |>
@@ -65,6 +64,7 @@ make_escheR(spe_seqFISH) |>
 ## SlideSeqV2
 ```{r im_slideseq}
 library(STexampleData)
+library(escheR)
 spe_slideseq <- SlideSeqV2_mouseHPC()
 
 make_escheR(spe_slideseq) |>
@@ -77,6 +77,7 @@ We aim to provide accessibility to all users regardless of their programming bac
 Instead, we provide a generic function that works with a `data.frame` object as input. For example, relevant features in `Suerat` can be easily exported as a `data.frame` object manually or via `tidyseurat`[https://github.com/stemangiola/tidyseurat]. The exported data frame can be pipe into `escheR`.
 
 ```{r seurat_to_dataframe}
+library(escheR)
 library(Seurat)
 pbmc_small <- SeuratObject::pbmc_small
 pbmc_2pc <- pbmc_small@reductions$pca@cell.embeddings[,1:2]
