@@ -53,7 +53,7 @@ BiocManager::install(version='devel')
 ```
 
 # Input data format
-Starting from Version 1.2.0 [TODO: add link], `escheR` package supports three data structures, including [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html), [`SingleCellExperiment`](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html), and `data.frame` from `base` R.
+Starting from Version 1.2.0, `escheR` package supports three data structures, including [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html), [`SingleCellExperiment`](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html), and `data.frame` from `base` R.
 
 
 In the following example, we demonstrate the how to use `escheR` with a [`SpatialExperiment`](https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html) object. Please visit our other tutorials for [TODO: add items and list]. 
@@ -79,6 +79,7 @@ spe <- Visium_humanDLPFC()
 
 # Subset in-tissue spots
 spe <- spe[, spe$in_tissue == 1]
+spe <- spe[, !is.na(spe$ground_truth)]
 ```
 
 Here is a summary of the `SpatialExperiment` object called `spe`.
@@ -101,9 +102,6 @@ Here we first apply the `add_fill` to add the spots color-coded by the total num
 ```{r creat_fill}
 (p1 <- p |>
    add_fill(var = "cell_count"))
-
-p1 +
-  scale_fill_viridis_c()
 ```
 
 It is okay to use any combination of the `add_*` functions. For example, we want to show the spatial domains of the samples as the ground of the figure and use symbols to denote if each spot is within the outline of the tissue slice. In this example, all plotted spots are in the outlines of the tissue slice and hence marked with dots.
@@ -122,13 +120,88 @@ It is okay to change the ordering of these `add_*` functions. However, we advise
 
 
 # Customize escheR Plot
+## Choosing Color Palette for `add_fill` and `add_ground`
+To maximize the utility of the multi-dimensional plot by applying both color-coded layers using `add_fill()` and `add_ground()`, it is important to choose minimally interfering color-palette for the `fill` and `ground` to avoid visualization confusion. The following demonstration provide some examples for simultaneously visualization of two variables regardless of their types (continuous vs categorical, or categorical vs categorical.)
+
+### Coninuous variable (gene expression) vs Categorical variable (Spatial Domains)
+The following example visualizes the differential gene expression of _MOBP_, a marker gene for white matter, across different spatial domains. The default color palette, `viridis`, are not easily visible with color-coded spatial domains as there are overlapping in the color space, which could lead to possible confusion.
+
+```{r default_con_cat_eg}
+# Prep data
+# Adding gene counts for MBP to the colData
+spe$counts_MOBP <- counts(spe)[which(rowData(spe)$gene_name=="MOBP"),]
+
+(p <- make_escheR(spe) |> 
+    add_fill(var = "counts_MOBP") |> 
+    add_ground(var = "ground_truth", stroke = 0.5))
+```
+
+To improve the visualization, we choose to use a color that is not included in the color palette for `ground_truth`, which is the color _black_. Specifically, we use a color gradient from white (no expression) to black (maximum of gene counts) to represent the expression of MOBP in each spot. By using the white-black color gradient for the gene expression, we minimize the overlapping of the choice of color for spatial domains.
+
+
+```{r improved_con_cat_eg}
+(p2 <- p + 
+   scale_fill_gradient(low = "white", high = "black"))
+```
+
+After customizing the color palettes to be minimally overlapping, it is easier to observe that _MOBP_ has higher raw gene counts in the white matter (`WM`) region than other regions.
+
+### Categorical variable Vs Categorical variable
+In this example, we demonstrate how to optimize color palettes for visualizing two categorical variables. We first create an arbitrary 5-level categorical variable called `tmp_group`, representing different horizontal regions of the tissue section. 
+
+```{r creat_group}
+spe$tmp_group <- cut(
+  spe$array_row, 
+  breaks = c(min(spe$array_row)-1 ,
+             fivenum(spe$array_row))
+)
+
+table(spe$tmp_group)
+```
+
+Following the principle to avoid overlapping of two color palettes, we use gradients of blue for different levels of `tmp_group`. 
+
+```{r cat_cat_eg}
+make_escheR(spe) |> 
+  add_fill(var = "tmp_group") |> 
+  add_ground(var = "ground_truth", stroke = 0.5) +
+  scale_fill_brewer() +
+  theme_void()
+```
+
+Here is another example where we try another manually-curated color-palette. We follow the same principle, minimize overlapping of two color-palettes for ground (`scale_color_manual`) and fill (`scale_fill_brewer`) respectively. Specifically, we use gradients of blue to show `tmp_group` and other colors for spatial domains `ground_truth`.
+```{r cat_cat_eg2}
+make_escheR(spe) |> 
+  add_fill(var = "tmp_group") |> 
+  add_ground(var = "ground_truth", stroke = 0.5) +
+  scale_fill_brewer() +
+  scale_color_manual(
+    name = "", # turn off legend name for ground_truth
+    values = c(
+      "Layer1" = "#F0027F",
+      "Layer2" = "transparent",
+      "Layer3" = "#4DAF4A",
+      "Layer4" = "#984EA3",
+      "Layer5" = "#FFD700",
+      "Layer6" = "#FF7F00",
+      "WM" = "#1A1A1A")
+  ) 
+```
+
+### Guidance in choosing bivariate color palette 
+
+In this vignettes, we don't provide or recommend specific color palettes, because the selection of color palettes is highly relevant to the underlying message and heterogeneous across analysis and studies, e.g. sequential palettes, qualitative palette, and divergent palette. Instead, we direct interested user to explore the topic on _bivariate color palette_. The [blog post](https://jakubnowosad.com/posts/2020-08-25-cbc-bp2/) by Jakub Nowosad and R package [`biscale`](https://cran.r-project.org/web/packages/biscale/vignettes/bivariate_palettes.html) could be helpful to optimize your color palette for bivariate visualization.
+
+
+In addition, if color palette is extremely to curate, e.g. large number of levels, it is possible to use symbols ([`add_symbol()`](##Adding-layers)) to annotate specific levels to avoid clutter in the color space.
+
 ## Adjusting aesthetics
+Given that the `escheR` package is developed based on `ggplot2`, aesthetics can be easily adjusted following the `ggplot2` syntax. For example, given a `escheR` plot object, one can use `+` with `theme_*`, `scale_*` functions.
 
-To change the aesthetics of each layer, one can simply use the `scale_*` from `ggplot2` to optimize the final visual presentation. For example, to optimize `add_fill`, one can use `scale_fill_*`; to optimize `add_ground`, one can use `scale_color_*`; to optimize `add_sumbol`, one use `scale_shape_*`. Here, we demonstrate how to change the color for the ground layer ( `add_ground`) using `scale_color_manual`.
+For example, to change the aesthetics of each layer, one can simply use the `scale_*` from `ggplot2` to optimize the final visual presentation. For example, to optimize `add_fill`, one can use `scale_fill_*`; to optimize `add_ground`, one can use `scale_color_*`; to optimize `add_sumbol`, one use `scale_shape_*`. Here, we demonstrate how to change the color for the ground layer ( `add_ground`) using `scale_color_manual`.
 
-```{r customize}
-
-p_final <- p2 +
+```{r customize, eval = FALSE}
+(p_final <- p2 +
   scale_color_manual(
     name = "", # No legend name
     values = c(
@@ -138,10 +211,9 @@ p_final <- p2 +
       "Layer4" = "#984EA3",
       "Layer5" = "#FFD700",
       "Layer6" = "#FF7F00",
-      "WM" = "#1A1A1A",
-      "NA" = "transparent")
+      "WM" = "#1A1A1A")
   ) +
-  labs(title = "Example Title")
+  labs(title = "Example Title"))
 ```
 
 
@@ -177,11 +249,9 @@ plot_list <- unique(spe$sample_id) |> # Create a list of sample names
   lapply(FUN = function(.sample_id){ # Iterate over all samples
     spe_single <- spe[, spe$sample_id == .sample_id]
     make_escheR(spe_single) |> 
-      add_fill(var = "layer_guess") |> 
-      add_ground(var = "Maynard") + 
-      # Customize theme
-      scale_y_reverse() +
-      coord_fixed()
+      add_fill(var = "counts_MOBP") |> 
+      add_ground(var = "ground_truth", stroke = 0.5))
+# Customize theme
   })
 ```
 
@@ -191,9 +261,9 @@ individual plots to a paneled figure. The following example uses
 [`ggpubr::ggarrange`](https://rpkgs.datanovia.com/ggpubr/reference/ggarrange.html) to create a figure from a list of `escheR` plots.
 
 
-```{r paneling}
+```{r paneling, fig.width=8, fig.height=5}
 library(ggpubr)
-plot_list <- list(p_final, p_final)
+plot_list <- list(p2, p2)
 ggarrange(
   plotlist = plot_list,
   ncol = 2, nrow = 1,
@@ -202,7 +272,7 @@ ggarrange(
 
 # Save escheR plot
 The procedure to save `escheR` plots is exactly the same as saving a `ggplot` object.
-In the example below, we use the funciton `ggplot2::ggsave()` to save `escheR` plots in the `pdf` format.
+In the example below, we use the function `ggplot2::ggsave()` to save `escheR` plots in the `pdf` format.
 
 ```{r save_escheR, eval = FALSE}
 ggsave(
@@ -215,7 +285,7 @@ ggsave(
 # Session information
 
 ```{r}
-sessionInfo()
+utils::sessionInfo()
 ```
 
 
