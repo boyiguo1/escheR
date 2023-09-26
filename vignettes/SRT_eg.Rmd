@@ -20,7 +20,8 @@ knitr::opts_chunk$set(
   comment = "#>",
   # fig.width = 8,
   # fig.height = 8,
-  fig.small = TRUE
+  fig.small = TRUE,
+  fig.retina = NULL
 )
 ```
 

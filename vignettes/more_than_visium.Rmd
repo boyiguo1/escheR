@@ -11,7 +11,8 @@ vignette: >
 knitr::opts_chunk$set(
   collapse = TRUE,
   message = FALSE,
-  comment = "#>"
+  comment = "#>",
+  fig.retina = NULL
 )
 ```
 
@@ -76,7 +77,7 @@ We aim to provide accessibility to all users regardless of their programming bac
 
 Instead, we provide a generic function that works with a `data.frame` object as input. For example, relevant features in `Suerat` can be easily exported as a `data.frame` object manually or via `tidyseurat`[https://github.com/stemangiola/tidyseurat]. The exported data frame can be pipe into `escheR`.
 
-```{r seurat_to_dataframe}
+```{r seurat_to_dataframe, eval = FALSE}
 library(escheR)
 library(Seurat)
 pbmc_small <- SeuratObject::pbmc_small
@@ -91,3 +92,9 @@ make_escheR(
   add_fill(var = "groups")
 ```
 
+
+# Session information
+
+```{r}
+utils::sessionInfo()
+```
