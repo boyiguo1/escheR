@@ -81,87 +81,8 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR" class="external-link">escheR</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: ggplot2</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/STexampleData" class="external-link">STexampleData</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: ExperimentHub</span></span>
-<span><span class="co">#&gt; Loading required package: BiocGenerics</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'BiocGenerics'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     IQR, mad, sd, var, xtabs</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     anyDuplicated, aperm, append, as.data.frame, basename, cbind,</span></span>
-<span><span class="co">#&gt;     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,</span></span>
-<span><span class="co">#&gt;     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,</span></span>
-<span><span class="co">#&gt;     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,</span></span>
-<span><span class="co">#&gt;     Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,</span></span>
-<span><span class="co">#&gt;     table, tapply, union, unique, unsplit, which.max, which.min</span></span>
-<span><span class="co">#&gt; Loading required package: AnnotationHub</span></span>
-<span><span class="co">#&gt; Loading required package: BiocFileCache</span></span>
-<span><span class="co">#&gt; Loading required package: dbplyr</span></span>
-<span><span class="co">#&gt; Loading required package: SpatialExperiment</span></span>
-<span><span class="co">#&gt; Loading required package: SingleCellExperiment</span></span>
-<span><span class="co">#&gt; Loading required package: SummarizedExperiment</span></span>
-<span><span class="co">#&gt; Loading required package: MatrixGenerics</span></span>
-<span><span class="co">#&gt; Loading required package: matrixStats</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'MatrixGenerics'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:matrixStats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,</span></span>
-<span><span class="co">#&gt;     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,</span></span>
-<span><span class="co">#&gt;     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,</span></span>
-<span><span class="co">#&gt;     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,</span></span>
-<span><span class="co">#&gt;     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,</span></span>
-<span><span class="co">#&gt;     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,</span></span>
-<span><span class="co">#&gt;     colWeightedMeans, colWeightedMedians, colWeightedSds,</span></span>
-<span><span class="co">#&gt;     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,</span></span>
-<span><span class="co">#&gt;     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,</span></span>
-<span><span class="co">#&gt;     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,</span></span>
-<span><span class="co">#&gt;     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,</span></span>
-<span><span class="co">#&gt;     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,</span></span>
-<span><span class="co">#&gt;     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,</span></span>
-<span><span class="co">#&gt;     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,</span></span>
-<span><span class="co">#&gt;     rowWeightedSds, rowWeightedVars</span></span>
-<span><span class="co">#&gt; Loading required package: GenomicRanges</span></span>
-<span><span class="co">#&gt; Loading required package: stats4</span></span>
-<span><span class="co">#&gt; Loading required package: S4Vectors</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'S4Vectors'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:utils':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     findMatches</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     expand.grid, I, unname</span></span>
-<span><span class="co">#&gt; Loading required package: IRanges</span></span>
-<span><span class="co">#&gt; Loading required package: GenomeInfoDb</span></span>
-<span><span class="co">#&gt; Loading required package: Biobase</span></span>
-<span><span class="co">#&gt; Welcome to Bioconductor</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Vignettes contain introductory material; view with</span></span>
-<span><span class="co">#&gt;     'browseVignettes()'. To cite Bioconductor, see</span></span>
-<span><span class="co">#&gt;     'citation("Biobase")', and for packages 'citation("pkgname")'.</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'Biobase'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:MatrixGenerics':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     rowMedians</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:matrixStats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     anyMissing, rowMedians</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:ExperimentHub':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     cache</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:AnnotationHub':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     cache</span></span></code></pre></div>
-<p>Starting from Version 1.2.0 [TODO: add link], <code>escheR</code>
-package supports additional two data structures as input, including <a href="https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html" class="external-link"><code>SpatialExperiment</code></a>
+<p>Starting from Version 1.2.0, <code>escheR</code> package supports
+additional two data structures as input, including <a href="https://bioconductor.org/packages/release/bioc/html/SpatialExperiment.html" class="external-link"><code>SpatialExperiment</code></a>
 and <code>data.frame</code> from <code>base</code> R. In addition,
 <code>escheR</code> supports in-situ visualization of image-based
 spatially resolved data, which will be the focus of future
@@ -181,16 +102,14 @@ providing the argument <code>dimred</code> with a non-null value. Hence,
 the first 2 columns of the corresponding <code>reducedDim(spe)</code>
 assay will be used as the x-y coordinate of the plot, replacing
 <code>spatialCoords(spe)</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/STexampleData" class="external-link">STexampleData</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR" class="external-link">escheR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/STexampleData" class="external-link">STexampleData</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://bioconductor.org/packages/scater/" class="external-link">scater</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: scuttle</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">scran</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/STexampleData/man/STexampleData.html" class="external-link">Visium_humanDLPFC</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html" class="external-link">logNormCounts</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; see ?STexampleData and browseVignettes('STexampleData') for documentation</span></span>
-<span><span class="co">#&gt; loading from cache</span></span>
 <span><span class="va">top.gene</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/getTopHVGs.html" class="external-link">getTopHVGs</a></span><span class="op">(</span><span class="va">spe</span>, n<span class="op">=</span><span class="fl">500</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span> <span class="co"># See below.</span></span>
@@ -202,7 +121,7 @@ assay will be used as the x-y coordinate of the plot, replacing
 <span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="more_than_visium_files/figure-html/redDim_spe-1.png" width="700"></p>
+<p><img src="more_than_visium_files/figure-html/redDim_spe-1.png"><!-- --></p>
 </div>
 </div>
 <div class="section level2">
@@ -217,16 +136,14 @@ package</p>
 <div class="section level3">
 <h3 id="seqfish">seqFISH<a class="anchor" aria-label="anchor" href="#seqfish"></a>
 </h3>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/STexampleData" class="external-link">STexampleData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR" class="external-link">escheR</a></span><span class="op">)</span></span>
 <span><span class="va">spe_seqFISH</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/STexampleData/man/STexampleData.html" class="external-link">seqFISH_mouseEmbryo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; see ?STexampleData and browseVignettes('STexampleData') for documentation</span></span>
-<span><span class="co">#&gt; loading from cache</span></span>
-<span><span class="co">#&gt; Loading required package: BumpyMatrix</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/make_escheR.html">make_escheR</a></span><span class="op">(</span><span class="va">spe_seqFISH</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"embryo"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="more_than_visium_files/figure-html/im_seqFISH-1.png" width="700"></p>
+<p><img src="more_than_visium_files/figure-html/im_seqFISH-1.png"><!-- --></p>
 <blockquote>
 <p>NOTE: trimming down the <code>colData(spe)</code> before piping into
 make-escheR could reduce the computation time to make the plots,
@@ -237,15 +154,14 @@ number of irrelavent features/columns.</p>
 <div class="section level3">
 <h3 id="slideseqv2">SlideSeqV2<a class="anchor" aria-label="anchor" href="#slideseqv2"></a>
 </h3>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/STexampleData" class="external-link">STexampleData</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR" class="external-link">escheR</a></span><span class="op">)</span></span>
 <span><span class="va">spe_slideseq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/STexampleData/man/STexampleData.html" class="external-link">SlideSeqV2_mouseHPC</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; see ?STexampleData and browseVignettes('STexampleData') for documentation</span></span>
-<span><span class="co">#&gt; loading from cache</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/make_escheR.html">make_escheR</a></span><span class="op">(</span><span class="va">spe_slideseq</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"celltype"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="more_than_visium_files/figure-html/im_slideseq-1.png" width="700"></p>
+<p><img src="more_than_visium_files/figure-html/im_slideseq-1.png"><!-- --></p>
 </div>
 </div>
 <div class="section level2">
@@ -265,22 +181,9 @@ in <code>Suerat</code> can be easily exported as a
 <code>data.frame</code> object manually or via
 <code>tidyseurat</code>[<a href="https://github.com/stemangiola/tidyseurat" class="external-link uri">https://github.com/stemangiola/tidyseurat</a>]. The exported
 data frame can be pipe into <code>escheR</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://satijalab.org/seurat" class="external-link">Seurat</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,</span></span>
-<span><span class="co">#&gt; which was just loaded, will retire in October 2023.</span></span>
-<span><span class="co">#&gt; Please refer to R-spatial evolution reports for details, especially</span></span>
-<span><span class="co">#&gt; https://r-spatial.org/r/2023/05/15/evolution4.html.</span></span>
-<span><span class="co">#&gt; It may be desirable to make the sf package available;</span></span>
-<span><span class="co">#&gt; package maintainers should consider adding sf to Suggests:.</span></span>
-<span><span class="co">#&gt; The sp package is now running under evolution status 2</span></span>
-<span><span class="co">#&gt;      (status 2 uses the sf package in place of rgdal)</span></span>
-<span><span class="co">#&gt; Attaching SeuratObject</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'Seurat'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:SummarizedExperiment':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Assays</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR" class="external-link">escheR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://satijalab.org/seurat" class="external-link">Seurat</a></span><span class="op">)</span></span>
 <span><span class="va">pbmc_small</span> <span class="op">&lt;-</span> <span class="fu">SeuratObject</span><span class="fu">::</span><span class="va"><a href="https://mojaveazure.github.io/seurat-object/reference/pbmc_small.html" class="external-link">pbmc_small</a></span></span>
 <span><span class="va">pbmc_2pc</span> <span class="op">&lt;-</span> <span class="va">pbmc_small</span><span class="op">@</span><span class="va">reductions</span><span class="op">$</span><span class="va">pca</span><span class="op">@</span><span class="va">cell.embeddings</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span></span>
 <span><span class="va">pbmc_meta</span> <span class="op">&lt;-</span> <span class="va">pbmc_small</span><span class="op">@</span><span class="va">meta.data</span></span>
@@ -291,7 +194,110 @@ data frame can be pipe into <code>escheR</code>.</p>
 <span>  .x <span class="op">=</span> <span class="va">pbmc_2pc</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span>,</span>
 <span>  .y <span class="op">=</span> <span class="va">pbmc_2pc</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/add_fill.html">add_fill</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"groups"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="more_than_visium_files/figure-html/seurat_to_dataframe-1.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="session-information">Session information<a class="anchor" aria-label="anchor" href="#session-information"></a>
+</h2>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.3.1 (2023-06-16)</span></span>
+<span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 22.04.3 LTS</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Matrix products: default</span></span>
+<span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; locale:</span></span>
+<span><span class="co">#&gt;  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
+<span><span class="co">#&gt;  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    </span></span>
+<span><span class="co">#&gt;  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   </span></span>
+<span><span class="co">#&gt;  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 </span></span>
+<span><span class="co">#&gt;  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
+<span><span class="co">#&gt; [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; time zone: UTC</span></span>
+<span><span class="co">#&gt; tzcode source: system (glibc)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; attached base packages:</span></span>
+<span><span class="co">#&gt; [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span></span>
+<span><span class="co">#&gt; [8] base     </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; other attached packages:</span></span>
+<span><span class="co">#&gt;  [1] BumpyMatrix_1.8.0           scran_1.28.2               </span></span>
+<span><span class="co">#&gt;  [3] scater_1.28.0               scuttle_1.10.2             </span></span>
+<span><span class="co">#&gt;  [5] STexampleData_1.8.0         SpatialExperiment_1.10.0   </span></span>
+<span><span class="co">#&gt;  [7] SingleCellExperiment_1.22.0 SummarizedExperiment_1.30.2</span></span>
+<span><span class="co">#&gt;  [9] Biobase_2.60.0              GenomicRanges_1.52.0       </span></span>
+<span><span class="co">#&gt; [11] GenomeInfoDb_1.36.3         IRanges_2.34.1             </span></span>
+<span><span class="co">#&gt; [13] S4Vectors_0.38.2            MatrixGenerics_1.12.3      </span></span>
+<span><span class="co">#&gt; [15] matrixStats_1.0.0           ExperimentHub_2.8.1        </span></span>
+<span><span class="co">#&gt; [17] AnnotationHub_3.8.0         BiocFileCache_2.8.0        </span></span>
+<span><span class="co">#&gt; [19] dbplyr_2.3.3                BiocGenerics_0.46.0        </span></span>
+<span><span class="co">#&gt; [21] escheR_1.2.0                ggplot2_3.4.3              </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span><span class="co">#&gt;   [1] jsonlite_1.8.7                magrittr_2.0.3               </span></span>
+<span><span class="co">#&gt;   [3] ggbeeswarm_0.7.2              magick_2.7.5                 </span></span>
+<span><span class="co">#&gt;   [5] farver_2.1.1                  rmarkdown_2.25               </span></span>
+<span><span class="co">#&gt;   [7] fs_1.6.3                      zlibbioc_1.46.0              </span></span>
+<span><span class="co">#&gt;   [9] ragg_1.2.5                    vctrs_0.6.3                  </span></span>
+<span><span class="co">#&gt;  [11] memoise_2.0.1                 DelayedMatrixStats_1.22.6    </span></span>
+<span><span class="co">#&gt;  [13] RCurl_1.98-1.12               htmltools_0.5.6              </span></span>
+<span><span class="co">#&gt;  [15] S4Arrays_1.0.6                curl_5.0.2                   </span></span>
+<span><span class="co">#&gt;  [17] BiocNeighbors_1.18.0          Rhdf5lib_1.22.1              </span></span>
+<span><span class="co">#&gt;  [19] rhdf5_2.44.0                  sass_0.4.7                   </span></span>
+<span><span class="co">#&gt;  [21] bslib_0.5.1                   desc_1.4.2                   </span></span>
+<span><span class="co">#&gt;  [23] cachem_1.0.8                  igraph_1.5.1                 </span></span>
+<span><span class="co">#&gt;  [25] mime_0.12                     lifecycle_1.0.3              </span></span>
+<span><span class="co">#&gt;  [27] pkgconfig_2.0.3               rsvd_1.0.5                   </span></span>
+<span><span class="co">#&gt;  [29] Matrix_1.6-1.1                R6_2.5.1                     </span></span>
+<span><span class="co">#&gt;  [31] fastmap_1.1.1                 GenomeInfoDbData_1.2.10      </span></span>
+<span><span class="co">#&gt;  [33] shiny_1.7.5                   digest_0.6.33                </span></span>
+<span><span class="co">#&gt;  [35] colorspace_2.1-0              AnnotationDbi_1.62.2         </span></span>
+<span><span class="co">#&gt;  [37] rprojroot_2.0.3               dqrng_0.3.1                  </span></span>
+<span><span class="co">#&gt;  [39] irlba_2.3.5.1                 textshaping_0.3.6            </span></span>
+<span><span class="co">#&gt;  [41] RSQLite_2.3.1                 beachmat_2.16.0              </span></span>
+<span><span class="co">#&gt;  [43] labeling_0.4.3                filelock_1.0.2               </span></span>
+<span><span class="co">#&gt;  [45] fansi_1.0.4                   httr_1.4.7                   </span></span>
+<span><span class="co">#&gt;  [47] abind_1.4-5                   compiler_4.3.1               </span></span>
+<span><span class="co">#&gt;  [49] bit64_4.0.5                   withr_2.5.0                  </span></span>
+<span><span class="co">#&gt;  [51] BiocParallel_1.34.2           viridis_0.6.4                </span></span>
+<span><span class="co">#&gt;  [53] DBI_1.1.3                     HDF5Array_1.28.1             </span></span>
+<span><span class="co">#&gt;  [55] R.utils_2.12.2                rappdirs_0.3.3               </span></span>
+<span><span class="co">#&gt;  [57] DelayedArray_0.26.7           bluster_1.10.0               </span></span>
+<span><span class="co">#&gt;  [59] rjson_0.2.21                  tools_4.3.1                  </span></span>
+<span><span class="co">#&gt;  [61] vipor_0.4.5                   beeswarm_0.4.0               </span></span>
+<span><span class="co">#&gt;  [63] interactiveDisplayBase_1.38.0 httpuv_1.6.11                </span></span>
+<span><span class="co">#&gt;  [65] R.oo_1.25.0                   glue_1.6.2                   </span></span>
+<span><span class="co">#&gt;  [67] rhdf5filters_1.12.1           promises_1.2.1               </span></span>
+<span><span class="co">#&gt;  [69] grid_4.3.1                    cluster_2.1.4                </span></span>
+<span><span class="co">#&gt;  [71] generics_0.1.3                gtable_0.3.4                 </span></span>
+<span><span class="co">#&gt;  [73] R.methodsS3_1.8.2             metapod_1.8.0                </span></span>
+<span><span class="co">#&gt;  [75] BiocSingular_1.16.0           ScaledMatrix_1.8.1           </span></span>
+<span><span class="co">#&gt;  [77] utf8_1.2.3                    XVector_0.40.0               </span></span>
+<span><span class="co">#&gt;  [79] ggrepel_0.9.3                 BiocVersion_3.17.1           </span></span>
+<span><span class="co">#&gt;  [81] pillar_1.9.0                  stringr_1.5.0                </span></span>
+<span><span class="co">#&gt;  [83] limma_3.56.2                  later_1.3.1                  </span></span>
+<span><span class="co">#&gt;  [85] dplyr_1.1.3                   lattice_0.21-8               </span></span>
+<span><span class="co">#&gt;  [87] bit_4.0.5                     tidyselect_1.2.0             </span></span>
+<span><span class="co">#&gt;  [89] locfit_1.5-9.8                Biostrings_2.68.1            </span></span>
+<span><span class="co">#&gt;  [91] knitr_1.44                    gridExtra_2.3                </span></span>
+<span><span class="co">#&gt;  [93] edgeR_3.42.4                  xfun_0.40                    </span></span>
+<span><span class="co">#&gt;  [95] statmod_1.5.0                 DropletUtils_1.20.0          </span></span>
+<span><span class="co">#&gt;  [97] stringi_1.7.12                yaml_2.3.7                   </span></span>
+<span><span class="co">#&gt;  [99] evaluate_0.21                 codetools_0.2-19             </span></span>
+<span><span class="co">#&gt; [101] tibble_3.2.1                  BiocManager_1.30.22          </span></span>
+<span><span class="co">#&gt; [103] cli_3.6.1                     xtable_1.8-4                 </span></span>
+<span><span class="co">#&gt; [105] systemfonts_1.0.4             munsell_0.5.0                </span></span>
+<span><span class="co">#&gt; [107] jquerylib_0.1.4               Rcpp_1.0.11                  </span></span>
+<span><span class="co">#&gt; [109] png_0.1-8                     parallel_4.3.1               </span></span>
+<span><span class="co">#&gt; [111] ellipsis_0.3.2                pkgdown_2.0.7                </span></span>
+<span><span class="co">#&gt; [113] blob_1.2.4                    sparseMatrixStats_1.12.2     </span></span>
+<span><span class="co">#&gt; [115] bitops_1.0-7                  viridisLite_0.4.2            </span></span>
+<span><span class="co">#&gt; [117] scales_1.2.1                  purrr_1.0.2                  </span></span>
+<span><span class="co">#&gt; [119] crayon_1.5.2                  rlang_1.1.1                  </span></span>
+<span><span class="co">#&gt; [121] KEGGREST_1.40.0</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
