@@ -46,10 +46,23 @@ plot following the grammar of graphics and ggplot2 syntax.
 }
 \examples{
 library(STexampleData)
-
+# SpatialExperiment Object
 spe <- Visium_humanDLPFC()
-
 make_escheR(spe)
+
+# SingleCellExperiment Object
+sce <- SingleCellExperiment(counts(spe))
+reducedDims(sce) <- list(
+   # Example embedding
+    EG = matrix(seq.int(1, ncol(spe)*2), ncol = 2)
+    )
+make_escheR(sce, dimred = "EG")
+
+# data.frame Object
+x <- spatialCoords(spe)[,1]
+y <- spatialCoords(spe)[,2]
+df <- colData(spe) |> data.frame()
+make_escheR(object = df, .x = x , .y = y)
 }
 \references{
 Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023).
