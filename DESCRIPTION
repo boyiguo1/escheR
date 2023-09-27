@@ -10,7 +10,7 @@ Authors@R: c(
             comment = c(ORCID = "0000-0002-7858-0231")),
     person(c("Erik", "D."), "Nelson",
            email = "erik.nelson116@gmail.com", role = c("aut"),
-           comment = c(ORCID = "0000-0001-8477-0982")),
+           comment = c(ORCID = "0000-0001-8477-0982"))
             )
 Description: The creation of effective visualizations is a fundamental component
     of data analysis. In biomedical research, new challenges are emerging to 
