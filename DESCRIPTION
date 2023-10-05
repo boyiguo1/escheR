@@ -9,7 +9,7 @@ Authors@R: c(
             email = "shicks19@jhu.edu", 
             comment = c(ORCID = "0000-0002-7858-0231")),
     person(c("Erik", "D."), "Nelson",
-           email = "erik.nelson116@gmail.com", role = c("aut"),
+           email = "erik.nelson116@gmail.com", role = c("ctb"),
            comment = c(ORCID = "0000-0001-8477-0982"))
             )
 Description: The creation of effective visualizations is a fundamental component
