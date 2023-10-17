@@ -1,4 +1,4 @@
-# escheR 1.1.2
+# escheR 1.2.0
 SIGNIFICANT USER-VISIBLE CHANGES
 * Add generic functions to support `SingleCellExperiment` object by
   providing values to the argument `dimred`, and `data.frame` object
