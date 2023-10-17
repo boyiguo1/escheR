@@ -1,6 +1,6 @@
 Package: escheR
 Title: Unified multi-dimensional visualizations with Gestalt principles
-Version: 1.1.4
+Version: 1.2.0
 Authors@R: c(
     person("Boyi", "Guo",
            email = "boyi.guo.work@gmail.com", role = c("aut", "cre"),
