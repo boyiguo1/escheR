@@ -1,4 +1,12 @@
 # escheR 1.1.2
+SIGNIFICANT USER-VISIBLE CHANGES
+* Add generic functions to support `SingleCellExperiment` object by
+  providing values to the argument `dimred`, and `data.frame` object
+* Modify the generic function `make_escheR.SpatialExperiment` to support 
+`SpatialExperiment` that is beyond Visium
+* Update and add new vignette to show how to work with `SingleCellExperiment` to
+visualize `dimred` and color palette for bi-variate display.
+
 
 # escheR 1.1.1
 SIGNIFICANT USER-VISIBLE CHANGES
