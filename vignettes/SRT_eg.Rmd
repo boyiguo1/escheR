@@ -189,12 +189,17 @@ make_escheR(spe) |>
   ) 
 ```
 
+> NOTE: It would be intrinsically difficult to construct a clear, intuitive and precise visualization when the number of categories/levels is large.
+
+
 ### Guidance in choosing bivariate color palette 
 
 In this vignettes, we don't provide or recommend specific color palettes, because the selection of color palettes is highly relevant to the underlying message and heterogeneous across analysis and studies, e.g. sequential palettes, qualitative palette, and divergent palette. Instead, we direct interested user to explore the topic on _bivariate color palette_. The [blog post](https://jakubnowosad.com/posts/2020-08-25-cbc-bp2/) by Jakub Nowosad and R package [`biscale`](https://cran.r-project.org/web/packages/biscale/vignettes/bivariate_palettes.html) could be helpful to optimize your color palette for bivariate visualization.
 
 
 In addition, if color palette is extremely to curate, e.g. large number of levels, it is possible to use symbols ([`add_symbol()`](##Adding-layers)) to annotate specific levels to avoid clutter in the color space.
+
+
 
 ## Adjusting aesthetics
 Given that the `escheR` package is developed based on `ggplot2`, aesthetics can be easily adjusted following the `ggplot2` syntax. For example, given a `escheR` plot object, one can use `+` with `theme_*`, `scale_*` functions.
