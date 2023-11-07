@@ -54,5 +54,6 @@ Suggests:
     scran,
     scater,
     scuttle,
-    Seurat
+    Seurat,
+    schex
 VignetteBuilder: knitr
