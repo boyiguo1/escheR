@@ -140,7 +140,8 @@ make_escheR.SingleCellExperiment <- function(
 #' @rdname make_escheR
 #' @importFrom rlang .data
 #' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
-#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab scale_y_reverse
+#' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab
+#' @importFrom ggplot2 scale_y_reverse coord_fixed theme_void
 #' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
 #' @export
 #'

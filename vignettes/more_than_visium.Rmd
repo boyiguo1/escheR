@@ -33,6 +33,8 @@ library(scran)
 
 spe <- Visium_humanDLPFC() |> 
   logNormCounts()
+spe <- spe[, spe$in_tissue == 1]
+spe <- spe[, !is.na(spe$ground_truth)]
 top.gene <- getTopHVGs(spe, n=500)
 
 set.seed(100) # See below.
@@ -45,6 +47,74 @@ make_escheR(
   add_fill(var = "ground_truth") +
   theme_minimal()
 ```
+
+# Hex Binning
+```{r}
+spe$counts_MOBP <- counts(spe)[which(rowData(spe)$gene_name=="MOBP"),]
+spe$ground_truth <- factor(spe$ground_truth)
+# Hex Binning version
+# make_escheR(
+#   spe,
+#   dimred = "PCA"
+# ) +
+#   # Create hex binning
+# stat_summary_hex(
+#   aes(z = ground_truth, group = -1, color = after_stat(value), fill = after_stat(rep(NA_integer_, length(value)))
+#       ),
+#   linewidth = 1.2,
+#   fun = function(x){
+#     # browser()
+#     ll <- data.frame(table(x))
+#     as.character(ll[which.max(ll$Freq),"x"])
+#   }, bins = 30
+# ) +
+# # Create hex binning
+# stat_summary_hex(
+#    aes(z = counts_MOBP, fill = after_stat(value)),
+#    color = "transparent",
+#    fun = sum, bins = 30) +
+#   scale_size_area
+
+
+# Point Binning version
+make_escheR(
+  spe,
+  dimred = "PCA"
+) |> 
+  add_ground_bin(
+    var = "ground_truth") |> 
+  add_fill_bin(
+    var = "counts_MOBP"
+  ) +
+   scale_fill_gradient(low = "white", high = "black", name = "MOBP Count")+
+  scale_color_discrete(name = "Spatial Domains") +
+  theme_minimal()
+
+# 
+#   stat_summary_hex(
+#     aes(z = ground_truth, group = -1, color = after_stat(value), fill = after_stat(rep(NA_integer_, length(value)))
+#     ),
+#     geom = "point",
+#     shape = 21,
+#     size = 3,
+#     stroke = 1,
+#     # linewidth = 1.2,
+#     fun = function(x){
+#       # browser()
+#       ll <- data.frame(table(x))
+#       as.character(ll[which.max(ll$Freq),"x"])
+#     }, bins = 30
+#   ) +
+#   stat_summary_hex(
+#     aes(z = counts_MOBP, fill = after_stat(value)),
+#     color = "transparent",
+#     geom = "point",
+#     shape = 21,
+#     size = 2.8,
+#     fun = sum, bins = 30)
+```
+> Note 1: The strategy of binning to avoid overplotting is previously proposed in [`schex`](https://www.bioconductor.org/packages/release/bioc/html/schex.html). While we provide an impelmentation in `escheR`, we would caution our users that the binning strategy could lead to intermixing of cluster memberships. In our impelmentation, the majority membership of the datapoints belonging to a bin is selected as the label. Users should use the binning strategy under their own discretion, and interpret the visualization carefully. 
+> Note 2: `add_fill_bin()` shoudl be applied after `add_ground_bin()` for the better visualization outcome.
 
 # Image-based `SpatialExperiment` Object
 To demonstrate the principle that `escheR` can be used to visualize image-based spatially-resolved data pending optimization, we include two image-based spatially resolved transcriptomics data generated via seqFish platform and Slide-seq V2 platform respectively. The two datasets have been previously curated in the [`STexampleData`](https://bioconductor.org/packages/release/data/experiment/vignettes/STexampleData/inst/doc/STexampleData_overview.html) package
