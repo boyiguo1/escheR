@@ -22,3 +22,5 @@ add_fill_bin <- function(
     ) +
     scale_fill_gradient(name = var)
 }
+
+utils::globalVariables("value")

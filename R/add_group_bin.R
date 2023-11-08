@@ -1,6 +1,6 @@
 #' @param bins numeric vector giving number of bins in both vertical and
 #'             horizontal directions. Set to 30 by default.
-#' @param ...
+#' @param ... Reserved for future arguments.
 #'
 #' @rdname add_ground
 #' @export
