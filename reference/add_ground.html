@@ -48,7 +48,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Adding border to highlight the ground in the spatial map</h1>
-      <small class="dont-index">Source: <a href="https://github.com/boyiguo1/escheR/blob/HEAD/R/add_ground.R" class="external-link"><code>R/add_ground.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/boyiguo1/escheR/blob/HEAD/R/add_ground.R" class="external-link"><code>R/add_ground.R</code></a>, <a href="https://github.com/boyiguo1/escheR/blob/HEAD/R/add_group_bin.R" class="external-link"><code>R/add_group_bin.R</code></a></small>
       <div class="d-none name"><code>add_ground.Rd</code></div>
     </div>
 
@@ -58,7 +58,9 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_ground</span><span class="op">(</span><span class="va">p</span>, <span class="va">var</span>, stroke <span class="op">=</span> <span class="fl">0.5</span>, point_size <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_ground</span><span class="op">(</span><span class="va">p</span>, <span class="va">var</span>, stroke <span class="op">=</span> <span class="fl">0.5</span>, point_size <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">add_ground_bin</span><span class="op">(</span><span class="va">p</span>, <span class="va">var</span>, bins <span class="op">=</span> <span class="fl">30</span>, stroke <span class="op">=</span> <span class="fl">1</span>, point_size <span class="op">=</span> <span class="fl">3</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -81,6 +83,11 @@
 
 <dt>...</dt>
 <dd><p>Reserved for future arguments.</p></dd>
+
+
+<dt>bins</dt>
+<dd><p>numeric vector giving number of bins in both vertical and
+horizontal directions. Set to 30 by default.</p></dd>
 
 </dl></div>
     <div class="section level2">
