@@ -69,6 +69,7 @@ make_escheR(
   scale_color_discrete(name = "Spatial Domains") +
   theme_minimal()
 ```
+
 > Note 1: The strategy of binning to avoid overplotting is previously proposed in [`schex`](https://www.bioconductor.org/packages/release/bioc/html/schex.html). While we provide an implementation in `escheR`, we would caution our users that the binning strategy could lead to intermixing of cluster memberships. In our implementation, the majority membership of the data points belonging to a bin is selected as the label of the bin. Users should use the binning strategy under their own discretion, and interpret the visualization carefully.
 
 > Note 2: `add_fill_bin()` shoudl be applied after `add_ground_bin()` for the better visualization outcome.
