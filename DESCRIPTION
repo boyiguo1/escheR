@@ -54,5 +54,6 @@ Suggests:
     scran,
     scater,
     scuttle,
-    Seurat
+    Seurat,
+    hexbin
 VignetteBuilder: knitr
