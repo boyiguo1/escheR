@@ -49,32 +49,9 @@ make_escheR(
 ```
 
 # Hex Binning
-```{r}
+```{r bin_plot}
 spe$counts_MOBP <- counts(spe)[which(rowData(spe)$gene_name=="MOBP"),]
 spe$ground_truth <- factor(spe$ground_truth)
-# Hex Binning version
-# make_escheR(
-#   spe,
-#   dimred = "PCA"
-# ) +
-#   # Create hex binning
-# stat_summary_hex(
-#   aes(z = ground_truth, group = -1, color = after_stat(value), fill = after_stat(rep(NA_integer_, length(value)))
-#       ),
-#   linewidth = 1.2,
-#   fun = function(x){
-#     # browser()
-#     ll <- data.frame(table(x))
-#     as.character(ll[which.max(ll$Freq),"x"])
-#   }, bins = 30
-# ) +
-# # Create hex binning
-# stat_summary_hex(
-#    aes(z = counts_MOBP, fill = after_stat(value)),
-#    color = "transparent",
-#    fun = sum, bins = 30) +
-#   scale_size_area
-
 
 # Point Binning version
 make_escheR(
@@ -82,38 +59,18 @@ make_escheR(
   dimred = "PCA"
 ) |> 
   add_ground_bin(
-    var = "ground_truth") |> 
+    var = "ground_truth"
+    ) |> 
   add_fill_bin(
     var = "counts_MOBP"
-  ) +
+    ) +
+  # Customize aesthetics
    scale_fill_gradient(low = "white", high = "black", name = "MOBP Count")+
   scale_color_discrete(name = "Spatial Domains") +
   theme_minimal()
-
-# 
-#   stat_summary_hex(
-#     aes(z = ground_truth, group = -1, color = after_stat(value), fill = after_stat(rep(NA_integer_, length(value)))
-#     ),
-#     geom = "point",
-#     shape = 21,
-#     size = 3,
-#     stroke = 1,
-#     # linewidth = 1.2,
-#     fun = function(x){
-#       # browser()
-#       ll <- data.frame(table(x))
-#       as.character(ll[which.max(ll$Freq),"x"])
-#     }, bins = 30
-#   ) +
-#   stat_summary_hex(
-#     aes(z = counts_MOBP, fill = after_stat(value)),
-#     color = "transparent",
-#     geom = "point",
-#     shape = 21,
-#     size = 2.8,
-#     fun = sum, bins = 30)
 ```
-> Note 1: The strategy of binning to avoid overplotting is previously proposed in [`schex`](https://www.bioconductor.org/packages/release/bioc/html/schex.html). While we provide an impelmentation in `escheR`, we would caution our users that the binning strategy could lead to intermixing of cluster memberships. In our impelmentation, the majority membership of the datapoints belonging to a bin is selected as the label. Users should use the binning strategy under their own discretion, and interpret the visualization carefully. 
+> Note 1: The strategy of binning to avoid overplotting is previously proposed in [`schex`](https://www.bioconductor.org/packages/release/bioc/html/schex.html). While we provide an implementation in `escheR`, we would caution our users that the binning strategy could lead to intermixing of cluster memberships. In our implementation, the majority membership of the data points belonging to a bin is selected as the label of the bin. Users should use the binning strategy under their own discretion, and interpret the visualization carefully.
+
 > Note 2: `add_fill_bin()` shoudl be applied after `add_ground_bin()` for the better visualization outcome.
 
 # Image-based `SpatialExperiment` Object
