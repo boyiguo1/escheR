@@ -1,5 +1,6 @@
 # escheR 1.3.1
 SIGNIFICANT USER-VISIBLE CHANGES
+
 * Add functions `add_fill_bin` and `add_ground_bin` to provide hexgon binning strategy to mitigate the overplotting of data points
 * Provide an example to use `add_fill_bin` and `add_ground_bin` with `make_escheR` to create hexgon binning plot
 
@@ -7,6 +8,7 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
 # escheR 1.2.0
 SIGNIFICANT USER-VISIBLE CHANGES
+
 * Add generic functions to support `SingleCellExperiment` object by
   providing values to the argument `dimred`, and `data.frame` object
 * Modify the generic function `make_escheR.SpatialExperiment` to support 
