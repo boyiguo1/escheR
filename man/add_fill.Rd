@@ -7,7 +7,7 @@
 \usage{
 add_fill(p, var, point_size = 2, ...)
 
-add_fill_bin(p, var, bins = 30, point_size = 2.8, ...)
+add_fill_bin(p, var, bins = 30, point_size = 2.8, fun = sum, ...)
 }
 \arguments{
 \item{p}{a spatial map created by \code{make_escheR()}, with or without
@@ -23,6 +23,8 @@ ggplot. Defaults to 2.}
 
 \item{bins}{numeric vector giving number of bins in both vertical and
 horizontal directions. Set to 30 by default.}
+
+\item{fun}{function for summary. See more detail in \link[ggplot2]{stat_summary_hex}}
 }
 \value{
 an ggplot object.
