@@ -60,7 +60,7 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">add_fill</span><span class="op">(</span><span class="va">p</span>, <span class="va">var</span>, point_size <span class="op">=</span> <span class="fl">2</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">add_fill_bin</span><span class="op">(</span><span class="va">p</span>, <span class="va">var</span>, bins <span class="op">=</span> <span class="fl">30</span>, point_size <span class="op">=</span> <span class="fl">2.8</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">add_fill_bin</span><span class="op">(</span><span class="va">p</span>, <span class="va">var</span>, bins <span class="op">=</span> <span class="fl">30</span>, point_size <span class="op">=</span> <span class="fl">2.8</span>, fun <span class="op">=</span> <span class="va">sum</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -87,6 +87,10 @@ ggplot. Defaults to 2.</p></dd>
 <dt>bins</dt>
 <dd><p>numeric vector giving number of bins in both vertical and
 horizontal directions. Set to 30 by default.</p></dd>
+
+
+<dt>fun</dt>
+<dd><p>function for summary. See more detail in <a href="https://ggplot2.tidyverse.org/reference/stat_summary_2d.html" class="external-link">stat_summary_hex</a></p></dd>
 
 </dl></div>
     <div class="section level2">
