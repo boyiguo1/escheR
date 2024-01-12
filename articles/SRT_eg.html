@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with `escheR`">
 <meta property="og:description" content="escheR">
@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">escheR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.3.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,8 +101,9 @@ USA<br><small class="dont-index">Source: <a href="https://github.com/boyiguo1/es
 <p>The goal of <code>escheR</code> is to create an unified
 multi-dimensional spatial visualizations for spatially-resolved
 transcriptomics data following Gestalt principles.</p>
-<p>Our preprint describing the innovative visualization is available via
-<a href="https://www.biorxiv.org/content/10.1101/2023.03.18.533302" class="external-link">bioRxiv</a>.</p>
+<p>Our manuscript describing the innovative visualization is published
+in <a href="https://doi.org/10.1093/bioadv/vbad179" class="external-link"><em>Bioinformatics
+Advances</em></a>.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
@@ -227,9 +228,10 @@ with dots.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/add_symbol.html">add_symbol</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ground_truth"</span>, size <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="co"># Symbol layer</span></span>
-<span><span class="co">#&gt; Warning: The shape palette can deal with a maximum of 6 discrete values because</span></span>
-<span><span class="co">#&gt; more than 6 becomes difficult to discriminate; you have 7. Consider</span></span>
-<span><span class="co">#&gt; specifying shapes manually if you must have them.</span></span>
+<span><span class="co">#&gt; Warning: The shape palette can deal with a maximum of 6 discrete values because more</span></span>
+<span><span class="co">#&gt; than 6 becomes difficult to discriminate</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> you have requested 7 values. Consider specifying shapes manually if you need</span></span>
+<span><span class="co">#&gt;   that many have them.</span></span>
 <span><span class="co">#&gt; Warning: Removed 513 rows containing missing values (`geom_point()`).</span></span></code></pre></div>
 <p><img src="SRT_eg_files/figure-html/add_symbol-1.png"><!-- --></p>
 <p>It is okay to change the ordering of these <code>add_*</code>
@@ -500,65 +502,65 @@ plots in the <code>pdf</code> format.</p>
 <span><span class="co">#&gt;  [1] ggpubr_0.6.0                STexampleData_1.10.0       </span></span>
 <span><span class="co">#&gt;  [3] SpatialExperiment_1.12.0    SingleCellExperiment_1.24.0</span></span>
 <span><span class="co">#&gt;  [5] SummarizedExperiment_1.32.0 Biobase_2.62.0             </span></span>
-<span><span class="co">#&gt;  [7] GenomicRanges_1.54.1        GenomeInfoDb_1.38.1        </span></span>
-<span><span class="co">#&gt;  [9] IRanges_2.36.0              S4Vectors_0.40.1           </span></span>
-<span><span class="co">#&gt; [11] MatrixGenerics_1.14.0       matrixStats_1.1.0          </span></span>
+<span><span class="co">#&gt;  [7] GenomicRanges_1.54.1        GenomeInfoDb_1.38.5        </span></span>
+<span><span class="co">#&gt;  [9] IRanges_2.36.0              S4Vectors_0.40.2           </span></span>
+<span><span class="co">#&gt; [11] MatrixGenerics_1.14.0       matrixStats_1.2.0          </span></span>
 <span><span class="co">#&gt; [13] ExperimentHub_2.10.0        AnnotationHub_3.10.0       </span></span>
 <span><span class="co">#&gt; [15] BiocFileCache_2.10.1        dbplyr_2.4.0               </span></span>
-<span><span class="co">#&gt; [17] BiocGenerics_0.48.1         escheR_1.3.1               </span></span>
+<span><span class="co">#&gt; [17] BiocGenerics_0.48.1         escheR_1.3.2               </span></span>
 <span><span class="co">#&gt; [19] ggplot2_3.4.4               BiocStyle_2.30.0           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;   [1] DBI_1.1.3                     bitops_1.0-7                 </span></span>
-<span><span class="co">#&gt;   [3] gridExtra_2.3                 rlang_1.1.2                  </span></span>
-<span><span class="co">#&gt;   [5] magrittr_2.0.3                compiler_4.3.2               </span></span>
-<span><span class="co">#&gt;   [7] RSQLite_2.3.3                 png_0.1-8                    </span></span>
-<span><span class="co">#&gt;   [9] systemfonts_1.0.5             vctrs_0.6.4                  </span></span>
-<span><span class="co">#&gt;  [11] stringr_1.5.0                 pkgconfig_2.0.3              </span></span>
-<span><span class="co">#&gt;  [13] crayon_1.5.2                  fastmap_1.1.1                </span></span>
-<span><span class="co">#&gt;  [15] backports_1.4.1               magick_2.8.1                 </span></span>
-<span><span class="co">#&gt;  [17] XVector_0.42.0                ellipsis_0.3.2               </span></span>
-<span><span class="co">#&gt;  [19] labeling_0.4.3                utf8_1.2.4                   </span></span>
-<span><span class="co">#&gt;  [21] promises_1.2.1                rmarkdown_2.25               </span></span>
-<span><span class="co">#&gt;  [23] ragg_1.2.6                    purrr_1.0.2                  </span></span>
-<span><span class="co">#&gt;  [25] bit_4.0.5                     xfun_0.41                    </span></span>
-<span><span class="co">#&gt;  [27] zlibbioc_1.48.0               cachem_1.0.8                 </span></span>
-<span><span class="co">#&gt;  [29] jsonlite_1.8.7                blob_1.2.4                   </span></span>
-<span><span class="co">#&gt;  [31] highr_0.10                    later_1.3.1                  </span></span>
-<span><span class="co">#&gt;  [33] DelayedArray_0.28.0           interactiveDisplayBase_1.40.0</span></span>
-<span><span class="co">#&gt;  [35] broom_1.0.5                   R6_2.5.1                     </span></span>
-<span><span class="co">#&gt;  [37] RColorBrewer_1.1-3            bslib_0.5.1                  </span></span>
-<span><span class="co">#&gt;  [39] stringi_1.7.12                car_3.1-2                    </span></span>
-<span><span class="co">#&gt;  [41] jquerylib_0.1.4               Rcpp_1.0.11                  </span></span>
-<span><span class="co">#&gt;  [43] bookdown_0.36                 knitr_1.45                   </span></span>
-<span><span class="co">#&gt;  [45] httpuv_1.6.12                 Matrix_1.6-2                 </span></span>
-<span><span class="co">#&gt;  [47] tidyselect_1.2.0              abind_1.4-5                  </span></span>
-<span><span class="co">#&gt;  [49] yaml_2.3.7                    curl_5.1.0                   </span></span>
-<span><span class="co">#&gt;  [51] lattice_0.22-5                tibble_3.2.1                 </span></span>
-<span><span class="co">#&gt;  [53] shiny_1.7.5.1                 withr_2.5.2                  </span></span>
-<span><span class="co">#&gt;  [55] KEGGREST_1.42.0               evaluate_0.23                </span></span>
-<span><span class="co">#&gt;  [57] desc_1.4.2                    Biostrings_2.70.1            </span></span>
-<span><span class="co">#&gt;  [59] pillar_1.9.0                  BiocManager_1.30.22          </span></span>
-<span><span class="co">#&gt;  [61] filelock_1.0.2                carData_3.0-5                </span></span>
-<span><span class="co">#&gt;  [63] generics_0.1.3                rprojroot_2.0.4              </span></span>
-<span><span class="co">#&gt;  [65] RCurl_1.98-1.13               BiocVersion_3.18.0           </span></span>
-<span><span class="co">#&gt;  [67] munsell_0.5.0                 scales_1.2.1                 </span></span>
-<span><span class="co">#&gt;  [69] xtable_1.8-4                  glue_1.6.2                   </span></span>
-<span><span class="co">#&gt;  [71] tools_4.3.2                   ggsignif_0.6.4               </span></span>
-<span><span class="co">#&gt;  [73] fs_1.6.3                      cowplot_1.1.1                </span></span>
-<span><span class="co">#&gt;  [75] grid_4.3.2                    tidyr_1.3.0                  </span></span>
-<span><span class="co">#&gt;  [77] AnnotationDbi_1.64.1          colorspace_2.1-0             </span></span>
-<span><span class="co">#&gt;  [79] GenomeInfoDbData_1.2.11       cli_3.6.1                    </span></span>
-<span><span class="co">#&gt;  [81] rappdirs_0.3.3                textshaping_0.3.7            </span></span>
-<span><span class="co">#&gt;  [83] fansi_1.0.5                   S4Arrays_1.2.0               </span></span>
-<span><span class="co">#&gt;  [85] viridisLite_0.4.2             dplyr_1.1.3                  </span></span>
-<span><span class="co">#&gt;  [87] gtable_0.3.4                  rstatix_0.7.2                </span></span>
-<span><span class="co">#&gt;  [89] sass_0.4.7                    digest_0.6.33                </span></span>
-<span><span class="co">#&gt;  [91] SparseArray_1.2.2             farver_2.1.1                 </span></span>
-<span><span class="co">#&gt;  [93] rjson_0.2.21                  memoise_2.0.1                </span></span>
-<span><span class="co">#&gt;  [95] htmltools_0.5.7               pkgdown_2.0.7                </span></span>
-<span><span class="co">#&gt;  [97] lifecycle_1.0.4               httr_1.4.7                   </span></span>
-<span><span class="co">#&gt;  [99] mime_0.12                     bit64_4.0.5</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] DBI_1.2.0                     bitops_1.0-7                 </span></span>
+<span><span class="co">#&gt;  [3] gridExtra_2.3                 rlang_1.1.2                  </span></span>
+<span><span class="co">#&gt;  [5] magrittr_2.0.3                compiler_4.3.2               </span></span>
+<span><span class="co">#&gt;  [7] RSQLite_2.3.4                 png_0.1-8                    </span></span>
+<span><span class="co">#&gt;  [9] systemfonts_1.0.5             vctrs_0.6.5                  </span></span>
+<span><span class="co">#&gt; [11] stringr_1.5.1                 pkgconfig_2.0.3              </span></span>
+<span><span class="co">#&gt; [13] crayon_1.5.2                  fastmap_1.1.1                </span></span>
+<span><span class="co">#&gt; [15] backports_1.4.1               magick_2.8.2                 </span></span>
+<span><span class="co">#&gt; [17] XVector_0.42.0                ellipsis_0.3.2               </span></span>
+<span><span class="co">#&gt; [19] labeling_0.4.3                utf8_1.2.4                   </span></span>
+<span><span class="co">#&gt; [21] promises_1.2.1                rmarkdown_2.25               </span></span>
+<span><span class="co">#&gt; [23] ragg_1.2.7                    purrr_1.0.2                  </span></span>
+<span><span class="co">#&gt; [25] bit_4.0.5                     xfun_0.41                    </span></span>
+<span><span class="co">#&gt; [27] zlibbioc_1.48.0               cachem_1.0.8                 </span></span>
+<span><span class="co">#&gt; [29] jsonlite_1.8.8                blob_1.2.4                   </span></span>
+<span><span class="co">#&gt; [31] highr_0.10                    later_1.3.2                  </span></span>
+<span><span class="co">#&gt; [33] DelayedArray_0.28.0           interactiveDisplayBase_1.40.0</span></span>
+<span><span class="co">#&gt; [35] broom_1.0.5                   R6_2.5.1                     </span></span>
+<span><span class="co">#&gt; [37] RColorBrewer_1.1-3            bslib_0.6.1                  </span></span>
+<span><span class="co">#&gt; [39] stringi_1.8.3                 car_3.1-2                    </span></span>
+<span><span class="co">#&gt; [41] jquerylib_0.1.4               Rcpp_1.0.11                  </span></span>
+<span><span class="co">#&gt; [43] bookdown_0.37                 knitr_1.45                   </span></span>
+<span><span class="co">#&gt; [45] httpuv_1.6.13                 Matrix_1.6-4                 </span></span>
+<span><span class="co">#&gt; [47] tidyselect_1.2.0              abind_1.4-5                  </span></span>
+<span><span class="co">#&gt; [49] yaml_2.3.8                    curl_5.2.0                   </span></span>
+<span><span class="co">#&gt; [51] lattice_0.22-5                tibble_3.2.1                 </span></span>
+<span><span class="co">#&gt; [53] shiny_1.8.0                   withr_2.5.2                  </span></span>
+<span><span class="co">#&gt; [55] KEGGREST_1.42.0               evaluate_0.23                </span></span>
+<span><span class="co">#&gt; [57] desc_1.4.3                    Biostrings_2.70.1            </span></span>
+<span><span class="co">#&gt; [59] pillar_1.9.0                  BiocManager_1.30.22          </span></span>
+<span><span class="co">#&gt; [61] filelock_1.0.3                carData_3.0-5                </span></span>
+<span><span class="co">#&gt; [63] generics_0.1.3                RCurl_1.98-1.13              </span></span>
+<span><span class="co">#&gt; [65] BiocVersion_3.18.1            munsell_0.5.0                </span></span>
+<span><span class="co">#&gt; [67] scales_1.3.0                  xtable_1.8-4                 </span></span>
+<span><span class="co">#&gt; [69] glue_1.6.2                    tools_4.3.2                  </span></span>
+<span><span class="co">#&gt; [71] ggsignif_0.6.4                fs_1.6.3                     </span></span>
+<span><span class="co">#&gt; [73] cowplot_1.1.2                 grid_4.3.2                   </span></span>
+<span><span class="co">#&gt; [75] tidyr_1.3.0                   AnnotationDbi_1.64.1         </span></span>
+<span><span class="co">#&gt; [77] colorspace_2.1-0              GenomeInfoDbData_1.2.11      </span></span>
+<span><span class="co">#&gt; [79] cli_3.6.2                     rappdirs_0.3.3               </span></span>
+<span><span class="co">#&gt; [81] textshaping_0.3.7             fansi_1.0.6                  </span></span>
+<span><span class="co">#&gt; [83] S4Arrays_1.2.0                viridisLite_0.4.2            </span></span>
+<span><span class="co">#&gt; [85] dplyr_1.1.4                   gtable_0.3.4                 </span></span>
+<span><span class="co">#&gt; [87] rstatix_0.7.2                 sass_0.4.8                   </span></span>
+<span><span class="co">#&gt; [89] digest_0.6.33                 SparseArray_1.2.3            </span></span>
+<span><span class="co">#&gt; [91] rjson_0.2.21                  farver_2.1.1                 </span></span>
+<span><span class="co">#&gt; [93] memoise_2.0.1                 htmltools_0.5.7              </span></span>
+<span><span class="co">#&gt; [95] pkgdown_2.0.7                 lifecycle_1.0.4              </span></span>
+<span><span class="co">#&gt; [97] httr_1.4.7                    mime_0.12                    </span></span>
+<span><span class="co">#&gt; [99] bit64_4.0.5</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
