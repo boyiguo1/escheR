@@ -18,7 +18,7 @@ The goal of `escheR` is to create an unified multi-dimensional spatial visualiza
 
 ![](man/figures/insitu.jpg)
 
-Our preprint describing the innovative visualization is available from [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
+Our manuscript describing the innovative visualization is published in [_Bioinformatics Advances_](https://doi.org/10.1093/bioadv/vbad179).
 
 # Installation
 
@@ -105,9 +105,10 @@ Please find an end-to-end tutorial at [https://boyiguo1.github.io/escheR/](https
 
 # Citation
 
-Our preprint describing `escheR` is available from bioRxiv:
+Our manuscript describing `escheR` is available via _Bioinformatics Advances_:
 
-* Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” _bioRxiv_. doi:10.1101/2023.03.18.533302
+* Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023). “escheR: Unified multi-dimensional visualizations with Gestalt principles.” Volume 3, Issue 1, 2023, vbad179, https://doi.org/10.1093/bioadv/vbad179
+
 
 # Acknowledgement
 

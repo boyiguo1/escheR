@@ -12,10 +12,11 @@ c(
               as.person("Leonardo Collado-Torres"),
               as.person("Stephanie C. Hicks")
          ),
-  journal = "bioRxiv",
+  journal = "Bioinformatics Advances",
   year    = "2023",
-  doi     = "10.1101/2023.03.18.533302",
-  publisher = "Cold Spring Harbor Laboratory",
-  url     = "https://www.biorxiv.org/content/10.1101/2023.03.18.533302v2"
+  volume  = "3",
+  number = "1",
+  pages = "vbad179",
+  doi     = "10.1093/bioadv/vbad179"
   )
 )

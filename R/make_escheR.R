@@ -24,7 +24,7 @@
 #' @references
 #'  Guo B, Huuki-Myers LA, Grant-Peters M, Collado-Torres L, Hicks SC (2023).
 #'  escheR: Unified multi-dimensional visualizations with Gestalt principles.
-#'   _bioRxiv_. doi:10.1101/2023.03.18.533302
+#'   _Bioinformatics Advances_, Volume 3, Issue 1, vbad179, doi:10.1093/bioadv/vbad179
 #'
 #'
 #'

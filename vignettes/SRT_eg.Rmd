@@ -29,7 +29,7 @@ knitr::opts_chunk$set(
 
 The goal of `escheR` is to create an unified multi-dimensional spatial visualizations for spatially-resolved transcriptomics data following Gestalt principles.
 
-Our preprint describing the innovative visualization is available via [bioRxiv](https://www.biorxiv.org/content/10.1101/2023.03.18.533302).
+Our manuscript describing the innovative visualization is published in [_Bioinformatics Advances_](https://doi.org/10.1093/bioadv/vbad179).
 
 
 ## Installation
