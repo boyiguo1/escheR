@@ -139,7 +139,7 @@ make_escheR.SingleCellExperiment <- function(
 #'
 #' @rdname make_escheR
 #' @importFrom rlang .data
-#' @importFrom ggplot2 aes element_blank element_text geom_point ggplot
+#' @importFrom ggplot2 aes element_blank element_text element_rect geom_point ggplot
 #' @importFrom ggplot2 scale_shape theme theme_bw theme_set unit xlab ylab
 #' @importFrom ggplot2 scale_y_reverse coord_fixed theme_void
 #' @importFrom SpatialExperiment imgRaster spatialCoords scaleFactors
@@ -243,7 +243,9 @@ make_escheR.SpatialExperiment <- function(
     ylab("") +
     coord_fixed(ratio = 1) +
     # Remove random lines and axis in the plot
-    theme_void() #+
+      theme_escheR()
+  
+  #+
   # theme_set(theme_bw(base_size = 20)) +
   # theme(
   #   panel.grid.major = element_blank(),
